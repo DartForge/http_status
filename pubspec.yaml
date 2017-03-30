@@ -1,6 +1,6 @@
 name: http_status
 description: Http Status Codes for dart.
-version: 1.0.0+3
+version: 1.0.1
 homepage: https://bitbucket.org/era_productions/http_status
 author: Andrea Cantafio <kk4r.1m@gmail.com>
 

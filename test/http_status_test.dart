@@ -1,4 +1,5 @@
 // Copyright (c) 2017, Era Productions. All rights reserved. Use of this source code
+
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
 import 'package:http_status/http_status.dart';
@@ -32,6 +33,15 @@ void main() {
         expect(() => new HttpStatus(200, null), throwsArgumentError);
         expect(() => new HttpStatus(null, null), throwsArgumentError);
       });
+
+      test('fromCode constructor throws on unknown status code', () {
+        expect(() => new HttpStatus.fromCode(999), throwsArgumentError);
+        expect(() => new HttpStatus.fromCode(998), throwsArgumentError);
+        expect(() => new HttpStatus.fromCode(1), throwsArgumentError);
+      });
+
+      test('fromCode constructor returns correct status',
+          testHttpStatusFromCodeConstructor);
     });
   });
 }
@@ -190,6 +200,197 @@ void testHttpStatusEqualsAndHashCode() {
   expect(b.hashCode, isNot(equals(d.hashCode)));
   expect(c, isNot(equals(d)));
   expect(c.hashCode, isNot(equals(d.hashCode)));
+}
+
+void testHttpStatusFromCodeConstructor() {
+  expect(new HttpStatus.fromCode(HttpStatusCode.Continue),
+      equals(HttpStatus.Continue));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Switching_Protocols),
+      equals(HttpStatus.Switching_Protocols));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Processing),
+      equals(HttpStatus.Processing));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.OK), equals(HttpStatus.OK));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Created),
+      equals(HttpStatus.Created));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Accepted),
+      equals(HttpStatus.Accepted));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.NonAuthoritative_Information),
+      equals(HttpStatus.NonAuthoritative_Information));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.No_Content),
+      equals(HttpStatus.No_Content));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Reset_Content),
+      equals(HttpStatus.Reset_Content));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Partial_Content),
+      equals(HttpStatus.Partial_Content));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.MultiStatus),
+      equals(HttpStatus.MultiStatus));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Already_Reported),
+      equals(HttpStatus.Already_Reported));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.IM_Used),
+      equals(HttpStatus.IM_Used));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Multiple_Choices),
+      equals(HttpStatus.Multiple_Choices));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Moved_Permanently),
+      equals(HttpStatus.Moved_Permanently));
+
+  expect(
+      new HttpStatus.fromCode(HttpStatusCode.Found), equals(HttpStatus.Found));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.See_Other),
+      equals(HttpStatus.See_Other));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Not_Modified),
+      equals(HttpStatus.Not_Modified));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Use_Proxy),
+      equals(HttpStatus.Use_Proxy));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Temporary_Redirect),
+      equals(HttpStatus.Temporary_Redirect));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Permanent_Redirect),
+      equals(HttpStatus.Permanent_Redirect));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Bad_Request),
+      equals(HttpStatus.Bad_Request));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Unauthorized),
+      equals(HttpStatus.Unauthorized));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Payment_Required),
+      equals(HttpStatus.Payment_Required));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Forbidden),
+      equals(HttpStatus.Forbidden));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Not_Found),
+      equals(HttpStatus.Not_Found));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Method_Not_Allowed),
+      equals(HttpStatus.Method_Not_Allowed));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Not_Acceptable),
+      equals(HttpStatus.Not_Acceptable));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Proxy_Authentication_Required),
+      equals(HttpStatus.Proxy_Authentication_Required));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Request_Timeout),
+      equals(HttpStatus.Request_Timeout));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Conflict),
+      equals(HttpStatus.Conflict));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Gone), equals(HttpStatus.Gone));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Length_Required),
+      equals(HttpStatus.Length_Required));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Precondition_Failed),
+      equals(HttpStatus.Precondition_Failed));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Payload_Too_Large),
+      equals(HttpStatus.Payload_Too_Large));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.RequestURI_Too_Long),
+      equals(HttpStatus.RequestURI_Too_Long));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Unsupported_Media_Type),
+      equals(HttpStatus.Unsupported_Media_Type));
+
+  expect(
+      new HttpStatus.fromCode(HttpStatusCode.Requested_Range_Not_Satisfiable),
+      equals(HttpStatus.Requested_Range_Not_Satisfiable));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Expectation_Failed),
+      equals(HttpStatus.Expectation_Failed));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Misdirected_Request),
+      equals(HttpStatus.Misdirected_Request));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Unprocessable_Entity),
+      equals(HttpStatus.Unprocessable_Entity));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Locked),
+      equals(HttpStatus.Locked));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Failed_Dependency),
+      equals(HttpStatus.Failed_Dependency));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Upgrade_Required),
+      equals(HttpStatus.Upgrade_Required));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Precondition_Required),
+      equals(HttpStatus.Precondition_Required));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Too_Many_Requests),
+      equals(HttpStatus.Too_Many_Requests));
+
+  expect(
+      new HttpStatus.fromCode(HttpStatusCode.Request_Header_Fields_Too_Large),
+      equals(HttpStatus.Request_Header_Fields_Too_Large));
+
+  expect(
+      new HttpStatus.fromCode(
+          HttpStatusCode.Connection_Closed_Without_Response),
+      equals(HttpStatus.Connection_Closed_Without_Response));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Unavailable_For_Legal_Reasons),
+      equals(HttpStatus.Unavailable_For_Legal_Reasons));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Client_Closed_Request),
+      equals(HttpStatus.Client_Closed_Request));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Internal_Server_Error),
+      equals(HttpStatus.Internal_Server_Error));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Not_Implemented),
+      equals(HttpStatus.Not_Implemented));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Bad_Gateway),
+      equals(HttpStatus.Bad_Gateway));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Service_Unavailable),
+      equals(HttpStatus.Service_Unavailable));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Gateway_Timeout),
+      equals(HttpStatus.Gateway_Timeout));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.HTTP_Version_Not_Supported),
+      equals(HttpStatus.HTTP_Version_Not_Supported));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Variant_Also_Negotiates),
+      equals(HttpStatus.Variant_Also_Negotiates));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Insufficient_Storage),
+      equals(HttpStatus.Insufficient_Storage));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Loop_Detected),
+      equals(HttpStatus.Loop_Detected));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Not_Extended),
+      equals(HttpStatus.Not_Extended));
+
+  expect(
+      new HttpStatus.fromCode(HttpStatusCode.Network_Authentication_Required),
+      equals(HttpStatus.Network_Authentication_Required));
+
+  expect(new HttpStatus.fromCode(HttpStatusCode.Network_Connect_Timeout_Error),
+      equals(HttpStatus.Network_Connect_Timeout_Error));
 }
 
 void testHttpStatusValues() {

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+- Added HttpStatus.fromCode constructor
+
 ## 1.0.0+3
 
 - Increased coverage

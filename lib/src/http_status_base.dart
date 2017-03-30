@@ -1,6 +1,80 @@
 // Copyright (c) 2017, Era Productions. All rights reserved. Use of this source code
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
+const Map<int, HttpStatus> _Statuses = const <int, HttpStatus>{
+  HttpStatusCode.Continue: HttpStatus.Continue,
+  HttpStatusCode.Switching_Protocols: HttpStatus.Switching_Protocols,
+  HttpStatusCode.Processing: HttpStatus.Processing,
+  HttpStatusCode.OK: HttpStatus.OK,
+  HttpStatusCode.Created: HttpStatus.Created,
+  HttpStatusCode.Accepted: HttpStatus.Accepted,
+  HttpStatusCode.NonAuthoritative_Information:
+      HttpStatus.NonAuthoritative_Information,
+  HttpStatusCode.No_Content: HttpStatus.No_Content,
+  HttpStatusCode.Reset_Content: HttpStatus.Reset_Content,
+  HttpStatusCode.Partial_Content: HttpStatus.Partial_Content,
+  HttpStatusCode.MultiStatus: HttpStatus.MultiStatus,
+  HttpStatusCode.Already_Reported: HttpStatus.Already_Reported,
+  HttpStatusCode.IM_Used: HttpStatus.IM_Used,
+  HttpStatusCode.Multiple_Choices: HttpStatus.Multiple_Choices,
+  HttpStatusCode.Moved_Permanently: HttpStatus.Moved_Permanently,
+  HttpStatusCode.Found: HttpStatus.Found,
+  HttpStatusCode.See_Other: HttpStatus.See_Other,
+  HttpStatusCode.Not_Modified: HttpStatus.Not_Modified,
+  HttpStatusCode.Use_Proxy: HttpStatus.Use_Proxy,
+  HttpStatusCode.Temporary_Redirect: HttpStatus.Temporary_Redirect,
+  HttpStatusCode.Permanent_Redirect: HttpStatus.Permanent_Redirect,
+  HttpStatusCode.Bad_Request: HttpStatus.Bad_Request,
+  HttpStatusCode.Unauthorized: HttpStatus.Unauthorized,
+  HttpStatusCode.Payment_Required: HttpStatus.Payment_Required,
+  HttpStatusCode.Forbidden: HttpStatus.Forbidden,
+  HttpStatusCode.Not_Found: HttpStatus.Not_Found,
+  HttpStatusCode.Method_Not_Allowed: HttpStatus.Method_Not_Allowed,
+  HttpStatusCode.Not_Acceptable: HttpStatus.Not_Acceptable,
+  HttpStatusCode.Proxy_Authentication_Required:
+      HttpStatus.Proxy_Authentication_Required,
+  HttpStatusCode.Request_Timeout: HttpStatus.Request_Timeout,
+  HttpStatusCode.Conflict: HttpStatus.Conflict,
+  HttpStatusCode.Gone: HttpStatus.Gone,
+  HttpStatusCode.Length_Required: HttpStatus.Length_Required,
+  HttpStatusCode.Precondition_Failed: HttpStatus.Precondition_Failed,
+  HttpStatusCode.Payload_Too_Large: HttpStatus.Payload_Too_Large,
+  HttpStatusCode.RequestURI_Too_Long: HttpStatus.RequestURI_Too_Long,
+  HttpStatusCode.Unsupported_Media_Type: HttpStatus.Unsupported_Media_Type,
+  HttpStatusCode.Requested_Range_Not_Satisfiable:
+      HttpStatus.Requested_Range_Not_Satisfiable,
+  HttpStatusCode.Expectation_Failed: HttpStatus.Expectation_Failed,
+  HttpStatusCode.Misdirected_Request: HttpStatus.Misdirected_Request,
+  HttpStatusCode.Unprocessable_Entity: HttpStatus.Unprocessable_Entity,
+  HttpStatusCode.Locked: HttpStatus.Locked,
+  HttpStatusCode.Failed_Dependency: HttpStatus.Failed_Dependency,
+  HttpStatusCode.Upgrade_Required: HttpStatus.Upgrade_Required,
+  HttpStatusCode.Precondition_Required: HttpStatus.Precondition_Required,
+  HttpStatusCode.Too_Many_Requests: HttpStatus.Too_Many_Requests,
+  HttpStatusCode.Request_Header_Fields_Too_Large:
+      HttpStatus.Request_Header_Fields_Too_Large,
+  HttpStatusCode.Connection_Closed_Without_Response:
+      HttpStatus.Connection_Closed_Without_Response,
+  HttpStatusCode.Unavailable_For_Legal_Reasons:
+      HttpStatus.Unavailable_For_Legal_Reasons,
+  HttpStatusCode.Client_Closed_Request: HttpStatus.Client_Closed_Request,
+  HttpStatusCode.Internal_Server_Error: HttpStatus.Internal_Server_Error,
+  HttpStatusCode.Not_Implemented: HttpStatus.Not_Implemented,
+  HttpStatusCode.Bad_Gateway: HttpStatus.Bad_Gateway,
+  HttpStatusCode.Service_Unavailable: HttpStatus.Service_Unavailable,
+  HttpStatusCode.Gateway_Timeout: HttpStatus.Gateway_Timeout,
+  HttpStatusCode.HTTP_Version_Not_Supported:
+      HttpStatus.HTTP_Version_Not_Supported,
+  HttpStatusCode.Variant_Also_Negotiates: HttpStatus.Variant_Also_Negotiates,
+  HttpStatusCode.Insufficient_Storage: HttpStatus.Insufficient_Storage,
+  HttpStatusCode.Loop_Detected: HttpStatus.Loop_Detected,
+  HttpStatusCode.Not_Extended: HttpStatus.Not_Extended,
+  HttpStatusCode.Network_Authentication_Required:
+      HttpStatus.Network_Authentication_Required,
+  HttpStatusCode.Network_Connect_Timeout_Error:
+      HttpStatus.Network_Connect_Timeout_Error,
+};
+
 /// Each [HttpStatusCode] is described below, including a description of which
 /// method(s) it can follow and any metainformation required in the response.
 ///
@@ -1389,6 +1463,13 @@ class HttpStatus {
       throw new ArgumentError.value(
           code, 'code', 'Must be between 0 (inclusive) and 999 (inclusive)');
     }
+  }
+
+  factory HttpStatus.fromCode(int code) {
+    if (!_Statuses.containsKey(code)) {
+      throw new ArgumentError.value(code, 'code', 'Unknown status code');
+    }
+    return _Statuses[code];
   }
 
   const HttpStatus._(this.code, this.name);
