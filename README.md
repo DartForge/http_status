@@ -3,6 +3,7 @@
 Http Status Codes for dart.
 
 [![codecov](https://codecov.io/bb/era_productions/http_status/branch/master/graph/badge.svg)](https://codecov.io/bb/era_productions/http_status)
+[ ![Codeship Status for era_productions/http_status](https://app.codeship.com/projects/e98c60a0-f7a6-0134-c2f5-62bad16a2d4d/status?branch=master)](https://app.codeship.com/projects/210773)
 
 ## Usage
 
