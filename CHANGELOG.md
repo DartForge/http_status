@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0+2
+
+- codecov.io setup
+
 ## 1.0.0+1
 
 - Added dart_codecov_generator
