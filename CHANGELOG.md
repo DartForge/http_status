@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0+1
+
+- Added dart_codecov_generator
+
 ## 1.0.0
 
 - Created `HttpStatusCode` and `HttpStatus`
