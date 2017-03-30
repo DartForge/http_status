@@ -2,6 +2,8 @@
 
 Http Status Codes for dart.
 
+[![codecov](https://codecov.io/bb/era_productions/http_status/branch/master/graph/badge.svg)](https://codecov.io/bb/era_productions/http_status)
+
 ## Usage
 
 A simple usage example:

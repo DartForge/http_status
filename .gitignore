@@ -10,3 +10,4 @@ doc/api/
 
 # JetBrains IDEs
 .idea/
+/.codecov-token
