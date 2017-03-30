@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0+3
+
+- Increased coverage
+
 ## 1.0.0+2
 
 - codecov.io setup

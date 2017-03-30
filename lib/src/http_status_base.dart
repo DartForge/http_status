@@ -84,7 +84,7 @@ class HttpStatus {
   /// 100-continue expectation, the client can simply discard this interim
   /// response.
   static const HttpStatus Continue =
-      const HttpStatus(HttpStatusCode.Continue, 'Continue');
+      const HttpStatus._(HttpStatusCode.Continue, 'Continue');
 
   /// 101 SWITCHING PROTOCOLS
   ///
@@ -100,7 +100,7 @@ class HttpStatus {
   /// HTTP might be advantageous over older versions, and switching to a
   /// real-time, synchronous protocol might be advantageous when delivering
   /// resources that use such features.
-  static const HttpStatus Switching_Protocols = const HttpStatus(
+  static const HttpStatus Switching_Protocols = const HttpStatus._(
       HttpStatusCode.Switching_Protocols, 'Switching Protocols');
 
   /// 102 PROCESSING
@@ -121,7 +121,7 @@ class HttpStatus {
   /// server may return a 102 Processing status code to indicate to the client
   /// that the server is still processing the method.
   static const HttpStatus Processing =
-      const HttpStatus(HttpStatusCode.Processing, 'Processing');
+      const HttpStatus._(HttpStatusCode.Processing, 'Processing');
 
   /// 200 OK
   ///
@@ -153,7 +153,7 @@ class HttpStatus {
   ///
   /// A 200 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
-  static const HttpStatus OK = const HttpStatus(HttpStatusCode.OK, 'OK');
+  static const HttpStatus OK = const HttpStatus._(HttpStatusCode.OK, 'OK');
 
   /// 201 CREATED
   ///
@@ -169,7 +169,7 @@ class HttpStatus {
   /// purpose of validator header fields, such as ETag and Last-Modified, in a
   /// 201 response.
   static const HttpStatus Created =
-      const HttpStatus(HttpStatusCode.Created, 'Created');
+      const HttpStatus._(HttpStatusCode.Created, 'Created');
 
   /// 202 ACCEPTED
   ///
@@ -189,7 +189,7 @@ class HttpStatus {
   /// can provide the user with an estimate of when the request will be
   /// fulfilled.
   static const HttpStatus Accepted =
-      const HttpStatus(HttpStatusCode.Accepted, 'Accepted');
+      const HttpStatus._(HttpStatusCode.Accepted, 'Accepted');
 
   /// 203 NON-AUTHORITATIVE INFORMATION
   ///
@@ -208,7 +208,7 @@ class HttpStatus {
   ///
   /// A 203 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
-  static const HttpStatus NonAuthoritative_Information = const HttpStatus(
+  static const HttpStatus NonAuthoritative_Information = const HttpStatus._(
       HttpStatusCode.NonAuthoritative_Information,
       'Non-authoritative Information');
 
@@ -245,7 +245,7 @@ class HttpStatus {
   /// A 204 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
   static const HttpStatus No_Content =
-      const HttpStatus(HttpStatusCode.No_Content, 'No Content');
+      const HttpStatus._(HttpStatusCode.No_Content, 'No Content');
 
   /// 205 RESET CONTENT
   ///
@@ -274,7 +274,7 @@ class HttpStatus {
   ///  * close the connection immediately after sending the blank line
   ///    terminating the header section.
   static const HttpStatus Reset_Content =
-      const HttpStatus(HttpStatusCode.Reset_Content, 'Reset Content');
+      const HttpStatus._(HttpStatusCode.Reset_Content, 'Reset Content');
 
   /// 206 PARTIAL CONTENT
   ///
@@ -377,7 +377,7 @@ class HttpStatus {
   /// A 206 response is cacheable by default; i.e., unless otherwise indicated
   /// by explicit cache controls.
   static const HttpStatus Partial_Content =
-      const HttpStatus(HttpStatusCode.Partial_Content, 'Partial Content');
+      const HttpStatus._(HttpStatusCode.Partial_Content, 'Partial Content');
 
   /// 207 MULTI-STATUS
   ///
@@ -416,7 +416,7 @@ class HttpStatus {
   ///    and PROPPATCH, and is described in detail in RFC4918 Section 9.1 and
   ///    RFC4918 Section 9.2.
   static const HttpStatus MultiStatus =
-      const HttpStatus(HttpStatusCode.MultiStatus, 'Multi-Status');
+      const HttpStatus._(HttpStatusCode.MultiStatus, 'Multi-Status');
 
   /// 208 ALREADY REPORTED
   ///
@@ -445,7 +445,7 @@ class HttpStatus {
   /// response, or in the middle of a multistatus, if it discovers it in the
   /// middle of streaming out a multistatus response.
   static const HttpStatus Already_Reported =
-      const HttpStatus(HttpStatusCode.Already_Reported, 'Already Reported');
+      const HttpStatus._(HttpStatusCode.Already_Reported, 'Already Reported');
 
   /// 226 IM USED
   ///
@@ -473,7 +473,7 @@ class HttpStatus {
   /// conjunction with a cache entry for the base instance, to create a cache
   /// entry for the current instance.
   static const HttpStatus IM_Used =
-      const HttpStatus(HttpStatusCode.IM_Used, 'IM Used');
+      const HttpStatus._(HttpStatusCode.IM_Used, 'IM Used');
 
   /// 300 MULTIPLE CHOICES
   ///
@@ -515,7 +515,7 @@ class HttpStatus {
   /// using a set of Link header fields, each with a relationship of
   /// "alternate", though deployment is a chicken-and-egg problem.
   static const HttpStatus Multiple_Choices =
-      const HttpStatus(HttpStatusCode.Multiple_Choices, 'Multiple Choices');
+      const HttpStatus._(HttpStatusCode.Multiple_Choices, 'Multiple Choices');
 
   /// 301 MOVED PERMANENTLY
   ///
@@ -539,7 +539,7 @@ class HttpStatus {
   /// A 301 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
   static const HttpStatus Moved_Permanently =
-      const HttpStatus(HttpStatusCode.Moved_Permanently, 'Moved Permanently');
+      const HttpStatus._(HttpStatusCode.Moved_Permanently, 'Moved Permanently');
 
   /// 302 FOUND
   ///
@@ -557,7 +557,7 @@ class HttpStatus {
   /// from POST to GET for the subsequent request. If this behavior is
   /// undesired, the 307 Temporary Redirect status code can be used instead.
   static const HttpStatus Found =
-      const HttpStatus(HttpStatusCode.Found, 'Found');
+      const HttpStatus._(HttpStatusCode.Found, 'Found');
 
   /// 303 SEE OTHER
   ///
@@ -591,7 +591,7 @@ class HttpStatus {
   /// response ought to contain a short hypertext note with a hyperlink to the
   /// same URI reference provided in the Location header field.
   static const HttpStatus See_Other =
-      const HttpStatus(HttpStatusCode.See_Other, 'See Other');
+      const HttpStatus._(HttpStatusCode.See_Other, 'See Other');
 
   /// A conditional GET or HEAD request has been received and would have
   /// resulted in a 200 OK response if it were not for the fact that the
@@ -624,14 +624,14 @@ class HttpStatus {
   /// A 304 response cannot contain a message-body; it is always terminated by
   /// the first empty line after the header fields.
   static const HttpStatus Not_Modified =
-      const HttpStatus(HttpStatusCode.Not_Modified, 'Not Modified');
+      const HttpStatus._(HttpStatusCode.Not_Modified, 'Not Modified');
 
   /// 305 USE PROXY
   ///
   /// Defined in a previous version of this specification and is now deprecated, due
   /// to security concerns regarding in-band configuration of a proxy.
   static const HttpStatus Use_Proxy =
-      const HttpStatus(HttpStatusCode.Use_Proxy, 'Use Proxy');
+      const HttpStatus._(HttpStatusCode.Use_Proxy, 'Use Proxy');
 
   /// 307 TEMPORARY REDIRECT
   ///
@@ -653,8 +653,8 @@ class HttpStatus {
   /// defines no equivalent counterpart for 301 Moved Permanently (RFC7238,
   /// however, proposes defining the status code 308 Permanent Redirect for this
   /// purpose).
-  static const HttpStatus Temporary_Redirect =
-      const HttpStatus(HttpStatusCode.Temporary_Redirect, 'Temporary Redirect');
+  static const HttpStatus Temporary_Redirect = const HttpStatus._(
+      HttpStatusCode.Temporary_Redirect, 'Temporary Redirect');
 
   /// 308 PERMANENT REDIRECT
   ///
@@ -676,8 +676,8 @@ class HttpStatus {
   ///
   /// Note: This status code is similar to 301 Moved Permanently, except that it
   /// does not allow changing the request method from POST to GET.
-  static const HttpStatus Permanent_Redirect =
-      const HttpStatus(HttpStatusCode.Permanent_Redirect, 'Permanent Redirect');
+  static const HttpStatus Permanent_Redirect = const HttpStatus._(
+      HttpStatusCode.Permanent_Redirect, 'Permanent Redirect');
 
   /// 400 BAD REQUEST
   ///
@@ -685,7 +685,7 @@ class HttpStatus {
   /// perceived to be a client error (e.g., malformed request syntax, invalid
   /// request message framing, or deceptive request routing).
   static const HttpStatus Bad_Request =
-      const HttpStatus(HttpStatusCode.Bad_Request, 'Bad Request');
+      const HttpStatus._(HttpStatusCode.Bad_Request, 'Bad Request');
 
   /// 401 UNAUTHORIZED
   ///
@@ -703,13 +703,13 @@ class HttpStatus {
   /// least once, then the user agent SHOULD present the enclosed representation
   /// to the user, since it usually contains relevant diagnostic information.
   static const HttpStatus Unauthorized =
-      const HttpStatus(HttpStatusCode.Unauthorized, 'Unauthorized');
+      const HttpStatus._(HttpStatusCode.Unauthorized, 'Unauthorized');
 
   /// 402 PAYMENT REQUIRED
   ///
   /// Reserved for future use.
   static const HttpStatus Payment_Required =
-      const HttpStatus(HttpStatusCode.Payment_Required, 'Payment Required');
+      const HttpStatus._(HttpStatusCode.Payment_Required, 'Payment Required');
 
   /// 403 FORBIDDEN
   ///
@@ -728,7 +728,7 @@ class HttpStatus {
   /// forbidden target resource MAY instead respond with a status code of 404
   /// Not Found.
   static const HttpStatus Forbidden =
-      const HttpStatus(HttpStatusCode.Forbidden, 'Forbidden');
+      const HttpStatus._(HttpStatusCode.Forbidden, 'Forbidden');
 
   /// 404 NOT FOUND
   ///
@@ -743,7 +743,7 @@ class HttpStatus {
   /// A 404 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
   static const HttpStatus Not_Found =
-      const HttpStatus(HttpStatusCode.Not_Found, 'Not Found');
+      const HttpStatus._(HttpStatusCode.Not_Found, 'Not Found');
 
   /// 405 METHOD NOT ALLOWED
   ///
@@ -755,8 +755,8 @@ class HttpStatus {
   ///
   /// A 405 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
-  static const HttpStatus Method_Not_Allowed =
-      const HttpStatus(HttpStatusCode.Method_Not_Allowed, 'Method Not Allowed');
+  static const HttpStatus Method_Not_Allowed = const HttpStatus._(
+      HttpStatusCode.Method_Not_Allowed, 'Method Not Allowed');
 
   /// 406 NOT ACCEPTABLE
   ///
@@ -772,7 +772,7 @@ class HttpStatus {
   /// However, this specification does not define any standard for such
   /// automatic selection, as described in RFC7231 Section 6.4.1.
   static const HttpStatus Not_Acceptable =
-      const HttpStatus(HttpStatusCode.Not_Acceptable, 'Not Acceptable');
+      const HttpStatus._(HttpStatusCode.Not_Acceptable, 'Not Acceptable');
 
   /// 407 PROXY AUTHENTICATION REQUIRED
   ///
@@ -783,7 +783,7 @@ class HttpStatus {
   /// challenge applicable to that proxy for the target resource. The client MAY
   /// repeat the request with a new or replaced Proxy-Authorization header
   /// field.
-  static const HttpStatus Proxy_Authentication_Required = const HttpStatus(
+  static const HttpStatus Proxy_Authentication_Required = const HttpStatus._(
       HttpStatusCode.Proxy_Authentication_Required,
       'Proxy Authentication Required');
 
@@ -797,7 +797,7 @@ class HttpStatus {
   /// than continue waiting. If the client has an outstanding request in
   /// transit, the client MAY repeat that request on a new connection.
   static const HttpStatus Request_Timeout =
-      const HttpStatus(HttpStatusCode.Request_Timeout, 'Request Timeout');
+      const HttpStatus._(HttpStatusCode.Request_Timeout, 'Request Timeout');
 
   /// 409 CONFLICT
   ///
@@ -816,7 +816,7 @@ class HttpStatus {
   /// representation would likely contain information useful for merging the
   /// differences based on the revision history.
   static const HttpStatus Conflict =
-      const HttpStatus(HttpStatusCode.Conflict, 'Conflict');
+      const HttpStatus._(HttpStatusCode.Conflict, 'Conflict');
 
   /// 410 GONE
   ///
@@ -838,7 +838,8 @@ class HttpStatus {
   ///
   /// A 410 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
-  static const HttpStatus Gone = const HttpStatus(HttpStatusCode.Gone, 'Gone');
+  static const HttpStatus Gone =
+      const HttpStatus._(HttpStatusCode.Gone, 'Gone');
 
   /// 411 LENGTH REQUIRED
   ///
@@ -847,7 +848,7 @@ class HttpStatus {
   /// The client MAY repeat the request if it adds a valid Content-Length header
   /// field containing the length of the message body in the request message.
   static const HttpStatus Length_Required =
-      const HttpStatus(HttpStatusCode.Length_Required, 'Length Required');
+      const HttpStatus._(HttpStatusCode.Length_Required, 'Length Required');
 
   /// 412 PRECONDITION FAILED
   ///
@@ -858,7 +859,7 @@ class HttpStatus {
   /// resource state (its current representations and metadata) and, thus,
   /// prevent the request method from being applied if the target resource is in
   /// an unexpected state.
-  static const HttpStatus Precondition_Failed = const HttpStatus(
+  static const HttpStatus Precondition_Failed = const HttpStatus._(
       HttpStatusCode.Precondition_Failed, 'Precondition Failed');
 
   /// 413 PAYLOAD TOO LARGE
@@ -873,7 +874,7 @@ class HttpStatus {
   /// header field to indicate that it is temporary and after what time the
   /// client MAY try again.
   static const HttpStatus Payload_Too_Large =
-      const HttpStatus(HttpStatusCode.Payload_Too_Large, 'Payload Too Large');
+      const HttpStatus._(HttpStatusCode.Payload_Too_Large, 'Payload Too Large');
 
   /// 414 REQUEST-URI TOO LONG
   ///
@@ -889,7 +890,7 @@ class HttpStatus {
   ///
   /// A 414 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
-  static const HttpStatus RequestURI_Too_Long = const HttpStatus(
+  static const HttpStatus RequestURI_Too_Long = const HttpStatus._(
       HttpStatusCode.RequestURI_Too_Long, 'Request-URI Too Long');
 
   /// 415 UNSUPPORTED MEDIA TYPE
@@ -899,7 +900,7 @@ class HttpStatus {
   ///
   /// The format problem might be due to the request's indicated Content-Type or
   /// Content-Encoding, or as a result of inspecting the data directly.
-  static const HttpStatus Unsupported_Media_Type = const HttpStatus(
+  static const HttpStatus Unsupported_Media_Type = const HttpStatus._(
       HttpStatusCode.Unsupported_Media_Type, 'Unsupported Media Type');
 
   /// 416 REQUESTED RANGE NOT SATISFIABLE
@@ -932,7 +933,7 @@ class HttpStatus {
   /// received a complete representation. Thus, clients cannot depend on
   /// receiving a 416 Range Not Satisfiable response even when it is most
   /// appropriate.
-  static const HttpStatus Requested_Range_Not_Satisfiable = const HttpStatus(
+  static const HttpStatus Requested_Range_Not_Satisfiable = const HttpStatus._(
       HttpStatusCode.Requested_Range_Not_Satisfiable,
       'Requested Range Not Satisfiable');
 
@@ -940,7 +941,7 @@ class HttpStatus {
   /// The expectation given in the request's Expect header field could not be
   /// met by at least one of the inbound servers.
   static const HttpStatus Expectation_Failed =
-      const HttpStatus(417, 'Expectation Failed');
+      const HttpStatus._(417, 'Expectation Failed');
 
   /// 421 MISDIRECTED REQUEST
   ///
@@ -958,7 +959,7 @@ class HttpStatus {
   ///
   /// A 421 response is cacheable by default, i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
-  static const HttpStatus Misdirected_Request = const HttpStatus(
+  static const HttpStatus Misdirected_Request = const HttpStatus._(
       HttpStatusCode.Misdirected_Request, 'Misdirected Request');
 
   /// 422 UNPROCESSABLE ENTITY
@@ -971,7 +972,7 @@ class HttpStatus {
   /// For example, this error condition may occur if an XML request body
   /// contains well-formed (i.e., syntactically correct), but semantically
   /// erroneous, XML instructions.
-  static const HttpStatus Unprocessable_Entity = const HttpStatus(
+  static const HttpStatus Unprocessable_Entity = const HttpStatus._(
       HttpStatusCode.Unprocessable_Entity, 'Unprocessable Entity');
 
   /// 423 LOCKED
@@ -981,7 +982,7 @@ class HttpStatus {
   /// This response SHOULD contain an appropriate precondition or postcondition
   /// code, such as 'lock-token-submitted' or 'no-conflicting-lock'.
   static const HttpStatus Locked =
-      const HttpStatus(HttpStatusCode.Locked, 'Locked');
+      const HttpStatus._(HttpStatusCode.Locked, 'Locked');
 
   /// 424 FAILED DEPENDENCY
   ///
@@ -991,7 +992,7 @@ class HttpStatus {
   /// For example, if a command in a PROPPATCH method fails, then, at minimum,
   /// the rest of the commands will also fail with 424 Failed Dependency.
   static const HttpStatus Failed_Dependency =
-      const HttpStatus(HttpStatusCode.Failed_Dependency, 'Failed Dependency');
+      const HttpStatus._(HttpStatusCode.Failed_Dependency, 'Failed Dependency');
 
   /// 426 UPGRADE REQUIRED
   ///
@@ -1014,7 +1015,7 @@ class HttpStatus {
   /// This service requires use of the HTTP/3.0 protocol.
   /// ```
   static const HttpStatus Upgrade_Required =
-      const HttpStatus(HttpStatusCode.Upgrade_Required, 'Upgrade Required');
+      const HttpStatus._(HttpStatusCode.Upgrade_Required, 'Upgrade Required');
 
   /// 428 PRECONDITION REQUIRED
   ///
@@ -1045,7 +1046,7 @@ class HttpStatus {
   /// ```
   ///
   /// Responses with the 428 status code MUST NOT be stored by a cache.
-  static const HttpStatus Precondition_Required = const HttpStatus(
+  static const HttpStatus Precondition_Required = const HttpStatus._(
       HttpStatusCode.Precondition_Required, 'Precondition Required');
 
   /// 429 TOO MANY REQUESTS
@@ -1085,7 +1086,7 @@ class HttpStatus {
   ///
   /// Responses with the 429 status code MUST NOT be stored by a cache.
   static const HttpStatus Too_Many_Requests =
-      const HttpStatus(HttpStatusCode.Too_Many_Requests, 'Too Many Requests');
+      const HttpStatus._(HttpStatusCode.Too_Many_Requests, 'Too Many Requests');
 
   /// 431 REQUEST HEADER FIELDS TOO LARGE
   ///
@@ -1115,7 +1116,7 @@ class HttpStatus {
   /// ```
   ///
   /// Responses with the 431 status code MUST NOT be stored by a cache.
-  static const HttpStatus Request_Header_Fields_Too_Large = const HttpStatus(
+  static const HttpStatus Request_Header_Fields_Too_Large = const HttpStatus._(
       HttpStatusCode.Request_Header_Fields_Too_Large,
       'Request Header Fields Too Large');
 
@@ -1126,9 +1127,9 @@ class HttpStatus {
   /// malicious or malformed requests.
   ///
   /// This status code is not seen by the client, it only appears in nginx log files.
-  static const HttpStatus Connection_Closed_Without_Response = const HttpStatus(
-      HttpStatusCode.Connection_Closed_Without_Response,
-      'Connection Closed Without Response');
+  static const HttpStatus Connection_Closed_Without_Response =
+      const HttpStatus._(HttpStatusCode.Connection_Closed_Without_Response,
+          'Connection Closed Without Response');
 
   /// 451 UNAVAILABLE FOR LEGAL REASONS
   ///
@@ -1172,7 +1173,7 @@ class HttpStatus {
   ///
   /// A 451 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls; see RFC7234.
-  static const HttpStatus Unavailable_For_Legal_Reasons = const HttpStatus(
+  static const HttpStatus Unavailable_For_Legal_Reasons = const HttpStatus._(
       HttpStatusCode.Unavailable_For_Legal_Reasons,
       'Unavailable For Legal Reasons');
 
@@ -1180,14 +1181,14 @@ class HttpStatus {
   ///
   /// A non-standard status code introduced by nginx for the case when a client
   /// closes the connection while nginx is processing the request.
-  static const HttpStatus Client_Closed_Request = const HttpStatus(
+  static const HttpStatus Client_Closed_Request = const HttpStatus._(
       HttpStatusCode.Client_Closed_Request, 'Client Closed Request');
 
   /// 500 INTERNAL SERVER ERROR
   ///
   /// The server encountered an unexpected condition that prevented it from
   /// fulfilling the request.
-  static const HttpStatus Internal_Server_Error = const HttpStatus(
+  static const HttpStatus Internal_Server_Error = const HttpStatus._(
       HttpStatusCode.Internal_Server_Error, 'Internal Server Error');
 
   /// 501 NOT IMPLEMENTED
@@ -1201,7 +1202,7 @@ class HttpStatus {
   /// A 501 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
   static const HttpStatus Not_Implemented =
-      const HttpStatus(HttpStatusCode.Not_Implemented, 'Not Implemented');
+      const HttpStatus._(HttpStatusCode.Not_Implemented, 'Not Implemented');
 
   /// 502 BAD GATEWAY
   ///
@@ -1209,7 +1210,7 @@ class HttpStatus {
   /// response from an inbound server it accessed while attempting to fulfill
   /// the request.
   static const HttpStatus Bad_Gateway =
-      const HttpStatus(HttpStatusCode.Bad_Gateway, 'Bad Gateway');
+      const HttpStatus._(HttpStatusCode.Bad_Gateway, 'Bad Gateway');
 
   /// 503 SERVICE UNAVAILABLE
   ///
@@ -1223,7 +1224,7 @@ class HttpStatus {
   /// Note: The existence of the 503 status code does not imply that a server
   /// has to use it when becoming overloaded. Some servers might simply refuse
   /// the connection.
-  static const HttpStatus Service_Unavailable = const HttpStatus(
+  static const HttpStatus Service_Unavailable = const HttpStatus._(
       HttpStatusCode.Service_Unavailable, 'Service Unavailable');
 
   /// 504 GATEWAY TIMEOUT
@@ -1232,7 +1233,7 @@ class HttpStatus {
   /// response from an upstream server it needed to access in order to complete
   /// the request.
   static const HttpStatus Gateway_Timeout =
-      const HttpStatus(HttpStatusCode.Gateway_Timeout, 'Gateway Timeout');
+      const HttpStatus._(HttpStatusCode.Gateway_Timeout, 'Gateway Timeout');
 
   /// 505 HTTP VERSION NOT SUPPORTED
   ///
@@ -1245,7 +1246,7 @@ class HttpStatus {
   /// SHOULD generate a representation for the 505 response that describes why
   /// that version is not supported and what other protocols are supported by
   /// that server.
-  static const HttpStatus HTTP_Version_Not_Supported = const HttpStatus(
+  static const HttpStatus HTTP_Version_Not_Supported = const HttpStatus._(
       HttpStatusCode.HTTP_Version_Not_Supported, 'HTTP Version Not Supported');
 
   /// 506 VARIANT ALSO NEGOTIATES
@@ -1254,7 +1255,7 @@ class HttpStatus {
   /// resource is configured to engage in transparent content negotiation
   /// itself, and is therefore not a proper end point in the negotiation
   /// process.
-  static const HttpStatus Variant_Also_Negotiates = const HttpStatus(
+  static const HttpStatus Variant_Also_Negotiates = const HttpStatus._(
       HttpStatusCode.Variant_Also_Negotiates, 'Variant Also Negotiates');
 
   /// 507 INSUFFICIENT STORAGE
@@ -1266,7 +1267,7 @@ class HttpStatus {
   /// This condition is considered to be temporary. If the request that received
   /// this status code was the result of a user action, the request MUST NOT be
   /// repeated until it is requested by a separate user action.
-  static const HttpStatus Insufficient_Storage = const HttpStatus(
+  static const HttpStatus Insufficient_Storage = const HttpStatus._(
       HttpStatusCode.Insufficient_Storage, 'Insufficient Storage');
 
   /// 508 LOOP DETECTED
@@ -1275,7 +1276,7 @@ class HttpStatus {
   /// while processing a request with "Depth: infinity". This status indicates
   /// that the entire operation failed.
   static const HttpStatus Loop_Detected =
-      const HttpStatus(HttpStatusCode.Loop_Detected, 'Loop Detected');
+      const HttpStatus._(HttpStatusCode.Loop_Detected, 'Loop Detected');
 
   /// 510 NOT EXTENDED
   ///
@@ -1294,7 +1295,7 @@ class HttpStatus {
   /// to the user, since that entity may include relevant diagnostic
   /// information.
   static const HttpStatus Not_Extended =
-      const HttpStatus(HttpStatusCode.Not_Extended, 'Not Extended');
+      const HttpStatus._(HttpStatusCode.Not_Extended, 'Not Extended');
 
   /// 511 NETWORK AUTHENTICATION REQUIRED
   ///
@@ -1360,7 +1361,7 @@ class HttpStatus {
   /// Here, the 511 status code assures that non-browser clients will not
   /// interpret the response as being from the origin server, and the META HTML
   /// element redirects the user agent to the login server.
-  static const HttpStatus Network_Authentication_Required = const HttpStatus(
+  static const HttpStatus Network_Authentication_Required = const HttpStatus._(
       HttpStatusCode.Network_Authentication_Required,
       'Network Authentication Required');
 
@@ -1369,7 +1370,7 @@ class HttpStatus {
   /// This status code is not specified in any RFCs, but is used by some HTTP
   /// proxies to signal a network connect timeout behind the proxy to a client
   /// in front of the proxy.
-  static const HttpStatus Network_Connect_Timeout_Error = const HttpStatus(
+  static const HttpStatus Network_Connect_Timeout_Error = const HttpStatus._(
       HttpStatusCode.Network_Connect_Timeout_Error,
       'Network Connect Timeout Error');
 
@@ -1377,7 +1378,20 @@ class HttpStatus {
 
   final String name;
 
-  const HttpStatus(this.code, this.name);
+  HttpStatus(this.code, this.name) {
+    if (null == code) {
+      throw new ArgumentError.notNull('code');
+    }
+    if (null == name) {
+      throw new ArgumentError.notNull('name');
+    }
+    if (code < 0 || code > 999) {
+      throw new ArgumentError.value(
+          code, 'code', 'Must be between 0 (inclusive) and 999 (inclusive)');
+    }
+  }
+
+  const HttpStatus._(this.code, this.name);
 
   @override
   int get hashCode => code.hashCode;
