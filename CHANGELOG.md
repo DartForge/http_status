@@ -1,8 +1,12 @@
 # Changelog
 
+## 1.0.1+1
+
+- Moved `coverage` to `dev_dependencies` and downgraded to `^0.7.3`
+
 ## 1.0.1
 
-- Added HttpStatus.fromCode constructor
+- Added `HttpStatus.fromCode` constructor
 
 ## 1.0.0+3
 

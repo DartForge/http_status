@@ -11,3 +11,7 @@ doc/api/
 # JetBrains IDEs
 .idea/
 /.codecov-token
+
+# Coverage reports
+coverage/
+lcov.info
