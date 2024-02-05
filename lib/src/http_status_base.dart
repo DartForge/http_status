@@ -1,79 +1,13 @@
-// Copyright (c) 2017, Era Productions. All rights reserved. Use of this source code
+// Copyright (c) 2017, Era Productions.
+// Copyright (c) 2024, TECH-ANDGAR.
+// All rights reserved. Use of this source code
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
-const Map<int, HttpStatus> _Statuses = const <int, HttpStatus>{
-  HttpStatusCode.Continue: HttpStatus.Continue,
-  HttpStatusCode.Switching_Protocols: HttpStatus.Switching_Protocols,
-  HttpStatusCode.Processing: HttpStatus.Processing,
-  HttpStatusCode.OK: HttpStatus.OK,
-  HttpStatusCode.Created: HttpStatus.Created,
-  HttpStatusCode.Accepted: HttpStatus.Accepted,
-  HttpStatusCode.NonAuthoritative_Information:
-      HttpStatus.NonAuthoritative_Information,
-  HttpStatusCode.No_Content: HttpStatus.No_Content,
-  HttpStatusCode.Reset_Content: HttpStatus.Reset_Content,
-  HttpStatusCode.Partial_Content: HttpStatus.Partial_Content,
-  HttpStatusCode.MultiStatus: HttpStatus.MultiStatus,
-  HttpStatusCode.Already_Reported: HttpStatus.Already_Reported,
-  HttpStatusCode.IM_Used: HttpStatus.IM_Used,
-  HttpStatusCode.Multiple_Choices: HttpStatus.Multiple_Choices,
-  HttpStatusCode.Moved_Permanently: HttpStatus.Moved_Permanently,
-  HttpStatusCode.Found: HttpStatus.Found,
-  HttpStatusCode.See_Other: HttpStatus.See_Other,
-  HttpStatusCode.Not_Modified: HttpStatus.Not_Modified,
-  HttpStatusCode.Use_Proxy: HttpStatus.Use_Proxy,
-  HttpStatusCode.Temporary_Redirect: HttpStatus.Temporary_Redirect,
-  HttpStatusCode.Permanent_Redirect: HttpStatus.Permanent_Redirect,
-  HttpStatusCode.Bad_Request: HttpStatus.Bad_Request,
-  HttpStatusCode.Unauthorized: HttpStatus.Unauthorized,
-  HttpStatusCode.Payment_Required: HttpStatus.Payment_Required,
-  HttpStatusCode.Forbidden: HttpStatus.Forbidden,
-  HttpStatusCode.Not_Found: HttpStatus.Not_Found,
-  HttpStatusCode.Method_Not_Allowed: HttpStatus.Method_Not_Allowed,
-  HttpStatusCode.Not_Acceptable: HttpStatus.Not_Acceptable,
-  HttpStatusCode.Proxy_Authentication_Required:
-      HttpStatus.Proxy_Authentication_Required,
-  HttpStatusCode.Request_Timeout: HttpStatus.Request_Timeout,
-  HttpStatusCode.Conflict: HttpStatus.Conflict,
-  HttpStatusCode.Gone: HttpStatus.Gone,
-  HttpStatusCode.Length_Required: HttpStatus.Length_Required,
-  HttpStatusCode.Precondition_Failed: HttpStatus.Precondition_Failed,
-  HttpStatusCode.Payload_Too_Large: HttpStatus.Payload_Too_Large,
-  HttpStatusCode.RequestURI_Too_Long: HttpStatus.RequestURI_Too_Long,
-  HttpStatusCode.Unsupported_Media_Type: HttpStatus.Unsupported_Media_Type,
-  HttpStatusCode.Requested_Range_Not_Satisfiable:
-      HttpStatus.Requested_Range_Not_Satisfiable,
-  HttpStatusCode.Expectation_Failed: HttpStatus.Expectation_Failed,
-  HttpStatusCode.Misdirected_Request: HttpStatus.Misdirected_Request,
-  HttpStatusCode.Unprocessable_Entity: HttpStatus.Unprocessable_Entity,
-  HttpStatusCode.Locked: HttpStatus.Locked,
-  HttpStatusCode.Failed_Dependency: HttpStatus.Failed_Dependency,
-  HttpStatusCode.Upgrade_Required: HttpStatus.Upgrade_Required,
-  HttpStatusCode.Precondition_Required: HttpStatus.Precondition_Required,
-  HttpStatusCode.Too_Many_Requests: HttpStatus.Too_Many_Requests,
-  HttpStatusCode.Request_Header_Fields_Too_Large:
-      HttpStatus.Request_Header_Fields_Too_Large,
-  HttpStatusCode.Connection_Closed_Without_Response:
-      HttpStatus.Connection_Closed_Without_Response,
-  HttpStatusCode.Unavailable_For_Legal_Reasons:
-      HttpStatus.Unavailable_For_Legal_Reasons,
-  HttpStatusCode.Client_Closed_Request: HttpStatus.Client_Closed_Request,
-  HttpStatusCode.Internal_Server_Error: HttpStatus.Internal_Server_Error,
-  HttpStatusCode.Not_Implemented: HttpStatus.Not_Implemented,
-  HttpStatusCode.Bad_Gateway: HttpStatus.Bad_Gateway,
-  HttpStatusCode.Service_Unavailable: HttpStatus.Service_Unavailable,
-  HttpStatusCode.Gateway_Timeout: HttpStatus.Gateway_Timeout,
-  HttpStatusCode.HTTP_Version_Not_Supported:
-      HttpStatus.HTTP_Version_Not_Supported,
-  HttpStatusCode.Variant_Also_Negotiates: HttpStatus.Variant_Also_Negotiates,
-  HttpStatusCode.Insufficient_Storage: HttpStatus.Insufficient_Storage,
-  HttpStatusCode.Loop_Detected: HttpStatus.Loop_Detected,
-  HttpStatusCode.Not_Extended: HttpStatus.Not_Extended,
-  HttpStatusCode.Network_Authentication_Required:
-      HttpStatus.Network_Authentication_Required,
-  HttpStatusCode.Network_Connect_Timeout_Error:
-      HttpStatus.Network_Connect_Timeout_Error,
-};
+// ignore_for_file: constant_identifier_names
+// TODO: Remove this line `ignore_for_file: constant_identifier_names` in the next version (v3.0.0)
+// Reason: This constant's name violates the lint rule. Refactor it to comply with the Dart style guide
+
+import 'http_status_code.dart';
 
 /// Each [HttpStatusCode] is described below, including a description of which
 /// method(s) it can follow and any metainformation required in the response.
@@ -144,7 +78,40 @@ const Map<int, HttpStatus> _Statuses = const <int, HttpStatus>{
 ///   These response codes are applicable to any request method.
 ///
 class HttpStatus {
-  /// 100 CONTINUE
+  HttpStatus({
+    required this.code,
+    required this.name,
+    required this.description,
+  }) {
+    if (code < 0 || code > 999) {
+      throw ArgumentError.value(
+        code,
+        'code',
+        'Must be between 0 (inclusive) and 999 (inclusive)',
+      );
+    }
+  }
+
+  const HttpStatus._({
+    required this.code,
+    required this.name,
+    required this.description,
+  });
+
+  factory HttpStatus.fromCode(int code) {
+    if (!_httpStatusCodes.containsKey(code)) {
+      throw ArgumentError.value(code, 'code', 'Unknown status code');
+    }
+
+    return _httpStatusCodes[code]!;
+  }
+
+  final int code;
+  final String description;
+  final String name;
+
+  /// {@template http_status_100_continue_}
+  /// **100 CONTINUE**.
   ///
   /// The initial part of a request has been received and has not yet been
   /// rejected by the server. The server intends to send a final response after
@@ -157,10 +124,30 @@ class HttpStatus {
   /// If the request did not contain an Expect header field containing the
   /// 100-continue expectation, the client can simply discard this interim
   /// response.
-  static const HttpStatus Continue =
-      const HttpStatus._(HttpStatusCode.Continue, 'Continue');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus continue_ = HttpStatus._(
+    code: HttpStatusCode.continue_,
+    name: 'Continue',
+    description: 'Client should continue with request.',
+  );
 
-  /// 101 SWITCHING PROTOCOLS
+  /// An alias representing the [continue_] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [continue_] where possible.
+  ///
+  /// {@macro http_status_100_continue_}
+  ///
+  static const HttpStatus code100Continue = continue_;
+
+  /// {@macro http_status_100_continue_}
+  @Deprecated("Use [continue_] instead.")
+  static const HttpStatus Continue = continue_;
+
+  /// {@template http_status_101_switchingProtocols}
+  /// **101 SWITCHING PROTOCOLS**.
   ///
   /// The server understands and is willing to comply with the client's request,
   /// via the Upgrade header field1, for a change in the application protocol
@@ -174,10 +161,32 @@ class HttpStatus {
   /// HTTP might be advantageous over older versions, and switching to a
   /// real-time, synchronous protocol might be advantageous when delivering
   /// resources that use such features.
-  static const HttpStatus Switching_Protocols = const HttpStatus._(
-      HttpStatusCode.Switching_Protocols, 'Switching Protocols');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus switchingProtocols = HttpStatus._(
+    code: HttpStatusCode.switchingProtocols,
+    name: 'Switching Protocols',
+    description: 'Server is switching protocols.',
+  );
 
-  /// 102 PROCESSING
+  /// An alias representing the [switchingProtocols] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [switchingProtocols] where possible.
+  ///
+  /// {@macro http_status_101_switchingProtocols}
+  ///
+  static const HttpStatus code101SwitchingProtocols = switchingProtocols;
+
+  /// {@macro http_status_101_switchingProtocols}
+  @Deprecated(
+    "Update your code to use [switchingProtocols] for improved readability.",
+  )
+  static const HttpStatus Switching_Protocols = switchingProtocols;
+
+  /// {@template http_status_102_processing}
+  /// **102 PROCESSING**.
   ///
   /// An interim response used to inform the client that the server has accepted
   /// the complete request, but has not yet completed it.
@@ -194,10 +203,60 @@ class HttpStatus {
   /// time-out the connection while waiting for a response. To prevent this the
   /// server may return a 102 Processing status code to indicate to the client
   /// that the server is still processing the method.
-  static const HttpStatus Processing =
-      const HttpStatus._(HttpStatusCode.Processing, 'Processing');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus processing = HttpStatus._(
+    code: HttpStatusCode.processing,
+    name: 'Processing',
+    description: 'Server has received and is processing the request.',
+  );
 
-  /// 200 OK
+  /// An alias representing the [processing] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [processing] where possible.
+  ///
+  /// {@macro http_status_102_processing}
+  ///
+  static const HttpStatus code102Processing = processing;
+
+  /// {@macro http_status_102_processing}
+  @Deprecated("Use [processing] instead.")
+  static const HttpStatus Processing = processing;
+
+  /// {@template http_status_103_earlyHints}
+  /// **103 EARLY_HINTS**.
+  ///
+  /// An informational status code indicating that the server is likely to send
+  /// a final response with the headers included in this informational response,
+  /// but is still processing the request. This allows the client
+  /// to start processing the headers early.
+  ///
+  /// {@template http_status_RFC_8297:** https://tools.ietf.org/html/rfc8}
+  /// **RFC 8297:** https://tools.ietf.org/html/rfc8297
+  ///
+  /// {@endtemplate}
+  static const HttpStatus earlyHints = HttpStatus._(
+    code: 103,
+    name: 'Early Hints',
+    description:
+        'Server is likely to send a final response with the included headers.',
+  );
+
+  /// An alias representing the [earlyHints] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [earlyHints] where possible.
+  ///
+  /// {@macro http_status_103_earlyHints}
+  ///
+  static const HttpStatus code103EarlyHints = earlyHints;
+
+  /// {@macro http_status_103_earlyHints}
+  /// {@template http_status_200_ok}
+  /// **200 OK**.
   ///
   /// The request has succeeded.
   ///
@@ -227,9 +286,30 @@ class HttpStatus {
   ///
   /// A 200 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
-  static const HttpStatus OK = const HttpStatus._(HttpStatusCode.OK, 'OK');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus ok = HttpStatus._(
+    code: HttpStatusCode.ok,
+    name: 'OK',
+    description: 'The request was fulfilled.',
+  );
 
-  /// 201 CREATED
+  /// An alias representing the [ok] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [ok] where possible.
+  ///
+  /// {@macro http_status_200_ok}
+  ///
+  static const HttpStatus code200Ok = ok;
+
+  /// {@macro http_status_200_ok}
+  @Deprecated("Use [ok] instead.")
+  static const HttpStatus OK = ok;
+
+  /// {@template http_status_201_created}
+  /// **201 CREATED**.
   ///
   /// The request has been fulfilled and has resulted in one or more new
   /// resources being created.
@@ -242,10 +322,32 @@ class HttpStatus {
   /// created. See Section 7.2 of RFC7231 for a discussion of the meaning and
   /// purpose of validator header fields, such as ETag and Last-Modified, in a
   /// 201 response.
-  static const HttpStatus Created =
-      const HttpStatus._(HttpStatusCode.Created, 'Created');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus created = HttpStatus._(
+    code: HttpStatusCode.created,
+    name: 'Created',
+    description:
+        'The request has been fulfilled and has resulted in one or more '
+        'new resources being created.',
+  );
 
-  /// 202 ACCEPTED
+  /// An alias representing the [created] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [created] where possible.
+  ///
+  /// {@macro http_status_201_created}
+  ///
+  static const HttpStatus code201Created = created;
+
+  /// {@macro http_status_201_created}
+  @Deprecated("Use [created] instead.")
+  static const HttpStatus Created = created;
+
+  /// {@template http_status_202_accepted}
+  /// **202 ACCEPTED**.
   ///
   /// The request has been accepted for processing, but the processing has not
   /// been completed. The request might or might not eventually be acted upon,
@@ -262,10 +364,34 @@ class HttpStatus {
   /// the request's current status and point to (or embed) a status monitor that
   /// can provide the user with an estimate of when the request will be
   /// fulfilled.
-  static const HttpStatus Accepted =
-      const HttpStatus._(HttpStatusCode.Accepted, 'Accepted');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus accepted = HttpStatus._(
+    code: HttpStatusCode.accepted,
+    name: 'Accepted',
+    description:
+        'The request has been accepted for processing, but the processing has '
+        'not been completed. The request might or might not eventually be '
+        'acted upon, as it might be disallowed when processing actually takes '
+        'place.',
+  );
 
-  /// 203 NON-AUTHORITATIVE INFORMATION
+  /// An alias representing the [accepted] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [accepted] where possible.
+  ///
+  /// {@macro http_status_202_accepted}
+  ///
+  static const HttpStatus code202Accepted = accepted;
+
+  /// {@macro http_status_202_accepted}
+  @Deprecated("Use [accepted] instead.")
+  static const HttpStatus Accepted = accepted;
+
+  /// {@template http_status_203_nonAuthoritativeInformation}
+  /// **203 NON-AUTHORITATIVE INFORMATION**.
   ///
   /// The request was successful but the enclosed payload has been modified from
   /// that of the origin server's 200 OK response by a transforming proxy.
@@ -282,11 +408,36 @@ class HttpStatus {
   ///
   /// A 203 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
-  static const HttpStatus NonAuthoritative_Information = const HttpStatus._(
-      HttpStatusCode.NonAuthoritative_Information,
-      'Non-authoritative Information');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus nonAuthoritativeInformation = HttpStatus._(
+    code: HttpStatusCode.nonAuthoritativeInformation,
+    name: 'Non-authoritative Information',
+    description: 'The request was successful but the enclosed payload has been '
+        'modified from that of the origin server\'s 200 OK response by '
+        'a transforming proxy.',
+  );
 
-  /// 204 NO CONTENT
+  /// An alias representing the [nonAuthoritativeInformation] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [nonAuthoritativeInformation] where possible.
+  ///
+  /// {@macro http_status_203_nonAuthoritativeInformation}
+  ///
+  static const HttpStatus code203NonAuthoritativeInformation =
+      nonAuthoritativeInformation;
+
+  /// {@macro http_status_203_nonAuthoritativeInformation}
+  @Deprecated(
+    "Update your code to use [nonAuthoritativeInformation] for improved",
+  )
+  static const HttpStatus NonAuthoritative_Information =
+      nonAuthoritativeInformation;
+
+  /// {@template http_status_204_noContent}
+  /// **204 NO CONTENT**.
   ///
   /// The server has successfully fulfilled the request and that there is no
   /// additional content to send in the response payload body.
@@ -318,10 +469,32 @@ class HttpStatus {
   ///
   /// A 204 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
-  static const HttpStatus No_Content =
-      const HttpStatus._(HttpStatusCode.No_Content, 'No Content');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus noContent = HttpStatus._(
+    code: HttpStatusCode.noContent,
+    name: 'No Content',
+    description:
+        'The server has successfully fulfilled the request and that there is '
+        'no additional content to send in the response payload body.',
+  );
 
-  /// 205 RESET CONTENT
+  /// An alias representing the [noContent] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [noContent] where possible.
+  ///
+  /// {@macro http_status_204_noContent}
+  ///
+  static const HttpStatus code204NoContent = noContent;
+
+  /// {@macro http_status_204_noContent}
+  @Deprecated("Use [noContent] instead.")
+  static const HttpStatus No_Content = noContent;
+
+  /// {@template http_status_205_resetContent}
+  /// **205 RESET CONTENT**.
   ///
   /// The server has fulfilled the request and desires that the user agent reset
   /// the "document view", which caused the request to be sent, to its original
@@ -342,15 +515,40 @@ class HttpStatus {
   ///   Content-Length header field with a value of 0;
   ///
   /// * indicate a zero-length payload for the response by including a
-  ///   Transfer-Encoding header field with a value of chunked and a message body
-  ///   consisting of a single chunk of zero-length; or,
+  ///   Transfer-Encoding header field with a value of chunked and
+  ///   a message body consisting of a single chunk of zero-length; or,
   ///
   ///  * close the connection immediately after sending the blank line
   ///    terminating the header section.
-  static const HttpStatus Reset_Content =
-      const HttpStatus._(HttpStatusCode.Reset_Content, 'Reset Content');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus resetContent = HttpStatus._(
+    code: HttpStatusCode.resetContent,
+    name: 'Reset Content',
+    description:
+        'The server has fulfilled the request and desires that the user agent '
+        'reset the document view, which caused the request to be sent, to its '
+        'original state as received from the origin server.',
+  );
 
-  /// 206 PARTIAL CONTENT
+  /// An alias representing the [resetContent] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [resetContent] where possible.
+  ///
+  /// {@macro http_status_205_resetContent}
+  ///
+  static const HttpStatus code205ResetContent = resetContent;
+
+  /// {@macro http_status_205_resetContent}
+  @Deprecated(
+    "Update your code to use [resetContent] for improved readability.",
+  )
+  static const HttpStatus Reset_Content = resetContent;
+
+  /// {@template http_status_206_partialContent}
+  /// **206 PARTIAL CONTENT**.
   ///
   /// The server is successfully fulfilling a range request for the target
   /// resource by transferring one or more parts of the selected representation
@@ -450,10 +648,36 @@ class HttpStatus {
   ///
   /// A 206 response is cacheable by default; i.e., unless otherwise indicated
   /// by explicit cache controls.
-  static const HttpStatus Partial_Content =
-      const HttpStatus._(HttpStatusCode.Partial_Content, 'Partial Content');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus partialContent = HttpStatus._(
+    code: HttpStatusCode.partialContent,
+    name: 'Partial Content',
+    description:
+        'The server is successfully fulfilling a range request for the target '
+        'resource by transferring one or more parts of the selected '
+        'representation that correspond to the satisfiable ranges found in '
+        'the request\'s Range header field.',
+  );
 
-  /// 207 MULTI-STATUS
+  /// An alias representing the [partialContent] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [partialContent] where possible.
+  ///
+  /// {@macro http_status_206_partialContent}
+  ///
+  static const HttpStatus code206PartialContent = partialContent;
+
+  /// {@macro http_status_206_partialContent}
+  @Deprecated(
+    "Update your code to use [partialContent] for improved readability.",
+  )
+  static const HttpStatus Partial_Content = partialContent;
+
+  /// {@template http_status_207_multiStatus}
+  /// **207 MULTI-STATUS**.
   ///
   /// A Multi-Status response conveys information about multiple resources in
   /// situations where multiple status codes might be appropriate.
@@ -480,19 +704,41 @@ class HttpStatus {
   /// 1. A 'status' element as child of the 'response' element indicates the
   ///    status of the message execution for the identified resource as a whole.
   ///    Some method definitions provide information about specific status codes
-  ///    clients should be prepared to see in a response. However, clients MUST be
-  ///    able to handle other status codes, using the generic rules defined in
-  ///    RFC2616 Section 10.
+  ///    clients should be prepared to see in a response. However, clients
+  ///    MUST be able to handle other status codes, using the generic rules
+  ///    defined in RFC2616 Section 10.
   ///
   /// 2. For PROPFIND and PROPPATCH, the format has been extended using the
   ///    'propstat' element instead of 'status', providing information about
-  ///    individual properties of a resource. This format is specific to PROPFIND
-  ///    and PROPPATCH, and is described in detail in RFC4918 Section 9.1 and
-  ///    RFC4918 Section 9.2.
-  static const HttpStatus MultiStatus =
-      const HttpStatus._(HttpStatusCode.MultiStatus, 'Multi-Status');
+  ///    individual properties of a resource. This format is specific to
+  ///    PROPFIND and PROPPATCH, and is described in detail in RFC4918
+  ///    Section 9.1 and RFC4918 Section 9.2.
+  ///
+  /// {@endtemplate}
+  static const HttpStatus multiStatus = HttpStatus._(
+    code: HttpStatusCode.multiStatus,
+    name: 'Multi-Status',
+    description:
+        'A Multi-Status response conveys information about multiple resources '
+        'in situations where multiple status codes might be appropriate.',
+  );
 
-  /// 208 ALREADY REPORTED
+  /// An alias representing the [multiStatus] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [multiStatus] where possible.
+  ///
+  /// {@macro http_status_207_multiStatus}
+  ///
+  static const HttpStatus code207MultiStatus = multiStatus;
+
+  /// {@macro http_status_207_multiStatus}
+  @Deprecated("Use [multiStatus] instead.")
+  static const HttpStatus MultiStatus = multiStatus;
+
+  /// {@template http_status_208_alreadyReported}
+  /// **208 ALREADY REPORTED**.
   ///
   /// Used inside a DAV: propstat response element to avoid enumerating the
   /// internal members of multiple bindings to the same collection repeatedly.
@@ -518,10 +764,35 @@ class HttpStatus {
   /// the top-level return status, if it discovers it before it started the
   /// response, or in the middle of a multistatus, if it discovers it in the
   /// middle of streaming out a multistatus response.
-  static const HttpStatus Already_Reported =
-      const HttpStatus._(HttpStatusCode.Already_Reported, 'Already Reported');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus alreadyReported = HttpStatus._(
+    code: HttpStatusCode.alreadyReported,
+    name: 'Already Reported',
+    description:
+        'Used inside a DAV: propstat response element to avoid enumerating '
+        'the internal members of multiple bindings to the same collection '
+        'repeatedly.',
+  );
 
-  /// 226 IM USED
+  /// An alias representing the [alreadyReported] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [alreadyReported] where possible.
+  ///
+  /// {@macro http_status_208_alreadyReported}
+  ///
+  static const HttpStatus code208AlreadyReported = alreadyReported;
+
+  /// {@macro http_status_208_alreadyReported}
+  @Deprecated(
+    "Update your code to use [alreadyReported] for improved readability.",
+  )
+  static const HttpStatus Already_Reported = alreadyReported;
+
+  /// {@template http_status_226_imUsed}
+  /// **226 IM USED**.
   ///
   /// The server has fulfilled a GET request for the resource, and the response
   /// is a representation of the result of one or more instance-manipulations
@@ -546,10 +817,33 @@ class HttpStatus {
   /// A response received with a status code of 226 MAY be used by a cache, in
   /// conjunction with a cache entry for the base instance, to create a cache
   /// entry for the current instance.
-  static const HttpStatus IM_Used =
-      const HttpStatus._(HttpStatusCode.IM_Used, 'IM Used');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus imUsed = HttpStatus._(
+    code: HttpStatusCode.imUsed,
+    name: 'IM Used',
+    description:
+        'The server has fulfilled a GET request for the resource, and the '
+        'response is a representation of the result of one or more '
+        'instance-manipulations applied to the current instance.',
+  );
 
-  /// 300 MULTIPLE CHOICES
+  /// An alias representing the [imUsed] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [imUsed] where possible.
+  ///
+  /// {@macro http_status_226_imUsed}
+  ///
+  static const HttpStatus code226ImUsed = imUsed;
+
+  /// {@macro http_status_226_imUsed}
+  @Deprecated("Use [imUsed] instead.")
+  static const HttpStatus IM_Used = imUsed;
+
+  /// {@template http_status_300_multipleChoices}
+  /// **300 MULTIPLE CHOICES**.
   ///
   /// The target resource has more than one representation, each with its own
   /// more specific identifier, and information about the alternatives is being
@@ -588,10 +882,37 @@ class HttpStatus {
   /// dropped from this specification. It is possible to communicate the list
   /// using a set of Link header fields, each with a relationship of
   /// "alternate", though deployment is a chicken-and-egg problem.
-  static const HttpStatus Multiple_Choices =
-      const HttpStatus._(HttpStatusCode.Multiple_Choices, 'Multiple Choices');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus multipleChoices = HttpStatus._(
+    code: HttpStatusCode.multipleChoices,
+    name: 'Multiple Choices',
+    description:
+        'The target resource has more than one representation, each with its '
+        'own more specific identifier, and information about the alternatives '
+        'is being provided so that the user (or user agent) can select '
+        'a preferred representation by redirecting its request to one or '
+        'more of those identifiers.',
+  );
 
-  /// 301 MOVED PERMANENTLY
+  /// An alias representing the [multipleChoices] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [multipleChoices] where possible.
+  ///
+  /// {@macro http_status_300_multipleChoices}
+  ///
+  static const HttpStatus code300MultipleChoices = multipleChoices;
+
+  /// {@macro http_status_300_multipleChoices}
+  @Deprecated(
+    "Update your code to use [multipleChoices] for improved readability.",
+  )
+  static const HttpStatus Multiple_Choices = multipleChoices;
+
+  /// {@template http_status_301_movedPermanently}
+  /// **301 MOVED PERMANENTLY**.
   ///
   /// The target resource has been assigned a new permanent URI and any future
   /// references to this resource ought to use one of the enclosed URIs.
@@ -612,10 +933,35 @@ class HttpStatus {
   ///
   /// A 301 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
-  static const HttpStatus Moved_Permanently =
-      const HttpStatus._(HttpStatusCode.Moved_Permanently, 'Moved Permanently');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus movedPermanently = HttpStatus._(
+    code: HttpStatusCode.movedPermanently,
+    name: 'Moved Permanently',
+    description:
+        'The target resource has been assigned a new permanent URI and any '
+        'future references to this resource ought to use one of '
+        'the enclosed URIs.',
+  );
 
-  /// 302 FOUND
+  /// An alias representing the [movedPermanently] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [movedPermanently] where possible.
+  ///
+  /// {@macro http_status_301_movedPermanently}
+  ///
+  static const HttpStatus code301MovedPermanently = movedPermanently;
+
+  /// {@macro http_status_301_movedPermanently}
+  @Deprecated(
+    "Update your code to use [movedPermanently] for improved readability.",
+  )
+  static const HttpStatus Moved_Permanently = movedPermanently;
+
+  /// {@template http_status_302_found}
+  /// **302 FOUND**.
   ///
   /// The target resource resides temporarily under a different URI. Since the
   /// redirection might be altered on occasion, the client ought to continue to
@@ -630,10 +976,76 @@ class HttpStatus {
   /// Note: For historical reasons, a user agent MAY change the request method
   /// from POST to GET for the subsequent request. If this behavior is
   /// undesired, the 307 Temporary Redirect status code can be used instead.
-  static const HttpStatus Found =
-      const HttpStatus._(HttpStatusCode.Found, 'Found');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus found = HttpStatus._(
+    code: HttpStatusCode.found,
+    name: 'Found',
+    description:
+        'The target resource resides temporarily under a different URI. '
+        'Since the redirection might be altered on occasion, the client ought '
+        'to continue to use the effective request URI for future requests.',
+  );
 
-  /// 303 SEE OTHER
+  /// An alias representing the [found] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [found] where possible.
+  ///
+  /// {@macro http_status_302_found}
+  ///
+  static const HttpStatus code302Found = found;
+
+  /// {@macro http_status_302_found}
+  @Deprecated("Use [found] instead.")
+  static const HttpStatus Found = found;
+
+  /// {@template http_status_302_movedTemporarily}
+  /// **302 MOVED TEMPORARILY**.
+  ///
+  /// The target resource resides temporarily under a different URI. Since the
+  /// redirection might be altered on occasion, the client ought to continue to
+  /// use the effective request URI for future requests.
+  ///
+  /// The server SHOULD generate a Location header field in the response
+  /// containing a URI reference for the different URI. The user agent MAY use
+  /// the Location field value for automatic redirection. The server's response
+  /// payload usually contains a short hypertext note with a hyperlink to the
+  /// different URI(s).
+  ///
+  /// Note: For historical reasons, a user agent MAY change the request method
+  /// from POST to GET for the subsequent request. If this behavior is
+  /// undesired, the 307 Temporary Redirect status code can be used instead.
+  ///
+  /// {@endtemplate}
+  static const HttpStatus movedTemporarily = HttpStatus._(
+    code: HttpStatusCode.movedTemporarily,
+    name: 'Moved Temporarily',
+    description:
+        'The target resource resides temporarily under a different URI. '
+        'Since the redirection might be altered on occasion, the client ought '
+        'to continue to use the effective request URI for future requests.',
+  );
+
+  /// An alias representing the [movedTemporarily] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [movedTemporarily] where possible.
+  ///
+  /// {@macro http_status_302_movedTemporarily}
+  ///
+  static const HttpStatus code302MovedTemporarily = movedTemporarily;
+
+  /// {@macro http_status_302_movedTemporarily}
+  @Deprecated(
+    "Update your code to use [movedTemporarily] for improved readability.",
+  )
+  static const HttpStatus MovedTemporarily = movedTemporarily;
+
+  /// {@template http_status_303_seeOther}
+  /// **303 SEE OTHER**.
   ///
   /// The server is redirecting the user agent to a different resource, as
   /// indicated by a URI in the Location header field, which is intended to
@@ -664,10 +1076,35 @@ class HttpStatus {
   /// Except for responses to a HEAD request, the representation of a 303
   /// response ought to contain a short hypertext note with a hyperlink to the
   /// same URI reference provided in the Location header field.
-  static const HttpStatus See_Other =
-      const HttpStatus._(HttpStatusCode.See_Other, 'See Other');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus seeOther = HttpStatus._(
+    code: HttpStatusCode.seeOther,
+    name: 'See Other',
+    description:
+        'The server is redirecting the user agent to a different resource, '
+        'as indicated by a URI in the Location header field, which is intended '
+        'to provide an indirect response to the original request.',
+  );
 
-  /// A conditional GET or HEAD request has been received and would have
+  /// An alias representing the [seeOther] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [seeOther] where possible.
+  ///
+  /// {@macro http_status_303_seeOther}
+  ///
+  static const HttpStatus code303SeeOther = seeOther;
+
+  /// {@macro http_status_303_seeOther}
+  @Deprecated("Use [seeOther] instead.")
+  static const HttpStatus See_Other = seeOther;
+
+  /// {@template http_status_305_notModified}
+  /// **305 NOT MODIFIED**.
+  ///
+  /// **A conditional GET or HEAD request has been received and would have**.
   /// resulted in a 200 OK response if it were not for the fact that the
   /// condition evaluated to false.
   ///
@@ -697,17 +1134,63 @@ class HttpStatus {
   ///
   /// A 304 response cannot contain a message-body; it is always terminated by
   /// the first empty line after the header fields.
-  static const HttpStatus Not_Modified =
-      const HttpStatus._(HttpStatusCode.Not_Modified, 'Not Modified');
-
-  /// 305 USE PROXY
   ///
-  /// Defined in a previous version of this specification and is now deprecated, due
-  /// to security concerns regarding in-band configuration of a proxy.
-  static const HttpStatus Use_Proxy =
-      const HttpStatus._(HttpStatusCode.Use_Proxy, 'Use Proxy');
+  /// {@endtemplate}
+  static const HttpStatus notModified = HttpStatus._(
+    code: HttpStatusCode.notModified,
+    name: 'Not Modified',
+    description:
+        'A conditional GET or HEAD request has been received and would have '
+        'resulted in a 200 OK response if it were not for the fact that the '
+        'condition evaluated to false.',
+  );
 
-  /// 307 TEMPORARY REDIRECT
+  /// An alias representing the [notModified] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [notModified] where possible.
+  ///
+  /// {@macro http_status_305_notModified}
+  ///
+  static const HttpStatus code305NotModified = notModified;
+
+  /// {@macro http_status_305_notModified}
+  @Deprecated("Use [notModified] instead.")
+  static const HttpStatus Not_Modified = notModified;
+
+  /// {@template http_status_305_useProxy}
+  /// **305 USE PROXY**.
+  ///
+  /// Defined in a previous version of this specification and is now deprecated,
+  /// due to security concerns regarding in-band configuration of a proxy.
+  ///
+  /// {@endtemplate}
+  static const HttpStatus useProxy = HttpStatus._(
+    code: HttpStatusCode.useProxy,
+    name: 'Use Proxy',
+    description:
+        'Defined in a previous version of this specification and is now '
+        'deprecated, due to security concerns regarding in-band configuration '
+        'of a proxy.',
+  );
+
+  /// An alias representing the [useProxy] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [useProxy] where possible.
+  ///
+  /// {@macro http_status_305_useProxy}
+  ///
+  static const HttpStatus code305UseProxy = useProxy;
+
+  /// {@macro http_status_305_useProxy}
+  @Deprecated("Use [useProxy] instead.")
+  static const HttpStatus Use_Proxy = useProxy;
+
+  /// {@template http_status_307_temporaryRedirect}
+  /// **307 TEMPORARY REDIRECT**.
   ///
   /// The target resource resides temporarily under a different URI and the user
   /// agent MUST NOT change the request method if it performs an automatic
@@ -727,10 +1210,35 @@ class HttpStatus {
   /// defines no equivalent counterpart for 301 Moved Permanently (RFC7238,
   /// however, proposes defining the status code 308 Permanent Redirect for this
   /// purpose).
-  static const HttpStatus Temporary_Redirect = const HttpStatus._(
-      HttpStatusCode.Temporary_Redirect, 'Temporary Redirect');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus temporaryRedirect = HttpStatus._(
+    code: HttpStatusCode.temporaryRedirect,
+    name: 'Temporary Redirect',
+    description:
+        'The target resource resides temporarily under a different URI and '
+        'the user agent MUST NOT change the request method if it performs '
+        'an automatic redirection to that URI.',
+  );
 
-  /// 308 PERMANENT REDIRECT
+  /// An alias representing the [temporaryRedirect] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [temporaryRedirect] where possible.
+  ///
+  /// {@macro http_status_307_temporaryRedirect}
+  ///
+  static const HttpStatus code307TemporaryRedirect = temporaryRedirect;
+
+  /// {@macro http_status_307_temporaryRedirect}
+  @Deprecated(
+    "Update your code to use [temporaryRedirect] for improved readability.",
+  )
+  static const HttpStatus Temporary_Redirect = temporaryRedirect;
+
+  /// {@template http_status_308_permanentRedirect}
+  /// **308 PERMANENT REDIRECT**.
   ///
   /// The target resource has been assigned a new permanent URI and any future
   /// references to this resource ought to use one of the enclosed URIs.
@@ -750,18 +1258,67 @@ class HttpStatus {
   ///
   /// Note: This status code is similar to 301 Moved Permanently, except that it
   /// does not allow changing the request method from POST to GET.
-  static const HttpStatus Permanent_Redirect = const HttpStatus._(
-      HttpStatusCode.Permanent_Redirect, 'Permanent Redirect');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus permanentRedirect = HttpStatus._(
+    code: HttpStatusCode.permanentRedirect,
+    name: 'Permanent Redirect',
+    description:
+        'The target resource has been assigned a new permanent URI and '
+        'any future references to this resource ought to use one of '
+        'the enclosed URIs.',
+  );
 
-  /// 400 BAD REQUEST
+  /// An alias representing the [permanentRedirect] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [permanentRedirect] where possible.
+  ///
+  /// {@macro http_status_308_permanentRedirect}
+  ///
+  static const HttpStatus code308PermanentRedirect = permanentRedirect;
+
+  /// {@macro http_status_308_permanentRedirect}
+  @Deprecated(
+    "Update your code to use [permanentRedirect] for improved readability.",
+  )
+  static const HttpStatus Permanent_Redirect = permanentRedirect;
+
+  /// {@template http_status_400_badRequest}
+  /// **400 BAD REQUEST**.
   ///
   /// The server cannot or will not process the request due to something that is
   /// perceived to be a client error (e.g., malformed request syntax, invalid
   /// request message framing, or deceptive request routing).
-  static const HttpStatus Bad_Request =
-      const HttpStatus._(HttpStatusCode.Bad_Request, 'Bad Request');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus badRequest = HttpStatus._(
+    code: HttpStatusCode.badRequest,
+    name: 'Bad Request',
+    description:
+        'The server cannot or will not process the request due to something '
+        'that is perceived to be a client error '
+        '(e.g., malformed request syntax, invalid request message framing, '
+        'or deceptive request routing).',
+  );
 
-  /// 401 UNAUTHORIZED
+  /// An alias representing the [badRequest] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [badRequest] where possible.
+  ///
+  /// {@macro http_status_400_badRequest}
+  ///
+  static const HttpStatus code400BadRequest = badRequest;
+
+  /// {@macro http_status_400_badRequest}
+  @Deprecated("Use [badRequest] instead.")
+  static const HttpStatus Bad_Request = badRequest;
+
+  /// {@template http_status_401_unauthorized}
+  /// **401 UNAUTHORIZED**.
   ///
   /// The request has not been applied because it lacks valid authentication
   /// credentials for the target resource.
@@ -776,16 +1333,61 @@ class HttpStatus {
   /// prior response, and the user agent has already attempted authentication at
   /// least once, then the user agent SHOULD present the enclosed representation
   /// to the user, since it usually contains relevant diagnostic information.
-  static const HttpStatus Unauthorized =
-      const HttpStatus._(HttpStatusCode.Unauthorized, 'Unauthorized');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus unauthorized = HttpStatus._(
+    code: HttpStatusCode.unauthorized,
+    name: 'Unauthorized',
+    description: 'The request has not been applied because it lacks valid '
+        'authentication credentials for the target resource.',
+  );
 
-  /// 402 PAYMENT REQUIRED
+  /// An alias representing the [unauthorized] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [unauthorized] where possible.
+  ///
+  /// {@macro http_status_401_unauthorized}
+  ///
+  static const HttpStatus code401Unauthorized = unauthorized;
+
+  /// {@macro http_status_401_unauthorized}
+  @Deprecated(
+    "Update your code to use [unauthorized] for improved readability.",
+  )
+  static const HttpStatus Unauthorized = unauthorized;
+
+  /// {@template http_status_402_paymentRequired}
+  /// **402 PAYMENT REQUIRED**.
   ///
   /// Reserved for future use.
-  static const HttpStatus Payment_Required =
-      const HttpStatus._(HttpStatusCode.Payment_Required, 'Payment Required');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus paymentRequired = HttpStatus._(
+    code: HttpStatusCode.paymentRequired,
+    name: 'Payment Required',
+    description: 'Reserved for future use.',
+  );
 
-  /// 403 FORBIDDEN
+  /// An alias representing the [paymentRequired] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [paymentRequired] where possible.
+  ///
+  /// {@macro http_status_402_paymentRequired}
+  ///
+  static const HttpStatus code402PaymentRequired = paymentRequired;
+
+  /// {@macro http_status_402_paymentRequired}
+  @Deprecated(
+    "Update your code to use [paymentRequired] for improved readability.",
+  )
+  static const HttpStatus Payment_Required = paymentRequired;
+
+  /// {@template http_status_403_forbidden}
+  /// **403 FORBIDDEN**.
   ///
   /// The server understood the request but refuses to authorize it.
   ///
@@ -801,10 +1403,31 @@ class HttpStatus {
   /// An origin server that wishes to "hide" the current existence of a
   /// forbidden target resource MAY instead respond with a status code of 404
   /// Not Found.
-  static const HttpStatus Forbidden =
-      const HttpStatus._(HttpStatusCode.Forbidden, 'Forbidden');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus forbidden = HttpStatus._(
+    code: HttpStatusCode.forbidden,
+    name: 'Forbidden',
+    description:
+        'The server understood the request but refuses to authorize it.',
+  );
 
-  /// 404 NOT FOUND
+  /// An alias representing the [forbidden] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [forbidden] where possible.
+  ///
+  /// {@macro http_status_403_forbidden}
+  ///
+  static const HttpStatus code403Forbidden = forbidden;
+
+  /// {@macro http_status_403_forbidden}
+  @Deprecated("Use [forbidden] instead.")
+  static const HttpStatus Forbidden = forbidden;
+
+  /// {@template http_status_404_notFound}
+  /// **404 NOT FOUND**.
   ///
   /// The origin server did not find a current representation for the target
   /// resource or is not willing to disclose that one exists.
@@ -816,10 +1439,31 @@ class HttpStatus {
   ///
   /// A 404 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
-  static const HttpStatus Not_Found =
-      const HttpStatus._(HttpStatusCode.Not_Found, 'Not Found');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus notFound = HttpStatus._(
+    code: HttpStatusCode.notFound,
+    name: 'Not Found',
+    description: 'The origin server did not find a current representation for '
+        'the target resource or is not willing to disclose that one exists.',
+  );
 
-  /// 405 METHOD NOT ALLOWED
+  /// An alias representing the [notFound] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [notFound] where possible.
+  ///
+  /// {@macro http_status_404_notFound}
+  ///
+  static const HttpStatus code404NotFound = notFound;
+
+  /// {@macro http_status_404_notFound}
+  @Deprecated("Use [notFound] instead.")
+  static const HttpStatus Not_Found = notFound;
+
+  /// {@template http_status_405_methodNotAllowed}
+  /// **405 METHOD NOT ALLOWED**.
   ///
   /// The method received in the request-line is known by the origin server but
   /// not supported by the target resource.
@@ -829,10 +1473,34 @@ class HttpStatus {
   ///
   /// A 405 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
-  static const HttpStatus Method_Not_Allowed = const HttpStatus._(
-      HttpStatusCode.Method_Not_Allowed, 'Method Not Allowed');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus methodNotAllowed = HttpStatus._(
+    code: HttpStatusCode.methodNotAllowed,
+    name: 'Method Not Allowed',
+    description:
+        'The method received in the request-line is known by the origin '
+        'server but not supported by the target resource.',
+  );
 
-  /// 406 NOT ACCEPTABLE
+  /// An alias representing the [methodNotAllowed] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [methodNotAllowed] where possible.
+  ///
+  /// {@macro http_status_405_methodNotAllowed}
+  ///
+  static const HttpStatus code405MethodNotAllowed = methodNotAllowed;
+
+  /// {@macro http_status_405_methodNotAllowed}
+  @Deprecated(
+    "Update your code to use [methodNotAllowed] for improved readability.",
+  )
+  static const HttpStatus Method_Not_Allowed = methodNotAllowed;
+
+  /// {@template http_status_406_notAcceptable}
+  /// **406 NOT ACCEPTABLE**.
   ///
   /// The target resource does not have a current representation that would be
   /// acceptable to the user agent, according to the proactive negotiation
@@ -845,10 +1513,36 @@ class HttpStatus {
   /// agent MAY automatically select the most appropriate choice from that list.
   /// However, this specification does not define any standard for such
   /// automatic selection, as described in RFC7231 Section 6.4.1.
-  static const HttpStatus Not_Acceptable =
-      const HttpStatus._(HttpStatusCode.Not_Acceptable, 'Not Acceptable');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus notAcceptable = HttpStatus._(
+    code: HttpStatusCode.notAcceptable,
+    name: 'Not Acceptable',
+    description:
+        'The target resource does not have a current representation that '
+        'would be acceptable to the user agent, according to the proactive '
+        'negotiation header fields received in the request, and the server '
+        'is unwilling to supply a default representation.',
+  );
 
-  /// 407 PROXY AUTHENTICATION REQUIRED
+  /// An alias representing the [notAcceptable] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [notAcceptable] where possible.
+  ///
+  /// {@macro http_status_406_notAcceptable}
+  ///
+  static const HttpStatus code406NotAcceptable = notAcceptable;
+
+  /// {@macro http_status_406_notAcceptable}
+  @Deprecated(
+    "Update your code to use [notAcceptable] for improved readability.",
+  )
+  static const HttpStatus Not_Acceptable = notAcceptable;
+
+  /// {@template http_status_407_proxyAuthenticationRequired}
+  /// **407 PROXY AUTHENTICATION REQUIRED**.
   ///
   /// Similar to 401 Unauthorized, but it indicates that the client needs to
   /// authenticate itself in order to use a proxy.
@@ -857,11 +1551,37 @@ class HttpStatus {
   /// challenge applicable to that proxy for the target resource. The client MAY
   /// repeat the request with a new or replaced Proxy-Authorization header
   /// field.
-  static const HttpStatus Proxy_Authentication_Required = const HttpStatus._(
-      HttpStatusCode.Proxy_Authentication_Required,
-      'Proxy Authentication Required');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus proxyAuthenticationRequired = HttpStatus._(
+    code: HttpStatusCode.proxyAuthenticationRequired,
+    name: 'Proxy Authentication Required',
+    description:
+        'Similar to 401 Unauthorized, but it indicates that the client needs '
+        'to authenticate itself in order to use a proxy.',
+  );
 
-  /// 408 REQUEST TIMEOUT
+  /// An alias representing the [proxyAuthenticationRequired] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [proxyAuthenticationRequired] where possible.
+  ///
+  /// {@macro http_status_407_proxyAuthenticationRequired}
+  ///
+
+  static const HttpStatus code407ProxyAuthenticationRequired =
+      proxyAuthenticationRequired;
+
+  /// {@macro http_status_407_proxyAuthenticationRequired}
+  @Deprecated(
+    "Update your code to use [proxyAuthenticationRequired] for improved readability.",
+  )
+  static const HttpStatus Proxy_Authentication_Required =
+      proxyAuthenticationRequired;
+
+  /// {@template http_status_408_requestTimeout}
+  /// **408 REQUEST TIMEOUT**.
   ///
   /// The server did not receive a complete request message within the time that
   /// it was prepared to wait.
@@ -870,10 +1590,33 @@ class HttpStatus {
   /// 408 implies that the server has decided to close the connection rather
   /// than continue waiting. If the client has an outstanding request in
   /// transit, the client MAY repeat that request on a new connection.
-  static const HttpStatus Request_Timeout =
-      const HttpStatus._(HttpStatusCode.Request_Timeout, 'Request Timeout');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus requestTimeout = HttpStatus._(
+    code: HttpStatusCode.requestTimeout,
+    name: 'Request Timeout',
+    description: 'The server did not receive a complete request message within '
+        'the time that it was prepared to wait.',
+  );
 
-  /// 409 CONFLICT
+  /// An alias representing the [requestTimeout] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [requestTimeout] where possible.
+  ///
+  /// {@macro http_status_408_requestTimeout}
+  ///
+  static const HttpStatus code408RequestTimeout = requestTimeout;
+
+  /// {@macro http_status_408_requestTimeout}
+  @Deprecated(
+    "Update your code to use [requestTimeout] for improved readability.",
+  )
+  static const HttpStatus Request_Timeout = requestTimeout;
+
+  /// {@template http_status_409_conflict}
+  /// **409 CONFLICT**.
   ///
   /// The request could not be completed due to a conflict with the current
   /// state of the target resource. This code is used in situations where the
@@ -889,10 +1632,33 @@ class HttpStatus {
   /// indicate that it can't complete the request. In this case, the response
   /// representation would likely contain information useful for merging the
   /// differences based on the revision history.
-  static const HttpStatus Conflict =
-      const HttpStatus._(HttpStatusCode.Conflict, 'Conflict');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus conflict = HttpStatus._(
+    code: HttpStatusCode.conflict,
+    name: 'Conflict',
+    description: 'The request could not be completed due to a conflict with '
+        'the current state of the target resource. This code is used '
+        'in situations where the user might be able to resolve the conflict '
+        'and resubmit the request.',
+  );
 
-  /// 410 GONE
+  /// An alias representing the [conflict] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [conflict] where possible.
+  ///
+  /// {@macro http_status_409_conflict}
+  ///
+  static const HttpStatus code409Conflict = conflict;
+
+  /// {@macro http_status_409_conflict}
+  @Deprecated("Use [conflict] instead.")
+  static const HttpStatus Conflict = conflict;
+
+  /// {@template http_status_410_gone}
+  /// **410 GONE**.
   ///
   /// The target resource is no longer available at the origin server and that
   /// this condition is likely to be permanent.
@@ -912,19 +1678,64 @@ class HttpStatus {
   ///
   /// A 410 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
-  static const HttpStatus Gone =
-      const HttpStatus._(HttpStatusCode.Gone, 'Gone');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus gone = HttpStatus._(
+    code: HttpStatusCode.gone,
+    name: 'Gone',
+    description:
+        'The target resource is no longer available at the origin server '
+        'and that this condition is likely to be permanent.',
+  );
 
-  /// 411 LENGTH REQUIRED
+  /// An alias representing the [gone] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [gone] where possible.
+  ///
+  /// {@macro http_status_410_gone}
+  ///
+  static const HttpStatus code410Gone = gone;
+
+  /// {@macro http_status_410_gone}
+  @Deprecated("Use [gone] instead.")
+  static const HttpStatus Gone = gone;
+
+  /// {@template http_status_411_lengthRequired}
+  /// **411 LENGTH REQUIRED**.
   ///
   /// The server refuses to accept the request without a defined Content-Length.
   ///
   /// The client MAY repeat the request if it adds a valid Content-Length header
   /// field containing the length of the message body in the request message.
-  static const HttpStatus Length_Required =
-      const HttpStatus._(HttpStatusCode.Length_Required, 'Length Required');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus lengthRequired = HttpStatus._(
+    code: HttpStatusCode.lengthRequired,
+    name: 'Length Required',
+    description: 'The server refuses to accept the request without '
+        'a defined Content-Length.',
+  );
 
-  /// 412 PRECONDITION FAILED
+  /// An alias representing the [lengthRequired] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [lengthRequired] where possible.
+  ///
+  /// {@macro http_status_411_lengthRequired}
+  ///
+  static const HttpStatus code411LengthRequired = lengthRequired;
+
+  /// {@macro http_status_411_lengthRequired}
+  @Deprecated(
+    "Update your code to use [lengthRequired] for improved readability.",
+  )
+  static const HttpStatus Length_Required = lengthRequired;
+
+  /// {@template http_status_412_preconditionFailed}
+  /// **412 PRECONDITION FAILED**.
   ///
   /// One or more conditions given in the request header fields evaluated to
   /// false when tested on the server.
@@ -933,10 +1744,34 @@ class HttpStatus {
   /// resource state (its current representations and metadata) and, thus,
   /// prevent the request method from being applied if the target resource is in
   /// an unexpected state.
-  static const HttpStatus Precondition_Failed = const HttpStatus._(
-      HttpStatusCode.Precondition_Failed, 'Precondition Failed');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus preconditionFailed = HttpStatus._(
+    code: HttpStatusCode.preconditionFailed,
+    name: 'Precondition Failed',
+    description:
+        'One or more conditions given in the request header fields evaluated '
+        'to false when tested on the server.',
+  );
 
-  /// 413 PAYLOAD TOO LARGE
+  /// An alias representing the [preconditionFailed] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [preconditionFailed] where possible.
+  ///
+  /// {@macro http_status_412_preconditionFailed}
+  ///
+  static const HttpStatus code412PreconditionFailed = preconditionFailed;
+
+  /// {@macro http_status_412_preconditionFailed}
+  @Deprecated(
+    "Update your code to use [preconditionFailed] for improved readability.",
+  )
+  static const HttpStatus Precondition_Failed = preconditionFailed;
+
+  /// {@template http_status_413_requestEntityTooLarge}
+  /// **413 PAYLOAD TOO LARGE**.
   ///
   /// The server is refusing to process a request because the request payload is
   /// larger than the server is willing or able to process.
@@ -947,10 +1782,34 @@ class HttpStatus {
   /// If the condition is temporary, the server SHOULD generate a Retry-After
   /// header field to indicate that it is temporary and after what time the
   /// client MAY try again.
-  static const HttpStatus Payload_Too_Large =
-      const HttpStatus._(HttpStatusCode.Payload_Too_Large, 'Payload Too Large');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus requestEntityTooLarge = HttpStatus._(
+    code: HttpStatusCode.requestEntityTooLarge,
+    name: 'Payload Too Large',
+    description:
+        'The server is refusing to process a request because the request '
+        'payload is larger than the server is willing or able to process.',
+  );
 
-  /// 414 REQUEST-URI TOO LONG
+  /// An alias representing the [requestEntityTooLarge] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [requestEntityTooLarge] where possible.
+  ///
+  /// {@macro http_status_413_requestEntityTooLarge}
+  ///
+  static const HttpStatus code413RequestEntityTooLarge = requestEntityTooLarge;
+
+  /// {@macro http_status_413_requestEntityTooLarge}
+  @Deprecated(
+    "Update your code to use [requestEntityTooLarge] for improved readability",
+  )
+  static const HttpStatus Payload_Too_Large = requestEntityTooLarge;
+
+  /// {@template http_status_414_requestUriTooLong}
+  /// **414 REQUEST-URI TOO LONG**.
   ///
   /// The server is refusing to service the request because the request-target
   /// is longer than the server is willing to interpret.
@@ -964,20 +1823,67 @@ class HttpStatus {
   ///
   /// A 414 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
-  static const HttpStatus RequestURI_Too_Long = const HttpStatus._(
-      HttpStatusCode.RequestURI_Too_Long, 'Request-URI Too Long');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus requestUriTooLong = HttpStatus._(
+    code: HttpStatusCode.requestUriTooLong,
+    name: 'Request-URI Too Long',
+    description: 'The server is refusing to service the request because the '
+        'request-target is longer than the server is willing to interpret.',
+  );
 
-  /// 415 UNSUPPORTED MEDIA TYPE
+  /// An alias representing the [requestUriTooLong] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [requestUriTooLong] where possible.
+  ///
+  /// {@macro http_status_414_requestUriTooLong}
+  ///
+  static const HttpStatus code414RequestUriTooLong = requestUriTooLong;
+
+  /// {@macro http_status_414_requestUriTooLong}
+  @Deprecated(
+    "Update your code to use [requestUriTooLong] for improved readability.",
+  )
+  static const HttpStatus RequestURI_Too_Long = requestUriTooLong;
+
+  /// {@template http_status_415_unsupportedMediaType}
+  /// **415 UNSUPPORTED MEDIA TYPE**.
   ///
   /// The origin server is refusing to service the request because the payload
   /// is in a format not supported by this method on the target resource.
   ///
   /// The format problem might be due to the request's indicated Content-Type or
   /// Content-Encoding, or as a result of inspecting the data directly.
-  static const HttpStatus Unsupported_Media_Type = const HttpStatus._(
-      HttpStatusCode.Unsupported_Media_Type, 'Unsupported Media Type');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus unsupportedMediaType = HttpStatus._(
+    code: HttpStatusCode.unsupportedMediaType,
+    name: 'Unsupported Media Type',
+    description: 'The origin server is refusing to service the request because '
+        'the payload is in a format not supported by this method on '
+        'the target resource.',
+  );
 
-  /// 416 REQUESTED RANGE NOT SATISFIABLE
+  /// An alias representing the [unsupportedMediaType] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [unsupportedMediaType] where possible.
+  ///
+  /// {@macro http_status_415_unsupportedMediaType}
+  ///
+  static const HttpStatus code415UnsupportedMediaType = unsupportedMediaType;
+
+  /// {@macro http_status_415_unsupportedMediaType}
+  @Deprecated(
+    "Update your code to use [unsupportedMediaType] for improved readability.",
+  )
+  static const HttpStatus Unsupported_Media_Type = unsupportedMediaType;
+
+  /// {@template http_status_416_requestedRangeNotSatisfiable}
+  /// **416 REQUESTED RANGE NOT SATISFIABLE**.
   ///
   /// None of the ranges in the request's Range header field overlap the current
   /// extent of the selected resource or that the set of ranges requested has
@@ -1007,17 +1913,180 @@ class HttpStatus {
   /// received a complete representation. Thus, clients cannot depend on
   /// receiving a 416 Range Not Satisfiable response even when it is most
   /// appropriate.
-  static const HttpStatus Requested_Range_Not_Satisfiable = const HttpStatus._(
-      HttpStatusCode.Requested_Range_Not_Satisfiable,
-      'Requested Range Not Satisfiable');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus requestedRangeNotSatisfiable = HttpStatus._(
+    code: HttpStatusCode.requestedRangeNotSatisfiable,
+    name: 'Requested Range Not Satisfiable',
+    description:
+        'None of the ranges in the request\'s Range header field overlap '
+        'the current extent of the selected resource or that the set of ranges '
+        'requested has been rejected due to invalid ranges or an excessive '
+        'request of small or overlapping ranges.',
+  );
 
-  /// 417 EXPECTATION FAILED
+  /// An alias representing the [requestedRangeNotSatisfiable] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [requestedRangeNotSatisfiable] where possible.
+  ///
+  /// {@macro http_status_416_requestedRangeNotSatisfiable}
+  ///
+  static const HttpStatus code416RequestedRangeNotSatisfiable =
+      requestedRangeNotSatisfiable;
+
+  /// {@macro http_status_416_requestedRangeNotSatisfiable}
+  @Deprecated(
+    "code to use [requestedRangeNotSatisfiable] for improved readability.",
+  )
+  static const HttpStatus Requested_Range_Not_Satisfiable =
+      requestedRangeNotSatisfiable;
+
+  /// {@template http_status_417_expectationFailed}
+  /// **417 EXPECTATION FAILED**.
+  ///
   /// The expectation given in the request's Expect header field could not be
   /// met by at least one of the inbound servers.
-  static const HttpStatus Expectation_Failed =
-      const HttpStatus._(417, 'Expectation Failed');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus expectationFailed = HttpStatus._(
+    code: HttpStatusCode.expectationFailed,
+    name: 'Expectation Failed',
+    description:
+        'The expectation given in the request\'s Expect header field could '
+        'not be met by at least one of the inbound servers.',
+  );
 
-  /// 421 MISDIRECTED REQUEST
+  /// An alias representing the [expectationFailed] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [expectationFailed] where possible.
+  ///
+  /// {@macro http_status_417_expectationFailed}
+  ///
+  static const HttpStatus code417ExpectationFailed = expectationFailed;
+
+  /// {@macro http_status_417_expectationFailed}
+  @Deprecated(
+    "Update your code to use [expectationFailed] for improved readability.",
+  )
+  static const HttpStatus Expectation_Failed = expectationFailed;
+
+  /// {@template http_status_418_imATeapot}
+  /// **418 I'm A Teapot**.
+  ///
+  /// The HTTP 418 I'm a teapot client error response code indicates that the
+  /// server refuses to brew coffee because it is, permanently, a teapot. A
+  /// combined coffee/tea pot that is temporarily out of coffee should instead
+  /// return 503. This error is a reference to Hyper Text Coffee Pot Control
+  /// Protocol defined in April Fools' jokes in 1998 and 2014.
+  ///
+  /// {@endtemplate}
+  static const HttpStatus imATeapot = HttpStatus._(
+    code: HttpStatusCode.imATeapot,
+    name: 'I\'m A Teapot',
+    description:
+        'The HTTP 418 I\'m a teapot client error response code indicates that '
+        'the server refuses to brew coffee because it is, permanently, '
+        'a teapot. A combined coffee/tea pot that is temporarily out of '
+        'coffee should instead return 503. This error is a reference to '
+        'Hyper Text Coffee Pot Control Protocol defined in '
+        'April Fools\' jokes in 1998 and 2014.',
+  );
+
+  /// An alias representing the [imATeapot] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [imATeapot] where possible.
+  ///
+  /// {@macro http_status_418_imATeapot}
+  ///
+  static const HttpStatus code418ImATeapot = imATeapot;
+
+  /// {@macro http_status_418_imATeapot}
+  @Deprecated("Use [imATeapot] instead.")
+  static const HttpStatus ImATeapot = imATeapot;
+
+  /// {@template http_status_419_insufficientSpaceOnResource}
+  /// **419 Insufficient Space On Resource**.
+  ///
+  /// The HTTP 419 Insufficient Space On Resource client error response code
+  /// indicates that the server cannot store the representation needed to
+  /// complete the request. This status code is similar to 507 (Insufficient
+  /// Storage), but it is specific to the server's inability to allocate
+  /// sufficient space on the resource to fulfill the request.
+  ///
+  /// {@endtemplate}
+  static const HttpStatus insufficientSpaceOnResource = HttpStatus._(
+    code: HttpStatusCode.insufficientSpaceOnResource,
+    name: 'Insufficient Space On Resource',
+    description: 'The HTTP 419 Insufficient Space On Resource client error '
+        'response code indicates that the server cannot store '
+        'the representation needed to complete the request. This status code '
+        'is similar to 507 (Insufficient Storage), but it is specific to '
+        'the server\'s inability to allocate sufficient space on the resource '
+        'to fulfill the request.',
+  );
+
+  /// An alias representing the [insufficientSpaceOnResource] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [insufficientSpaceOnResource] where possible.
+  ///
+  /// {@macro http_status_419_insufficientSpaceOnResource}
+  ///
+  static const HttpStatus code419InsufficientSpaceOnResource =
+      insufficientSpaceOnResource;
+
+  /// {@macro http_status_419_insufficientSpaceOnResource}
+  @Deprecated(
+    "code to use [insufficientSpaceOnResource] for improved readability.",
+  )
+  static const HttpStatus InsufficientSpaceOnResource =
+      insufficientSpaceOnResource;
+
+  /// {@template http_status_420_methodFailure}
+  /// **420 Method Failure**.
+  ///
+  /// The HTTP 420 Method Failure client error response code indicates that the
+  /// server encountered an unexpected condition that prevented it
+  /// from fulfilling the request using the method provided. This status code
+  /// is non-standard and is reserved for use in the WebDAV
+  /// (Web Distributed Authoring and Versioning) framework.
+  ///
+  /// {@endtemplate}
+  static const HttpStatus methodFailure = HttpStatus._(
+    code: HttpStatusCode.methodFailure,
+    name: 'Method Failure',
+    description: 'The HTTP 420 Method Failure client error response code '
+        'indicates that the server encountered an unexpected condition that '
+        'prevented it from fulfilling the request using the method provided. '
+        'This status code is non-standard and is reserved for use in '
+        'the WebDAV (Web Distributed Authoring and Versioning) framework.',
+  );
+
+  /// An alias representing the [methodFailure] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [methodFailure] where possible.
+  ///
+  /// {@macro http_status_420_methodFailure}
+  ///
+  static const HttpStatus code420MethodFailure = methodFailure;
+
+  /// {@macro http_status_420_methodFailure}
+  @Deprecated(
+    "Update your code to use [methodFailure] for improved readability.",
+  )
+  static const HttpStatus MethodFailure = methodFailure;
+
+  /// {@template http_status_421_misdirectedRequest}
+  /// **421 MISDIRECTED REQUEST**.
   ///
   /// The request was directed at a server that is not able to produce a
   /// response. This can be sent by a server that is not configured to produce
@@ -1033,10 +2102,36 @@ class HttpStatus {
   ///
   /// A 421 response is cacheable by default, i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
-  static const HttpStatus Misdirected_Request = const HttpStatus._(
-      HttpStatusCode.Misdirected_Request, 'Misdirected Request');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus misdirectedRequest = HttpStatus._(
+    code: HttpStatusCode.misdirectedRequest,
+    name: 'Misdirected Request',
+    description:
+        'The request was directed at a server that is not able to produce '
+        'a response. This can be sent by a server that is not configured to '
+        'produce responses for the combination of scheme and authority that '
+        'are included in the request URI.',
+  );
 
-  /// 422 UNPROCESSABLE ENTITY
+  /// An alias representing the [misdirectedRequest] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [misdirectedRequest] where possible.
+  ///
+  /// {@macro http_status_421_misdirectedRequest}
+  ///
+  static const HttpStatus code421MisdirectedRequest = misdirectedRequest;
+
+  /// {@macro http_status_421_misdirectedRequest}
+  @Deprecated(
+    "Update your code to use [misdirectedRequest] for improved readability.",
+  )
+  static const HttpStatus Misdirected_Request = misdirectedRequest;
+
+  /// {@template http_status_422_unprocessableEntity}
+  /// **422 UNPROCESSABLE ENTITY**.
   ///
   /// The server understands the content type of the request entity (hence a 415
   /// Unsupported Media Type status code is inappropriate), and the syntax of
@@ -1046,29 +2141,100 @@ class HttpStatus {
   /// For example, this error condition may occur if an XML request body
   /// contains well-formed (i.e., syntactically correct), but semantically
   /// erroneous, XML instructions.
-  static const HttpStatus Unprocessable_Entity = const HttpStatus._(
-      HttpStatusCode.Unprocessable_Entity, 'Unprocessable Entity');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus unprocessableEntity = HttpStatus._(
+    code: HttpStatusCode.unprocessableEntity,
+    name: 'Unprocessable Entity',
+    description:
+        'The server understands the content type of the request entity '
+        '(hence a 415 Unsupported Media Type status code is inappropriate), '
+        'and the syntax of the request entity is correct (thus a 400 Bad '
+        'Request status code is inappropriate) but was unable to process '
+        'the contained instructions.',
+  );
 
-  /// 423 LOCKED
+  /// An alias representing the [unprocessableEntity] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [unprocessableEntity] where possible.
+  ///
+  /// {@macro http_status_422_unprocessableEntity}
+  ///
+  static const HttpStatus code422UnprocessableEntity = unprocessableEntity;
+
+  /// {@macro http_status_422_unprocessableEntity}
+  @Deprecated(
+    "Update your code to use [unprocessableEntity] for improved readability.",
+  )
+  static const HttpStatus Unprocessable_Entity = unprocessableEntity;
+
+  /// {@template http_status_423_locked}
+  /// **423 LOCKED**.
   ///
   /// The source or destination resource of a method is locked.
   ///
   /// This response SHOULD contain an appropriate precondition or postcondition
   /// code, such as 'lock-token-submitted' or 'no-conflicting-lock'.
-  static const HttpStatus Locked =
-      const HttpStatus._(HttpStatusCode.Locked, 'Locked');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus locked = HttpStatus._(
+    code: HttpStatusCode.locked,
+    name: 'Locked',
+    description: 'The source or destination resource of a method is locked.',
+  );
 
-  /// 424 FAILED DEPENDENCY
+  /// An alias representing the [locked] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [locked] where possible.
+  ///
+  /// {@macro http_status_423_locked}
+  ///
+  static const HttpStatus code423Locked = locked;
+
+  /// {@macro http_status_423_locked}
+  @Deprecated("Use [locked] instead.")
+  static const HttpStatus Locked = locked;
+
+  /// {@template http_status_424_failedDependency}
+  /// **424 FAILED DEPENDENCY**.
   ///
   /// The method could not be performed on the resource because the requested
   /// action depended on another action and that action failed.
   ///
   /// For example, if a command in a PROPPATCH method fails, then, at minimum,
   /// the rest of the commands will also fail with 424 Failed Dependency.
-  static const HttpStatus Failed_Dependency =
-      const HttpStatus._(HttpStatusCode.Failed_Dependency, 'Failed Dependency');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus failedDependency = HttpStatus._(
+    code: HttpStatusCode.failedDependency,
+    name: 'Failed Dependency',
+    description: 'The method could not be performed on the resource because '
+        'the requested action depended on another action and '
+        'that action failed.',
+  );
 
-  /// 426 UPGRADE REQUIRED
+  /// An alias representing the [failedDependency] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [failedDependency] where possible.
+  ///
+  /// {@macro http_status_424_failedDependency}
+  ///
+  static const HttpStatus code424FailedDependency = failedDependency;
+
+  /// {@macro http_status_424_failedDependency}
+  @Deprecated(
+    "Update your code to use [failedDependency] for improved readability.",
+  )
+  static const HttpStatus Failed_Dependency = failedDependency;
+
+  /// {@template http_status_426_upgradeRequired}
+  /// **426 UPGRADE REQUIRED**.
   ///
   /// The server refuses to perform the request using the current protocol but
   /// might be willing to do so after the client upgrades to a different
@@ -1088,10 +2254,35 @@ class HttpStatus {
   ///
   /// This service requires use of the HTTP/3.0 protocol.
   /// ```
-  static const HttpStatus Upgrade_Required =
-      const HttpStatus._(HttpStatusCode.Upgrade_Required, 'Upgrade Required');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus upgradeRequired = HttpStatus._(
+    code: HttpStatusCode.upgradeRequired,
+    name: 'Upgrade Required',
+    description:
+        'The server refuses to perform the request using the current protocol '
+        'but might be willing to do so after the client upgrades to '
+        'a different protocol.',
+  );
 
-  /// 428 PRECONDITION REQUIRED
+  /// An alias representing the [upgradeRequired] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [upgradeRequired] where possible.
+  ///
+  /// {@macro http_status_426_upgradeRequired}
+  ///
+  static const HttpStatus code426UpgradeRequired = upgradeRequired;
+
+  /// {@macro http_status_426_upgradeRequired}
+  @Deprecated(
+    "Update your code to use [upgradeRequired] for improved readability.",
+  )
+  static const HttpStatus Upgrade_Required = upgradeRequired;
+
+  /// {@template http_status_428_preconditionRequired}
+  /// **428 PRECONDITION REQUIRED**.
   ///
   /// The origin server requires the request to be conditional.
   ///
@@ -1120,10 +2311,32 @@ class HttpStatus {
   /// ```
   ///
   /// Responses with the 428 status code MUST NOT be stored by a cache.
-  static const HttpStatus Precondition_Required = const HttpStatus._(
-      HttpStatusCode.Precondition_Required, 'Precondition Required');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus preconditionRequired = HttpStatus._(
+    code: HttpStatusCode.preconditionRequired,
+    name: 'Precondition Required',
+    description: 'The origin server requires the request to be conditional.',
+  );
 
-  /// 429 TOO MANY REQUESTS
+  /// An alias representing the [preconditionRequired] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [preconditionRequired] where possible.
+  ///
+  /// {@macro http_status_428_preconditionRequired}
+  ///
+  static const HttpStatus code428PreconditionRequired = preconditionRequired;
+
+  /// {@macro http_status_428_preconditionRequired}
+  @Deprecated(
+    "Update your code to use [preconditionRequired] for improved readability.",
+  )
+  static const HttpStatus Precondition_Required = preconditionRequired;
+
+  /// {@template http_status_429_tooManyRequests}
+  /// **429 TOO MANY REQUESTS**.
   ///
   /// The user has sent too many requests in a given amount of time
   /// ("rate limiting").
@@ -1159,10 +2372,34 @@ class HttpStatus {
   /// authentication credentials, or a stateful cookie.
   ///
   /// Responses with the 429 status code MUST NOT be stored by a cache.
-  static const HttpStatus Too_Many_Requests =
-      const HttpStatus._(HttpStatusCode.Too_Many_Requests, 'Too Many Requests');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus tooManyRequests = HttpStatus._(
+    code: HttpStatusCode.tooManyRequests,
+    name: 'Too Many Requests',
+    description:
+        'The user has sent too many requests in a given amount of time '
+        '("rate limiting").',
+  );
 
-  /// 431 REQUEST HEADER FIELDS TOO LARGE
+  /// An alias representing the [tooManyRequests] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [tooManyRequests] where possible.
+  ///
+  /// {@macro http_status_429_tooManyRequests}
+  ///
+  static const HttpStatus code429TooManyRequests = tooManyRequests;
+
+  /// {@macro http_status_429_tooManyRequests}
+  @Deprecated(
+    "Update your code to use [tooManyRequests] for improved readability.",
+  )
+  static const HttpStatus Too_Many_Requests = tooManyRequests;
+
+  /// {@template http_status_431_requestHeaderFieldsTooLarge}
+  /// **431 REQUEST HEADER FIELDS TOO LARGE**.
   ///
   /// The server is unwilling to process the request because its header fields
   /// are too large. The request MAY be resubmitted after reducing the size of
@@ -1190,22 +2427,74 @@ class HttpStatus {
   /// ```
   ///
   /// Responses with the 431 status code MUST NOT be stored by a cache.
-  static const HttpStatus Request_Header_Fields_Too_Large = const HttpStatus._(
-      HttpStatusCode.Request_Header_Fields_Too_Large,
-      'Request Header Fields Too Large');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus requestHeaderFieldsTooLarge = HttpStatus._(
+    code: HttpStatusCode.requestHeaderFieldsTooLarge,
+    name: 'Request Header Fields Too Large',
+    description:
+        'The server is unwilling to process the request because its header '
+        'fields are too large. The request MAY be resubmitted after reducing '
+        'the size of the request header fields.',
+  );
 
-  /// 444 CONNECTION CLOSED WITHOUT RESPONSE
+  /// An alias representing the [requestHeaderFieldsTooLarge] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [requestHeaderFieldsTooLarge] where possible.
+  ///
+  /// {@macro http_status_431_requestHeaderFieldsTooLarge}
+  ///
+  static const HttpStatus code431RequestHeaderFieldsTooLarge =
+      requestHeaderFieldsTooLarge;
+
+  /// {@macro http_status_431_requestHeaderFieldsTooLarge}
+  @Deprecated(
+    "code to use [requestHeaderFieldsTooLarge] for improved readability.",
+  )
+  static const HttpStatus Request_Header_Fields_Too_Large =
+      requestHeaderFieldsTooLarge;
+
+  /// {@template http_status_444_connectionClosedWithoutResponse}
+  /// **444 CONNECTION CLOSED WITHOUT RESPONSE**.
   ///
   /// A non-standard status code used to instruct nginx to close the connection
   /// without sending a response to the client, most commonly used to deny
   /// malicious or malformed requests.
   ///
-  /// This status code is not seen by the client, it only appears in nginx log files.
-  static const HttpStatus Connection_Closed_Without_Response =
-      const HttpStatus._(HttpStatusCode.Connection_Closed_Without_Response,
-          'Connection Closed Without Response');
+  /// This status code is not seen by the client, it only appears in
+  /// nginx log files.
+  ///
+  /// {@endtemplate}
+  static const HttpStatus connectionClosedWithoutResponse = HttpStatus._(
+    code: HttpStatusCode.connectionClosedWithoutResponse,
+    name: 'Connection Closed Without Response',
+    description: 'A non-standard status code used to instruct nginx to close '
+        'the connection without sending a response to the client, '
+        'most commonly used to deny malicious or malformed requests.',
+  );
 
-  /// 451 UNAVAILABLE FOR LEGAL REASONS
+  /// An alias representing the [connectionClosedWithoutResponse] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [connectionClosedWithoutResponse] where possible.
+  ///
+  /// {@macro http_status_444_connectionClosedWithoutResponse}
+  ///
+  static const HttpStatus code444ConnectionClosedWithoutResponse =
+      connectionClosedWithoutResponse;
+
+  /// {@macro http_status_444_connectionClosedWithoutResponse}
+  @Deprecated(
+    "code to use [connectionClosedWithoutResponse] for improved readability.",
+  )
+  static const HttpStatus Connection_Closed_Without_Response =
+      connectionClosedWithoutResponse;
+
+  /// {@template http_status_451_unavailableForLegalReasons}
+  /// **451 UNAVAILABLE FOR LEGAL REASONS**.
   ///
   /// The server is denying access to the resource as a consequence of a legal
   /// demand.
@@ -1247,25 +2536,98 @@ class HttpStatus {
   ///
   /// A 451 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls; see RFC7234.
-  static const HttpStatus Unavailable_For_Legal_Reasons = const HttpStatus._(
-      HttpStatusCode.Unavailable_For_Legal_Reasons,
-      'Unavailable For Legal Reasons');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus unavailableForLegalReasons = HttpStatus._(
+    code: HttpStatusCode.unavailableForLegalReasons,
+    name: 'Unavailable For Legal Reasons',
+    description:
+        'The server is denying access to the resource as a consequence '
+        'of a legal demand.',
+  );
 
-  /// 499 CLIENT CLOSED REQUEST
+  /// An alias representing the [unavailableForLegalReasons] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [unavailableForLegalReasons] where possible.
+  ///
+  /// {@macro http_status_451_unavailableForLegalReasons}
+  ///
+  static const HttpStatus code451UnavailableForLegalReasons =
+      unavailableForLegalReasons;
+
+  /// {@macro http_status_451_unavailableForLegalReasons}
+  @Deprecated(
+    "code to use [unavailableForLegalReasons] for improved readability.",
+  )
+  static const HttpStatus Unavailable_For_Legal_Reasons =
+      unavailableForLegalReasons;
+
+  /// {@template http_status_499_clientClosedRequest}
+  /// **499 CLIENT CLOSED REQUEST**.
   ///
   /// A non-standard status code introduced by nginx for the case when a client
   /// closes the connection while nginx is processing the request.
-  static const HttpStatus Client_Closed_Request = const HttpStatus._(
-      HttpStatusCode.Client_Closed_Request, 'Client Closed Request');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus clientClosedRequest = HttpStatus._(
+    code: HttpStatusCode.clientClosedRequest,
+    name: 'Client Closed Request',
+    description:
+        'A non-standard status code introduced by nginx for the case when '
+        'a client closes the connection while nginx is processing the request.',
+  );
 
-  /// 500 INTERNAL SERVER ERROR
+  /// An alias representing the [clientClosedRequest] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [clientClosedRequest] where possible.
+  ///
+  /// {@macro http_status_499_clientClosedRequest}
+  ///
+  static const HttpStatus code499ClientClosedRequest = clientClosedRequest;
+
+  /// {@macro http_status_499_clientClosedRequest}
+  @Deprecated(
+    "Update your code to use [clientClosedRequest] for improved readability.",
+  )
+  static const HttpStatus Client_Closed_Request = clientClosedRequest;
+
+  /// {@template http_status_500_internalServerError}
+  /// **500 INTERNAL SERVER ERROR**.
   ///
   /// The server encountered an unexpected condition that prevented it from
   /// fulfilling the request.
-  static const HttpStatus Internal_Server_Error = const HttpStatus._(
-      HttpStatusCode.Internal_Server_Error, 'Internal Server Error');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus internalServerError = HttpStatus._(
+    code: HttpStatusCode.internalServerError,
+    name: 'Internal Server Error',
+    description:
+        'The server encountered an unexpected condition that prevented it '
+        'from fulfilling the request.',
+  );
 
-  /// 501 NOT IMPLEMENTED
+  /// An alias representing the [internalServerError] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [internalServerError] where possible.
+  ///
+  /// {@macro http_status_500_internalServerError}
+  ///
+  static const HttpStatus code500InternalServerError = internalServerError;
+
+  /// {@macro http_status_500_internalServerError}
+  @Deprecated(
+    "Update your code to use [internalServerError] for improved readability.",
+  )
+  static const HttpStatus Internal_Server_Error = internalServerError;
+
+  /// {@template http_status_501_notImplemented}
+  /// **501 NOT IMPLEMENTED**.
   ///
   /// The server does not support the functionality required to fulfill the
   /// request.
@@ -1275,18 +2637,63 @@ class HttpStatus {
   ///
   /// A 501 response is cacheable by default; i.e., unless otherwise indicated
   /// by the method definition or explicit cache controls.
-  static const HttpStatus Not_Implemented =
-      const HttpStatus._(HttpStatusCode.Not_Implemented, 'Not Implemented');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus notImplemented = HttpStatus._(
+    code: HttpStatusCode.notImplemented,
+    name: 'Not Implemented',
+    description: 'The server does not support the functionality required to '
+        'fulfill the request.',
+  );
 
-  /// 502 BAD GATEWAY
+  /// An alias representing the [notImplemented] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [notImplemented] where possible.
+  ///
+  /// {@macro http_status_501_notImplemented}
+  ///
+  static const HttpStatus code501NotImplemented = notImplemented;
+
+  /// {@macro http_status_501_notImplemented}
+  @Deprecated(
+    "Update your code to use [notImplemented] for improved readability.",
+  )
+  static const HttpStatus Not_Implemented = notImplemented;
+
+  /// {@template http_status_502_badGateway}
+  /// **502 BAD GATEWAY**.
   ///
   /// The server, while acting as a gateway or proxy, received an invalid
   /// response from an inbound server it accessed while attempting to fulfill
   /// the request.
-  static const HttpStatus Bad_Gateway =
-      const HttpStatus._(HttpStatusCode.Bad_Gateway, 'Bad Gateway');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus badGateway = HttpStatus._(
+    code: HttpStatusCode.badGateway,
+    name: 'Bad Gateway',
+    description: 'The server, while acting as a gateway or proxy, received '
+        'an invalid response from an inbound server it accessed while '
+        'attempting to fulfill the request.',
+  );
 
-  /// 503 SERVICE UNAVAILABLE
+  /// An alias representing the [badGateway] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [badGateway] where possible.
+  ///
+  /// {@macro http_status_502_badGateway}
+  ///
+  static const HttpStatus code502BadGateway = badGateway;
+
+  /// {@macro http_status_502_badGateway}
+  @Deprecated("Use [badGateway] instead.")
+  static const HttpStatus Bad_Gateway = badGateway;
+
+  /// {@template http_status_503_serviceUnavailable}
+  /// **503 SERVICE UNAVAILABLE**.
   ///
   /// The server is currently unable to handle the request due to a temporary
   /// overload or scheduled maintenance, which will likely be alleviated after
@@ -1298,18 +2705,67 @@ class HttpStatus {
   /// Note: The existence of the 503 status code does not imply that a server
   /// has to use it when becoming overloaded. Some servers might simply refuse
   /// the connection.
-  static const HttpStatus Service_Unavailable = const HttpStatus._(
-      HttpStatusCode.Service_Unavailable, 'Service Unavailable');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus serviceUnavailable = HttpStatus._(
+    code: HttpStatusCode.serviceUnavailable,
+    name: 'Service Unavailable',
+    description: 'The server is currently unable to handle the request due to '
+        'a temporary overload or scheduled maintenance, which will likely '
+        'be alleviated after some delay.',
+  );
 
-  /// 504 GATEWAY TIMEOUT
+  /// An alias representing the [serviceUnavailable] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [serviceUnavailable] where possible.
+  ///
+  /// {@macro http_status_503_serviceUnavailable}
+  ///
+  static const HttpStatus code503ServiceUnavailable = serviceUnavailable;
+
+  /// {@macro http_status_503_serviceUnavailable}
+  @Deprecated(
+    "Update your code to use [serviceUnavailable] for improved readability.",
+  )
+  static const HttpStatus Service_Unavailable = serviceUnavailable;
+
+  /// {@template http_status_504_gatewayTimeout}
+  /// **504 GATEWAY TIMEOUT**.
   ///
   /// The server, while acting as a gateway or proxy, did not receive a timely
   /// response from an upstream server it needed to access in order to complete
   /// the request.
-  static const HttpStatus Gateway_Timeout =
-      const HttpStatus._(HttpStatusCode.Gateway_Timeout, 'Gateway Timeout');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus gatewayTimeout = HttpStatus._(
+    code: HttpStatusCode.gatewayTimeout,
+    name: 'Gateway Timeout',
+    description:
+        'The server, while acting as a gateway or proxy, did not receive '
+        'a timely response from an upstream server it needed to access '
+        'in order to complete the request.',
+  );
 
-  /// 505 HTTP VERSION NOT SUPPORTED
+  /// An alias representing the [gatewayTimeout] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [gatewayTimeout] where possible.
+  ///
+  /// {@macro http_status_504_gatewayTimeout}
+  ///
+  static const HttpStatus code504GatewayTimeout = gatewayTimeout;
+
+  /// {@macro http_status_504_gatewayTimeout}
+  @Deprecated(
+    "Update your code to use [gatewayTimeout] for improved readability.",
+  )
+  static const HttpStatus Gateway_Timeout = gatewayTimeout;
+
+  /// {@template http_status_505_httpVersionNotSupported}
+  /// **505 HTTP VERSION NOT SUPPORTED**.
   ///
   /// The server does not support, or refuses to support, the major version of
   /// HTTP that was used in the request message.
@@ -1320,19 +2776,68 @@ class HttpStatus {
   /// SHOULD generate a representation for the 505 response that describes why
   /// that version is not supported and what other protocols are supported by
   /// that server.
-  static const HttpStatus HTTP_Version_Not_Supported = const HttpStatus._(
-      HttpStatusCode.HTTP_Version_Not_Supported, 'HTTP Version Not Supported');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus httpVersionNotSupported = HttpStatus._(
+    code: HttpStatusCode.httpVersionNotSupported,
+    name: 'HTTP Version Not Supported',
+    description:
+        'The server does not support, or refuses to support, the major version '
+        'of HTTP that was used in the request message.',
+  );
 
-  /// 506 VARIANT ALSO NEGOTIATES
+  /// An alias representing the [httpVersionNotSupported] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [httpVersionNotSupported] where possible.
+  ///
+  /// {@macro http_status_505_httpVersionNotSupported}
+  ///
+  static const HttpStatus code505HttpVersionNotSupported =
+      httpVersionNotSupported;
+
+  /// {@macro http_status_505_httpVersionNotSupported}
+  @Deprecated("code to use [httpVersionNotSupported] for improved readability.")
+  static const HttpStatus HTTP_Version_Not_Supported = httpVersionNotSupported;
+
+  /// {@template http_status_506_variantAlsoNegotiates}
+  /// **506 VARIANT ALSO NEGOTIATES**.
   ///
   /// The server has an internal configuration error: the chosen variant
   /// resource is configured to engage in transparent content negotiation
   /// itself, and is therefore not a proper end point in the negotiation
   /// process.
-  static const HttpStatus Variant_Also_Negotiates = const HttpStatus._(
-      HttpStatusCode.Variant_Also_Negotiates, 'Variant Also Negotiates');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus variantAlsoNegotiates = HttpStatus._(
+    code: HttpStatusCode.variantAlsoNegotiates,
+    name: 'Variant Also Negotiates',
+    description:
+        'The server has an internal configuration error: the chosen variant '
+        'resource is configured to engage in transparent content negotiation '
+        'itself, and is therefore not a proper end point in '
+        'the negotiation process.',
+  );
 
-  /// 507 INSUFFICIENT STORAGE
+  /// An alias representing the [variantAlsoNegotiates] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [variantAlsoNegotiates] where possible.
+  ///
+  /// {@macro http_status_506_variantAlsoNegotiates}
+  ///
+  static const HttpStatus code506VariantAlsoNegotiates = variantAlsoNegotiates;
+
+  /// {@macro http_status_506_variantAlsoNegotiates}
+  @Deprecated(
+    "Update your code to use [variantAlsoNegotiates] for improved readability",
+  )
+  static const HttpStatus Variant_Also_Negotiates = variantAlsoNegotiates;
+
+  /// {@template http_status_507_insufficientStorage}
+  /// **507 INSUFFICIENT STORAGE**.
   ///
   /// The method could not be performed on the resource because the server is
   /// unable to store the representation needed to successfully complete the
@@ -1341,18 +2846,68 @@ class HttpStatus {
   /// This condition is considered to be temporary. If the request that received
   /// this status code was the result of a user action, the request MUST NOT be
   /// repeated until it is requested by a separate user action.
-  static const HttpStatus Insufficient_Storage = const HttpStatus._(
-      HttpStatusCode.Insufficient_Storage, 'Insufficient Storage');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus insufficientStorage = HttpStatus._(
+    code: HttpStatusCode.insufficientStorage,
+    name: 'Insufficient Storage',
+    description:
+        'The method could not be performed on the resource because the server '
+        'is unable to store the representation needed to successfully '
+        'complete the request.',
+  );
 
-  /// 508 LOOP DETECTED
+  /// An alias representing the [insufficientStorage] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [insufficientStorage] where possible.
+  ///
+  /// {@macro http_status_507_insufficientStorage}
+  ///
+  static const HttpStatus code507InsufficientStorage = insufficientStorage;
+
+  /// {@macro http_status_507_insufficientStorage}
+  @Deprecated(
+    "Update your code to use [insufficientStorage] for improved readability.",
+  )
+  static const HttpStatus Insufficient_Storage = insufficientStorage;
+
+  /// {@template http_status_508_loopDetected}
+  /// **508 LOOP DETECTED**.
   ///
   /// The server terminated an operation because it encountered an infinite loop
   /// while processing a request with "Depth: infinity". This status indicates
   /// that the entire operation failed.
-  static const HttpStatus Loop_Detected =
-      const HttpStatus._(HttpStatusCode.Loop_Detected, 'Loop Detected');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus loopDetected = HttpStatus._(
+    code: HttpStatusCode.loopDetected,
+    name: 'Loop Detected',
+    description:
+        'The server terminated an operation because it encountered an infinite '
+        'loop while processing a request with "Depth: infinity". '
+        'This status indicates that the entire operation failed.',
+  );
 
-  /// 510 NOT EXTENDED
+  /// An alias representing the [loopDetected] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [loopDetected] where possible.
+  ///
+  /// {@macro http_status_508_loopDetected}
+  ///
+  static const HttpStatus code508LoopDetected = loopDetected;
+
+  /// {@macro http_status_508_loopDetected}
+  @Deprecated(
+    "Update your code to use [loopDetected] for improved readability.",
+  )
+  static const HttpStatus Loop_Detected = loopDetected;
+
+  /// {@template http_status_510_notExtended}
+  /// **510 NOT EXTENDED**.
   ///
   /// The policy for accessing the resource has not been met in the request.
   /// The server should send back all the information necessary for the client
@@ -1368,10 +2923,32 @@ class HttpStatus {
   /// Otherwise the client MAY present any entity included in the 510 response
   /// to the user, since that entity may include relevant diagnostic
   /// information.
-  static const HttpStatus Not_Extended =
-      const HttpStatus._(HttpStatusCode.Not_Extended, 'Not Extended');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus notExtended = HttpStatus._(
+    code: HttpStatusCode.notExtended,
+    name: 'Not Extended',
+    description: 'The policy for accessing the resource has not been met in '
+        'the request. The server should send back all the information '
+        'necessary for the client to issue an extended request',
+  );
 
-  /// 511 NETWORK AUTHENTICATION REQUIRED
+  /// An alias representing the [notExtended] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [notExtended] where possible.
+  ///
+  /// {@macro http_status_510_notExtended}
+  ///
+  static const HttpStatus code510NotExtended = notExtended;
+
+  /// {@macro http_status_510_notExtended}
+  @Deprecated("Use [notExtended] instead.")
+  static const HttpStatus Not_Extended = notExtended;
+
+  /// {@template http_status_511_networkAuthenticationRequired}
+  /// **511 NETWORK AUTHENTICATION REQUIRED**.
   ///
   /// The client needs to authenticate to gain network access.
   ///
@@ -1435,44 +3012,152 @@ class HttpStatus {
   /// Here, the 511 status code assures that non-browser clients will not
   /// interpret the response as being from the origin server, and the META HTML
   /// element redirects the user agent to the login server.
-  static const HttpStatus Network_Authentication_Required = const HttpStatus._(
-      HttpStatusCode.Network_Authentication_Required,
-      'Network Authentication Required');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus networkAuthenticationRequired = HttpStatus._(
+    code: HttpStatusCode.networkAuthenticationRequired,
+    name: 'Network Authentication Required',
+    description: 'The client needs to authenticate to gain network access.',
+  );
 
-  /// 599 NETWORK CONNECT TIMEOUT ERROR
+  /// An alias representing the [networkAuthenticationRequired] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [networkAuthenticationRequired] where possible.
+  ///
+  /// {@macro http_status_511_networkAuthenticationRequired}
+  ///
+  static const HttpStatus code511NetworkAuthenticationRequired =
+      networkAuthenticationRequired;
+
+  /// {@macro http_status_511_networkAuthenticationRequired}
+  @Deprecated(
+    "code to use [networkAuthenticationRequired] for improved readability.",
+  )
+  static const HttpStatus Network_Authentication_Required =
+      networkAuthenticationRequired;
+
+  /// {@template http_status_599_networkConnectTimeoutError}
+  /// **599 NETWORK CONNECT TIMEOUT ERROR**.
   ///
   /// This status code is not specified in any RFCs, but is used by some HTTP
   /// proxies to signal a network connect timeout behind the proxy to a client
   /// in front of the proxy.
-  static const HttpStatus Network_Connect_Timeout_Error = const HttpStatus._(
-      HttpStatusCode.Network_Connect_Timeout_Error,
-      'Network Connect Timeout Error');
+  ///
+  /// {@endtemplate}
+  static const HttpStatus networkConnectTimeoutError = HttpStatus._(
+    code: HttpStatusCode.networkConnectTimeoutError,
+    name: 'Network Connect Timeout Error',
+    description: 'This status code is not specified in any RFCs, but is used '
+        'by some HTTP proxies to signal a network connect timeout behind '
+        'the proxy to a client in front of the proxy.',
+  );
 
-  final int code;
+  /// An alias representing the [networkConnectTimeoutError] constant,
+  /// offering a direct substitute for it.
+  ///
+  /// For consistency and improved readability,
+  /// it is recommended to directly use [networkConnectTimeoutError] where possible.
+  ///
+  /// {@macro http_status_599_networkConnectTimeoutError}
+  ///
+  static const HttpStatus code599NetworkConnectTimeoutError =
+      networkConnectTimeoutError;
 
-  final String name;
+  /// {@macro http_status_599_networkConnectTimeoutError}
+  @Deprecated(
+    "code to use [networkConnectTimeoutError] for improved readability.",
+  )
+  static const HttpStatus Network_Connect_Timeout_Error =
+      networkConnectTimeoutError;
 
-  HttpStatus(this.code, this.name) {
-    if (null == code) {
-      throw new ArgumentError.notNull('code');
-    }
-    if (null == name) {
-      throw new ArgumentError.notNull('name');
-    }
-    if (code < 0 || code > 999) {
-      throw new ArgumentError.value(
-          code, 'code', 'Must be between 0 (inclusive) and 999 (inclusive)');
-    }
-  }
-
-  factory HttpStatus.fromCode(int code) {
-    if (!_Statuses.containsKey(code)) {
-      throw new ArgumentError.value(code, 'code', 'Unknown status code');
-    }
-    return _Statuses[code];
-  }
-
-  const HttpStatus._(this.code, this.name);
+  /// List of HttpStatusCodes
+  /// Source - https://tools.ietf.org/html/rfc7234 & https://httpstatuses.com .
+  static const Map<int, HttpStatus> _httpStatusCodes = <int, HttpStatus>{
+    // 1xx Informational.
+    HttpStatusCode.continue_: HttpStatus.code100Continue,
+    HttpStatusCode.switchingProtocols: HttpStatus.code101SwitchingProtocols,
+    HttpStatusCode.processing: HttpStatus.code102Processing,
+    // 2xx Success.
+    HttpStatusCode.ok: HttpStatus.code200Ok,
+    HttpStatusCode.created: HttpStatus.code201Created,
+    HttpStatusCode.accepted: HttpStatus.code202Accepted,
+    HttpStatusCode.nonAuthoritativeInformation:
+        HttpStatus.code203NonAuthoritativeInformation,
+    HttpStatusCode.noContent: HttpStatus.code204NoContent,
+    HttpStatusCode.resetContent: HttpStatus.code205ResetContent,
+    HttpStatusCode.partialContent: HttpStatus.code206PartialContent,
+    HttpStatusCode.multiStatus: HttpStatus.code207MultiStatus,
+    HttpStatusCode.alreadyReported: HttpStatus.code208AlreadyReported,
+    HttpStatusCode.imUsed: HttpStatus.code226ImUsed,
+    // 3xx Redirection.
+    HttpStatusCode.multipleChoices: HttpStatus.code300MultipleChoices,
+    HttpStatusCode.movedPermanently: HttpStatus.code301MovedPermanently,
+    HttpStatusCode.found: HttpStatus.code302Found,
+    HttpStatusCode.seeOther: HttpStatus.code303SeeOther,
+    HttpStatusCode.notModified: HttpStatus.code305NotModified,
+    HttpStatusCode.useProxy: HttpStatus.code305UseProxy,
+    HttpStatusCode.temporaryRedirect: HttpStatus.code307TemporaryRedirect,
+    HttpStatusCode.permanentRedirect: HttpStatus.code308PermanentRedirect,
+    // 4xx Client Error.
+    HttpStatusCode.badRequest: HttpStatus.code400BadRequest,
+    HttpStatusCode.unauthorized: HttpStatus.code401Unauthorized,
+    HttpStatusCode.paymentRequired: HttpStatus.code402PaymentRequired,
+    HttpStatusCode.forbidden: HttpStatus.code403Forbidden,
+    HttpStatusCode.notFound: HttpStatus.code404NotFound,
+    HttpStatusCode.methodNotAllowed: HttpStatus.code405MethodNotAllowed,
+    HttpStatusCode.notAcceptable: HttpStatus.code406NotAcceptable,
+    HttpStatusCode.proxyAuthenticationRequired:
+        HttpStatus.code407ProxyAuthenticationRequired,
+    HttpStatusCode.requestTimeout: HttpStatus.code408RequestTimeout,
+    HttpStatusCode.conflict: HttpStatus.code409Conflict,
+    HttpStatusCode.gone: HttpStatus.code410Gone,
+    HttpStatusCode.lengthRequired: HttpStatus.code411LengthRequired,
+    HttpStatusCode.preconditionFailed: HttpStatus.code412PreconditionFailed,
+    HttpStatusCode.requestEntityTooLarge:
+        HttpStatus.code413RequestEntityTooLarge,
+    HttpStatusCode.requestUriTooLong: HttpStatus.code414RequestUriTooLong,
+    HttpStatusCode.unsupportedMediaType: HttpStatus.code415UnsupportedMediaType,
+    HttpStatusCode.requestedRangeNotSatisfiable:
+        HttpStatus.code416RequestedRangeNotSatisfiable,
+    HttpStatusCode.expectationFailed: HttpStatus.code417ExpectationFailed,
+    HttpStatusCode.imATeapot: HttpStatus.code418ImATeapot,
+    HttpStatusCode.insufficientSpaceOnResource:
+        HttpStatus.code419InsufficientSpaceOnResource,
+    HttpStatusCode.methodFailure: HttpStatus.code420MethodFailure,
+    HttpStatusCode.misdirectedRequest: HttpStatus.code421MisdirectedRequest,
+    HttpStatusCode.unprocessableEntity: HttpStatus.code422UnprocessableEntity,
+    HttpStatusCode.locked: HttpStatus.code423Locked,
+    HttpStatusCode.failedDependency: HttpStatus.code424FailedDependency,
+    HttpStatusCode.upgradeRequired: HttpStatus.code426UpgradeRequired,
+    HttpStatusCode.preconditionRequired: HttpStatus.code428PreconditionRequired,
+    HttpStatusCode.tooManyRequests: HttpStatus.code429TooManyRequests,
+    HttpStatusCode.requestHeaderFieldsTooLarge:
+        HttpStatus.code431RequestHeaderFieldsTooLarge,
+    HttpStatusCode.connectionClosedWithoutResponse:
+        HttpStatus.code444ConnectionClosedWithoutResponse,
+    HttpStatusCode.unavailableForLegalReasons:
+        HttpStatus.code451UnavailableForLegalReasons,
+    HttpStatusCode.clientClosedRequest: HttpStatus.code499ClientClosedRequest,
+    // 5xx Server Error.
+    HttpStatusCode.internalServerError: HttpStatus.code500InternalServerError,
+    HttpStatusCode.notImplemented: HttpStatus.code501NotImplemented,
+    HttpStatusCode.badGateway: HttpStatus.code502BadGateway,
+    HttpStatusCode.serviceUnavailable: HttpStatus.code503ServiceUnavailable,
+    HttpStatusCode.gatewayTimeout: HttpStatus.code504GatewayTimeout,
+    HttpStatusCode.httpVersionNotSupported:
+        HttpStatus.code505HttpVersionNotSupported,
+    HttpStatusCode.variantAlsoNegotiates:
+        HttpStatus.code506VariantAlsoNegotiates,
+    HttpStatusCode.insufficientStorage: HttpStatus.code507InsufficientStorage,
+    HttpStatusCode.loopDetected: HttpStatus.code508LoopDetected,
+    HttpStatusCode.notExtended: HttpStatus.code510NotExtended,
+    HttpStatusCode.networkAuthenticationRequired:
+        HttpStatus.code511NetworkAuthenticationRequired,
+    HttpStatusCode.networkConnectTimeoutError:
+        HttpStatus.code599NetworkConnectTimeoutError,
+  };
 
   @override
   int get hashCode => code.hashCode;
@@ -1486,130 +3171,4 @@ class HttpStatus {
 
   @override
   String toString() => 'HttpStatus{code: $code, name: $name}';
-}
-
-abstract class HttpStatusCode {
-  static const int Continue = 100;
-
-  static const int Switching_Protocols = 101;
-
-  static const int Processing = 102;
-
-  static const int OK = 200;
-
-  static const int Created = 201;
-
-  static const int Accepted = 202;
-
-  static const int NonAuthoritative_Information = 203;
-
-  static const int No_Content = 204;
-
-  static const int Reset_Content = 205;
-
-  static const int Partial_Content = 206;
-
-  static const int MultiStatus = 207;
-
-  static const int Already_Reported = 208;
-
-  static const int IM_Used = 226;
-
-  static const int Multiple_Choices = 300;
-
-  static const int Moved_Permanently = 301;
-
-  static const int Found = 302;
-
-  static const int See_Other = 303;
-
-  static const int Not_Modified = 304;
-
-  static const int Use_Proxy = 305;
-
-  static const int Temporary_Redirect = 307;
-
-  static const int Permanent_Redirect = 308;
-
-  static const int Bad_Request = 400;
-
-  static const int Unauthorized = 401;
-
-  static const int Payment_Required = 402;
-
-  static const int Forbidden = 403;
-
-  static const int Not_Found = 404;
-
-  static const int Method_Not_Allowed = 405;
-
-  static const int Not_Acceptable = 406;
-
-  static const int Proxy_Authentication_Required = 407;
-
-  static const int Request_Timeout = 408;
-
-  static const int Conflict = 409;
-
-  static const int Gone = 410;
-
-  static const int Length_Required = 411;
-
-  static const int Precondition_Failed = 412;
-
-  static const int Payload_Too_Large = 413;
-
-  static const int RequestURI_Too_Long = 414;
-
-  static const int Unsupported_Media_Type = 415;
-
-  static const int Requested_Range_Not_Satisfiable = 416;
-
-  static const int Expectation_Failed = 417;
-
-  static const int Misdirected_Request = 421;
-
-  static const int Unprocessable_Entity = 422;
-
-  static const int Locked = 423;
-
-  static const int Failed_Dependency = 424;
-
-  static const int Upgrade_Required = 426;
-
-  static const int Precondition_Required = 428;
-
-  static const int Too_Many_Requests = 429;
-
-  static const int Request_Header_Fields_Too_Large = 431;
-
-  static const int Connection_Closed_Without_Response = 444;
-
-  static const int Unavailable_For_Legal_Reasons = 451;
-
-  static const int Client_Closed_Request = 499;
-
-  static const int Internal_Server_Error = 500;
-
-  static const int Not_Implemented = 501;
-
-  static const int Bad_Gateway = 502;
-
-  static const int Service_Unavailable = 503;
-
-  static const int Gateway_Timeout = 504;
-
-  static const int HTTP_Version_Not_Supported = 505;
-
-  static const int Variant_Also_Negotiates = 506;
-
-  static const int Insufficient_Storage = 507;
-
-  static const int Loop_Detected = 508;
-
-  static const int Not_Extended = 510;
-
-  static const int Network_Authentication_Required = 511;
-
-  static const int Network_Connect_Timeout_Error = 599;
 }
