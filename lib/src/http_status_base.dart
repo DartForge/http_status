@@ -233,7 +233,6 @@ class HttpStatus {
   /// but is still processing the request. This allows the client
   /// to start processing the headers early.
   ///
-  /// {@template http_status_RFC_8297:** https://tools.ietf.org/html/rfc8}
   /// **RFC 8297:** https://tools.ietf.org/html/rfc8297
   ///
   /// {@endtemplate}
