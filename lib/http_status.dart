@@ -8,3 +8,4 @@ library http_status;
 
 export 'src/http_status_base.dart';
 export 'src/http_status_code.dart';
+export 'src/utils/int_extension.dart';

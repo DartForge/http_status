@@ -19,4 +19,26 @@ void main() {
   // Use [noContent] instead.
   print('${HttpStatusCode.noContent}');
   print('${HttpStatus.fromCode(404)}');
+
+  // isInformation
+  print(HttpStatusCode.processing.isInformationHttpStatusCode);
+  print(HttpStatusCode.notFound.isInformationHttpStatusCode);
+
+  // isSuccessful
+  print(200.isSuccessfulHttpStatusCode);
+  print(400.isSuccessfulHttpStatusCode);
+  print(HttpStatusCode.accepted.isSuccessfulHttpStatusCode);
+  print(HttpStatusCode.notFound.isSuccessfulHttpStatusCode);
+
+  // isRedirect
+  print(HttpStatusCode.permanentRedirect.isRedirectHttpStatusCode);
+  print(HttpStatusCode.notFound.isRedirectHttpStatusCode);
+
+  // isClientError
+  print(HttpStatusCode.notFound.isClientErrorHttpStatusCode);
+  print(HttpStatusCode.processing.isClientErrorHttpStatusCode);
+
+  // isServerError
+  print(HttpStatusCode.internalServerError.isServerErrorHttpStatusCode);
+  print(HttpStatusCode.notFound.isServerErrorHttpStatusCode);
 }

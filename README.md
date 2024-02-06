@@ -148,6 +148,28 @@ main() {
 // )
 
 
+  // isInformation
+  print(HttpStatusCode.processing.isInformationHttpStatusCode); // true
+  print(HttpStatusCode.notFound.isInformationHttpStatusCode); // false
+
+  // isSuccessful
+  print(HttpStatusCode.accepted.isSuccessfulHttpStatusCode); // true
+  print(HttpStatusCode.notFound.isSuccessfulHttpStatusCode); // false
+
+  // isRedirect
+  print(HttpStatusCode.permanentRedirect.isRedirectHttpStatusCode); // true
+  print(HttpStatusCode.notFound.isRedirectHttpStatusCode); // false
+
+  // isClientError
+  print(HttpStatusCode.notFound.isClientErrorHttpStatusCode); // true
+  print(HttpStatusCode.processing.isClientErrorHttpStatusCode); // false
+
+  // isServerError
+  print(HttpStatusCode.internalServerError.isServerError); // true
+  print(HttpStatusCode.notFound.isServerError); // false
+}
+```
+
 ```dart
 import 'package:http/http.dart' as http;
 import 'package:http_status/http_status.dart';
@@ -164,7 +186,22 @@ if (res.statusCode == HttpStatusCode.ok) {
   };
 }
 ```
-    }
+
+```dart
+import 'package:http/http.dart' as http;
+import 'package:http_status/http_status.dart';
+
+final res = await http.get(Uri.parse(url));
+
+if (res.statusCode.isSuccessfulHttpStatusCode) {
+  final httpStatus = HttpStatus.fromCode(res.statusCode);
+
+  return {
+    'statusCode': res.statusCode,
+    'httpStatus': httpStatus,
+    'data': res.body
+  };
+}
 ```
 
 ## Thanking all Awesome Contributors :heart:
