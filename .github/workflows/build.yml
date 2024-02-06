@@ -1,0 +1,59 @@
+name: "build"
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest] # or: macos-latest, windows-latest
+        channel: ['2.18.0', stable, beta, dev, main] # or: 'beta', 'dev' or 'main'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dart-lang/setup-dart@v1.6.1
+        with:
+          sdk: ${{ matrix.channel }}
+
+      - id: disabled_analytics_dart
+        name: Disabled Analytics Dart
+        run: dart --disable-analytics
+
+      - name: Install dependencies
+        run: dart pub get
+
+      # Verifies if the dart code is formatted well
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed .
+        # --set-exit-if-changed stops execution if the any code is not well formatted
+        # --output=none prints files which needs to be formatted
+
+        # Checks for Symantic errors. Can be configured using analysis_options.yaml
+      - name: Analyze project source
+        run: dart analyze --fatal-infos
+        # optionally use --fatal-warnings to stop execution if any warnings are found
+
+      - name: Run Tests
+        run: |
+          dart pub global activate coverage
+          dart pub global run coverage:test_with_coverage
+
+      - name: Check Code Coverage
+        uses: VeryGoodOpenSource/very_good_coverage@v2
+        with:
+          path: "./coverage/lcov.info"
+          min_coverage: 100
+
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@v2.2.3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: coverage/lcov.info
