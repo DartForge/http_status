@@ -21,7 +21,7 @@ dart_code_linter:
 
   rules:
   - prefer-correct-identifier-length:
-      exceptions: [ 'ok', 'Ok', 'OK' ]
+      exceptions: [ 'ok' ]
       exclude:
         - test/**
   - format-comment: false
