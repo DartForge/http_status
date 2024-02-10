@@ -133,23 +133,23 @@ main() {
 // )
 
 
-  // isInformation
+  // isInformation (Http Status Code 100 - 199)
   print(HttpStatusCode.processing.isInformationHttpStatusCode); // true
   print(HttpStatusCode.notFound.isInformationHttpStatusCode); // false
 
-  // isSuccessful
+  // isSuccessful (Http Status Code 200 - 299)
   print(HttpStatusCode.accepted.isSuccessfulHttpStatusCode); // true
   print(HttpStatusCode.notFound.isSuccessfulHttpStatusCode); // false
 
-  // isRedirect
+  // isRedirect (Http Status Code 300 - 399)
   print(HttpStatusCode.permanentRedirect.isRedirectHttpStatusCode); // true
   print(HttpStatusCode.notFound.isRedirectHttpStatusCode); // false
 
-  // isClientError
+  // isClientError (Http Status Code 400 - 499)
   print(HttpStatusCode.notFound.isClientErrorHttpStatusCode); // true
   print(HttpStatusCode.processing.isClientErrorHttpStatusCode); // false
 
-  // isServerError
+  // isServerError (Http Status Code 500 - 599)
   print(HttpStatusCode.internalServerError.isServerError); // true
   print(HttpStatusCode.notFound.isServerError); // false
 }
