@@ -4,11 +4,18 @@
 
 ### Removed - 3.0.0
 
+- **Deprecated HTTP status code constants:** Capitalized and underscored versions are no longer available.
+
+### Changed - 3.0.0
+
 - Dropped compatibility with Dart 2.x due to migration towards Dart 3.0 which includes support for records, marking a significant change in the required development environment.
 
-#### Codes
+- **HttpStatus class:**
+  - Refactored equality and hashCode methods for more robust object comparisons using code, name, and description.
 
-| Code | Http Status Name                   | Http Status (v1.x - v2.x Deprecated)                                                            | Http Status (v2.x - v3.x)       |
+- **Example Code Updates**
+
+| Code | Http Status Name                   | Http Status (v1.x - v2.x Removed)                                                               | Http Status (v2.x - v3.x)       |
 | ---- | ---------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------- |
 | 100  | Continue                           | Continue                                  / CONTINUE                                            | continue_                       |
 | 101  | Switching Protocols                | Switching_Protocols                       / SWITCHING_PROTOCOLS                                 | switchingProtocols              |
