@@ -2794,12 +2794,12 @@ class HttpStatus {
   };
 
   @override
-  int get hashCode => code.hashCode;
+  int get hashCode => _equality().hashCode;
 
   @override
   bool operator ==(covariant HttpStatus other) =>
-      identical(this, other) ||
-      runtimeType == other.runtimeType && code == other.code;
+      (identical(this, other)) ||
+      runtimeType == other.runtimeType && other._equality() == _equality();
 
   @override
   String toString() => '''
@@ -2809,4 +2809,6 @@ HttpStatus(
   description: '$description'
 )
 ''';
+
+  (int, String, String) _equality() => (code, name, description);
 }
