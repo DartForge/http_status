@@ -14,7 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest] # or: macos-latest, windows-latest
-        channel: ['2.18.0', stable, beta, dev, main] # or: 'beta', 'dev' or 'main'
+        channel: [stable, beta, dev, main] # or: 'beta', 'dev' or 'main'
 
     steps:
       - uses: actions/checkout@v4
