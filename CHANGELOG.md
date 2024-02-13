@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.1.0] - 2024-02-10
+
+- Expanded the Dart SDK compatibility range to '<4.0.0'.
+-
+
 ## [2.0.1] - 2024-02-10
 
 - **Enhanced comparability:** `operator ==` now uses `covariant` for better type safety and comparison accuracy.

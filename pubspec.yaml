@@ -1,6 +1,6 @@
 name: http_status
 description: Constants enumerating the HTTP status codes in Dart. All status codes defined in RFC1945 (HTTP/1.0, RFC2616 (HTTP/1.1), and RFC2518 (WebDAV) are supported.
-version: 2.0.0
+version: 2.1.0
 repository: https://github.com/DartForge/http_status
 issue_tracker: https://github.com/DartForge/http_status/issues
 homepage: https://github.com/DartForge/http_status
@@ -11,7 +11,7 @@ topics: [http-status]
 # - Andres Garcia (TECH-ANDGAR) <dev@tech-andgar.me>
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: '>=2.18.0 <4.0.0'
 
 dev_dependencies:
   coverage: ^1.6.3
