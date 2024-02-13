@@ -3162,12 +3162,16 @@ class HttpStatus {
   int get hashCode => code.hashCode;
 
   @override
-  bool operator ==(Object other) =>
+  bool operator ==(covariant HttpStatus other) =>
       identical(this, other) ||
-      other is HttpStatus &&
-          runtimeType == other.runtimeType &&
-          code == other.code;
+      runtimeType == other.runtimeType && code == other.code;
 
   @override
-  String toString() => 'HttpStatus{code: $code, name: $name}';
+  String toString() => '''
+HttpStatus(
+  code: $code,
+  name: '$name',
+  description: '$description'
+)
+''';
 }

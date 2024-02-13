@@ -2,11 +2,11 @@
 
 Constants enumerating the HTTP status codes in Dart. All status codes defined in RFC1945 (HTTP/1.0, RFC2616 (HTTP/1.1), and RFC2518 (WebDAV) are supported.
 
-[![Star this Repo](https://img.shields.io/github/stars/andgar2010/http_status.svg?style=flat)](https://github.com/andgar2010/http_status)
+[![Star this Repo](https://img.shields.io/github/stars/DartForge/http_status.svg?style=flat)](https://github.com/DartForge/http_status)
 <!-- [![Pub Package](https://img.shields.io/pub/v/http_status.svg?style=flat)](https://pub.dartlang.org/packages/http_status) -->
-[![build status](https://github.com/andgar2010/http_status/actions/workflows/build.yml/badge.svg)](https://github.com/andgar2010/http_status/actions/workflows/build.yml)
+[![build status](https://github.com/DartForge/http_status/actions/workflows/build.yml/badge.svg)](https://github.com/DartForge/http_status/actions/workflows/build.yml)
 
-[![Coverage Status](https://coveralls.io/repos/github/andgar2010/http_status/badge.svg?branch=main)](https://coveralls.io/github/andgar2010/http_status?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/DartForge/http_status/badge.svg?branch=main)](https://coveralls.io/github/DartForge/http_status?branch=main)
 
 [![wakatime](https://wakatime.com/badge/user/7267c60f-69d6-47f2-941f-06869f08edc8/project/018d207e-c2bf-4b0f-96f5-77f9647157f8.svg)](https://wakatime.com/badge/user/7267c60f-69d6-47f2-941f-06869f08edc8/project/018d207e-c2bf-4b0f-96f5-77f9647157f8)
 
@@ -30,7 +30,7 @@ Constants enumerating the HTTP status codes in Dart. All status codes defined in
 | 226  | I'M Used                           | IM_Used                                   / IM_USED                                             | imUsed                          |
 | 300  | Multiple Choices                   | Multiple_Choices                          / MULTIPLE_CHOICES                                    | multipleChoices                 |
 | 301  | Moved Permanently                  | Moved_Permanently                         / MOVED_PERMANENTLY                                   | movedPermanently                |
-| 302  | Found  /  Moved Temporarily        | Found  /  Moved_Temporarily               / FOUND  /  MOVED_TEMPORARILY                           | found  /  movedTemporarily      |
+| 302  | Found  /  Moved Temporarily        | Found  /  Moved_Temporarily               / FOUND  /  MOVED_TEMPORARILY                         | found  /  movedTemporarily      |
 | 303  | See Other                          | See_Other                                 / SEE_OTHER                                           | seeOther                        |
 | 304  | Not Modified                       | Not_Modified                              / NOT_MODIFIED                                        | notModified                     |
 | 305  | Use Proxy                          | Use_Proxy                                 / USE_PROXY                                           | useProxy                        |
@@ -206,7 +206,7 @@ if (res.statusCode.isSuccessfulHttpStatusCode) {
 
 ## Thanking all Awesome Contributors :heart:
 
-[![Contributors](https://contrib.rocks/image?repo=andgar2010/http_status)](https://github.com/andgar2010/http_status/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=DartForge/http_status)](https://github.com/DartForge/http_status/graphs/contributors)
 
 Contributions of any kind are welcome!
 
@@ -218,4 +218,4 @@ Contributions of any kind are welcome!
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 
-[tracker]: https://github.com/andgar2010/http_status/issues
+[tracker]: https://github.com/DartForge/http_status/issues

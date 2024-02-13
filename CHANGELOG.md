@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.0.1] - 2024-02-10
+
+- **Enhanced comparability:** `operator ==` now uses `covariant` for better type safety and comparison accuracy.
+- **Richer object representation:** `toString()` includes code, name, and description for easier debugging.
+
 ## [2.0.0] - 2024-02-06
 
 ### Added
