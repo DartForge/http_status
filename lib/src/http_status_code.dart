@@ -3,10 +3,6 @@
 // All rights reserved. Use of this source code
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
-// ignore_for_file: constant_identifier_names
-// TODO: Remove this line `ignore_for_file: constant_identifier_names` in the next version (v3.0.0)
-// Reason: This constant's name violates the lint rule. Refactor it to comply with the Dart style guide
-
 import 'dart:io';
 
 /// HTTP Status Codes.
@@ -23,14 +19,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int continue_ = HttpStatus.continue_;
 
-  /// {@macro http_status_code_100_continue_}
-  @Deprecated("Use [continue_] instead.")
-  static const int Continue = continue_;
-
-  /// {@macro http_status_code_100_continue_}
-  @Deprecated("Use [continue_] instead.")
-  static const int CONTINUE = continue_;
-
   /// {@template http_status_code_101_switchingProtocols}
   /// **switchingProtocols = 101**.
   ///
@@ -42,14 +30,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int switchingProtocols = HttpStatus.switchingProtocols;
 
-  /// {@macro http_status_code_101_switchingProtocols}
-  @Deprecated("Use [switchingProtocols] instead.")
-  static const int Switching_Protocols = switchingProtocols;
-
-  /// {@macro http_status_code_101_switchingProtocols}
-  @Deprecated("Use [switchingProtocols] instead.")
-  static const int SWITCHING_PROTOCOLS = Switching_Protocols;
-
   /// {@template http_status_code_102_processing}
   /// **processing = 102**.
   ///
@@ -60,14 +40,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int processing = HttpStatus.processing;
-
-  /// {@macro http_status_code_102_processing}
-  @Deprecated("Use [processing] instead.")
-  static const int Processing = processing;
-
-  /// {@macro http_status_code_102_processing}
-  @Deprecated("Use [processing] instead.")
-  static const int PROCESSING = Processing;
 
   /// {@template http_status_code_103_earlyHints}
   /// **earlyHints = 103**.
@@ -81,14 +53,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int earlyHints = 103;
-
-  /// {@macro http_status_code_103_earlyHints}
-  @Deprecated("Use [earlyHints] instead.")
-  static const int Early_Hints = earlyHints;
-
-  /// {@macro http_status_code_103_earlyHints}
-  @Deprecated("Use [earlyHints] instead.")
-  static const int EARLY_HINTS = earlyHints;
 
   /// {@template http_status_code_200_ok}
   /// **ok = 200**.
@@ -111,14 +75,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int ok = HttpStatus.ok;
 
-  /// {@macro http_status_code_200_ok}
-  @Deprecated("Use [ok] instead.")
-  static const int OK = ok;
-
-  /// {@macro http_status_code_200_ok}
-  @Deprecated("Use [ok] instead.")
-  static const int Ok = ok;
-
   /// {@template http_status_code_201_created}
   /// **created = 201**.
   ///
@@ -130,14 +86,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int created = HttpStatus.created;
-
-  /// {@macro http_status_code_201_created}
-  @Deprecated("Use [created] instead.")
-  static const int Created = created;
-
-  /// {@macro http_status_code_201_created}
-  @Deprecated("Use [created] instead.")
-  static const int CREATED = Created;
 
   /// {@template http_status_code_202_accepted}
   /// **accepted = 202**.
@@ -152,14 +100,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int accepted = HttpStatus.accepted;
-
-  /// {@macro http_status_code_202_accepted}
-  @Deprecated("Use [accepted] instead.")
-  static const int Accepted = accepted;
-
-  /// {@macro http_status_code_202_accepted}
-  @Deprecated("Use [accepted] instead.")
-  static const int ACCEPTED = accepted;
 
   /// {@template http_status_code_203_nonAuthoritativeInformation}
   /// **nonAuthoritativeInformation = 203**.
@@ -177,14 +117,6 @@ abstract class HttpStatusCode {
   static const int nonAuthoritativeInformation =
       HttpStatus.nonAuthoritativeInformation;
 
-  /// {@macro http_status_code_203_nonAuthoritativeInformation}
-  @Deprecated("Use [NonAuthoritative_Information] instead.")
-  static const int NonAuthoritative_Information = nonAuthoritativeInformation;
-
-  /// {@macro http_status_code_203_nonAuthoritativeInformation}
-  @Deprecated("Use [NonAuthoritative_Information] instead.")
-  static const int NON_AUTHORITATIVE_INFORMATION = NonAuthoritative_Information;
-
   /// {@template http_status_code_204_noContent}
   /// **noContent = 204**.
   ///
@@ -197,14 +129,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int noContent = HttpStatus.noContent;
 
-  /// {@macro http_status_code_204_noContent}
-  @Deprecated("Use [noContent] instead.")
-  static const int No_Content = noContent;
-
-  /// {@macro http_status_code_204_noContent}
-  @Deprecated("Use [noContent] instead.")
-  static const int NO_CONTENT = noContent;
-
   /// {@template http_status_code_205_resetContent}
   /// **resetContent = 205**.
   ///
@@ -215,14 +139,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int resetContent = HttpStatus.resetContent;
-
-  /// {@macro http_status_code_205_resetContent}
-  @Deprecated("Use [resetContent] instead.")
-  static const int Reset_Content = resetContent;
-
-  /// {@macro http_status_code_205_resetContent}
-  @Deprecated("Use [resetContent] instead.")
-  static const int RESET_CONTENT = Reset_Content;
 
   /// {@template http_status_code_206_partialContent}
   /// **partialContent = 206**.
@@ -235,14 +151,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int partialContent = HttpStatus.partialContent;
 
-  /// {@macro http_status_code_206_partialContent}
-  @Deprecated("Use [partialContent] instead.")
-  static const int Partial_Content = partialContent;
-
-  /// {@macro http_status_code_206_partialContent}
-  @Deprecated("Use [partialContent] instead.")
-  static const int PARTIAL_CONTENT = Partial_Content;
-
   /// {@template http_status_code_207_multiStatus}
   /// **multiStatus = 207**.
   ///
@@ -253,14 +161,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int multiStatus = HttpStatus.multiStatus;
-
-  /// {@macro http_status_code_207_multiStatus}
-  @Deprecated("Use [multiStatus] instead.")
-  static const int MultiStatus = multiStatus;
-
-  /// {@macro http_status_code_207_multiStatus}
-  @Deprecated("Use [multiStatus] instead.")
-  static const int MULTISTATUS = MultiStatus;
 
   /// {@template http_status_code_208_alreadyReported}
   /// **alreadyReported = 208**.
@@ -274,14 +174,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int alreadyReported = HttpStatus.alreadyReported;
 
-  /// {@macro http_status_code_208_alreadyReported}
-  @Deprecated("Use [alreadyReported] instead.")
-  static const int Already_Reported = alreadyReported;
-
-  /// {@macro http_status_code_208_alreadyReported}
-  @Deprecated("Use [alreadyReported] instead.")
-  static const int ALREADY_REPORTED = Already_Reported;
-
   /// {@template http_status_code_226_imUsed}
   /// **imUsed = 226**.
   ///
@@ -293,14 +185,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int imUsed = HttpStatus.imUsed;
-
-  /// {@macro http_status_code_226_imUsed}
-  @Deprecated("Use [imUsed] instead.")
-  static const int IM_Used = imUsed;
-
-  /// {@macro http_status_code_226_imUsed}
-  @Deprecated("Use [imUsed] instead.")
-  static const int IM_USED = IM_Used;
 
   /// {@template http_status_code_300_multipleChoices}
   /// **multipleChoices = 300**.
@@ -315,14 +199,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int multipleChoices = HttpStatus.multipleChoices;
 
-  /// {@macro http_status_code_300_multipleChoices}
-  @Deprecated("Use [multipleChoices] instead.")
-  static const int Multiple_Choices = multipleChoices;
-
-  /// {@macro http_status_code_300_multipleChoices}
-  @Deprecated("Use [multipleChoices] instead.")
-  static const int MULTIPLE_CHOICES = Multiple_Choices;
-
   /// {@template http_status_code_301_movedPermanently}
   /// **movedPermanently = 301**.
   ///
@@ -333,14 +209,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int movedPermanently = HttpStatus.movedPermanently;
-
-  /// {@macro http_status_code_301_movedPermanently}
-  @Deprecated("Use [movedPermanently] instead.")
-  static const int Moved_Permanently = movedPermanently;
-
-  /// {@macro http_status_code_301_movedPermanently}
-  @Deprecated("Use [movedPermanently] instead.")
-  static const int MOVED_PERMANENTLY = Moved_Permanently;
 
   /// {@template http_status_code_302_found}
   /// **found = 302**.
@@ -354,14 +222,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int found = HttpStatus.found;
 
-  /// {@macro http_status_code_302_found}
-  @Deprecated("Use [found] instead.")
-  static const int Found = found;
-
-  /// {@macro http_status_code_302_found}
-  @Deprecated("Use [found] instead.")
-  static const int FOUND = Found;
-
   /// {@template http_status_code_302_movedTemporarily}
   /// **movedTemporarily = 302**.
   ///
@@ -374,16 +234,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int movedTemporarily = HttpStatus.movedTemporarily;
 
-  /// {@macro http_status_code_302_movedTemporarily}
-  @Deprecated("Use [movedTemporarily] instead.")
-  static const int Moved_Temporarily = movedTemporarily;
-  // Common alias for FOUND.
-
-  /// {@macro http_status_code_302_movedTemporarily}
-  @Deprecated("Use [movedTemporarily] instead.")
-  static const int MOVED_TEMPORARILY = movedTemporarily;
-  // Common alias for FOUND.
-
   /// {@template http_status_code_303_seeOther}
   /// **seeOther = 303**.
   ///
@@ -394,14 +244,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int seeOther = HttpStatus.seeOther;
-
-  /// {@macro http_status_code_303_seeOther}
-  @Deprecated("Use [seeOther] instead.")
-  static const int See_Other = seeOther;
-
-  /// {@macro http_status_code_303_seeOther}
-  @Deprecated("Use [seeOther] instead.")
-  static const int SEE_OTHER = See_Other;
 
   /// {@template http_status_code_304_notModified}
   /// **notModified = 304**.
@@ -414,14 +256,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int notModified = HttpStatus.notModified;
-
-  /// {@macro http_status_code_304_notModified}
-  @Deprecated("Use [notModified] instead.")
-  static const int Not_Modified = notModified;
-
-  /// {@macro http_status_code_304_notModified}
-  @Deprecated("Use [notModified] instead.")
-  static const int NOT_MODIFIED = Not_Modified;
 
   /// {@template http_status_code_305_useProxy}
   /// **useProxy = 305**.
@@ -437,14 +271,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int useProxy = HttpStatus.useProxy;
-
-  /// {@macro http_status_code_305_useProxy}
-  @Deprecated("Use [useProxy] instead.")
-  static const int Use_Proxy = useProxy;
-
-  /// {@macro http_status_code_305_useProxy}
-  @Deprecated("Use [useProxy] instead.")
-  static const int USE_PROXY = Use_Proxy;
 
   /// {@template http_status_code_307_temporaryRedirect}
   /// **temporaryRedirect = 307**.
@@ -464,14 +290,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int temporaryRedirect = HttpStatus.temporaryRedirect;
 
-  /// {@macro http_status_code_307_temporaryRedirect}
-  @Deprecated("Use [Temporary_Redirect] instead.")
-  static const int Temporary_Redirect = temporaryRedirect;
-
-  /// {@macro http_status_code_307_temporaryRedirect}
-  @Deprecated("Use [Temporary_Redirect] instead.")
-  static const int TEMPORARY_REDIRECT = Temporary_Redirect;
-
   /// {@template http_status_code_308_permanentRedirect}
   /// **permanentRedirect = 308**.
   ///
@@ -488,14 +306,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int permanentRedirect = HttpStatus.permanentRedirect;
 
-  /// {@macro http_status_code_308_permanentRedirect}
-  @Deprecated("Use [permanentRedirect] instead.")
-  static const int Permanent_Redirect = permanentRedirect;
-
-  /// {@macro http_status_code_308_permanentRedirect}
-  @Deprecated("Use [permanentRedirect] instead.")
-  static const int PERMANENT_REDIRECT = Permanent_Redirect;
-
   /// {@template http_status_code_400_badRequest}
   /// **badRequest = 400**.
   ///
@@ -506,14 +316,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int badRequest = HttpStatus.badRequest;
-
-  /// {@macro http_status_code_400_badRequest}
-  @Deprecated("Use [badRequest] instead.")
-  static const int Bad_Request = badRequest;
-
-  /// {@macro http_status_code_400_badRequest}
-  @Deprecated("Use [badRequest] instead.")
-  static const int BAD_REQUEST = badRequest;
 
   /// {@template http_status_code_401_unauthorized}
   /// **unauthorized = 401**.
@@ -527,14 +329,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int unauthorized = HttpStatus.unauthorized;
 
-  /// {@macro http_status_code_401_unauthorized}
-  @Deprecated("Use [unauthorized] instead.")
-  static const int Unauthorized = unauthorized;
-
-  /// {@macro http_status_code_401_unauthorized}
-  @Deprecated("Use [unauthorized] instead.")
-  static const int UNAUTHORIZED = Unauthorized;
-
   /// {@template http_status_code_402_paymentRequired}
   /// **paymentRequired = 402**.
   ///
@@ -547,14 +341,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int paymentRequired = HttpStatus.paymentRequired;
 
-  /// {@macro http_status_code_402_paymentRequired}
-  @Deprecated("Use [paymentRequired] instead.")
-  static const int Payment_Required = paymentRequired;
-
-  /// {@macro http_status_code_402_paymentRequired}
-  @Deprecated("Use [paymentRequired] instead.")
-  static const int PAYMENT_REQUIRED = paymentRequired;
-
   /// {@template http_status_code_403_forbidden}
   /// **forbidden = 403**.
   ///
@@ -566,14 +352,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int forbidden = HttpStatus.forbidden;
-
-  /// {@macro http_status_code_403_forbidden}
-  @Deprecated("Use [forbidden] instead.")
-  static const int Forbidden = forbidden;
-
-  /// {@macro http_status_code_403_forbidden}
-  @Deprecated("Use [forbidden] instead.")
-  static const int FORBIDDEN = forbidden;
 
   /// {@template http_status_code_404_notFound}
   /// **notFound = 404**.
@@ -595,14 +373,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int notFound = HttpStatus.notFound;
 
-  /// {@macro http_status_code_404_notFound}
-  @Deprecated("Use [notFound] instead.")
-  static const int Not_Found = notFound;
-
-  /// {@macro http_status_code_404_notFound}
-  @Deprecated("Use [notFound] instead.")
-  static const int NOT_FOUND = notFound;
-
   /// {@template http_status_code_405_methodNotAllowed}
   /// **methodNotAllowed = 405**.
   ///
@@ -616,14 +386,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int methodNotAllowed = HttpStatus.methodNotAllowed;
 
-  /// {@macro http_status_code_405_methodNotAllowed}
-  @Deprecated("Use [methodNotAllowed] instead.")
-  static const int Method_Not_Allowed = methodNotAllowed;
-
-  /// {@macro http_status_code_405_methodNotAllowed}
-  @Deprecated("Use [methodNotAllowed] instead.")
-  static const int METHOD_NOT_ALLOWED = methodNotAllowed;
-
   /// {@template http_status_code_406_notAcceptable}
   /// **notAcceptable = 406**.
   ///
@@ -636,14 +398,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int notAcceptable = HttpStatus.notAcceptable;
 
-  /// {@macro http_status_code_406_notAcceptable}
-  @Deprecated("Use [notAcceptable] instead.")
-  static const int Not_Acceptable = notAcceptable;
-
-  /// {@macro http_status_code_406_notAcceptable}
-  @Deprecated("Use [notAcceptable] instead.")
-  static const int NOT_ACCEPTABLE = notAcceptable;
-
   /// {@template http_status_code_407_proxyAuthenticationRequired}
   /// **proxyAuthenticationRequired = 407**.
   ///
@@ -654,14 +408,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int proxyAuthenticationRequired =
       HttpStatus.proxyAuthenticationRequired;
-
-  /// {@macro http_status_code_407_proxyAuthenticationRequired}
-  @Deprecated("Use [proxyAuthenticationRequired] instead.")
-  static const int Proxy_Authentication_Required = proxyAuthenticationRequired;
-
-  /// {@macro http_status_code_407_proxyAuthenticationRequired}
-  @Deprecated("Use [proxyAuthenticationRequired] instead.")
-  static const int PROXY_AUTHENTICATION_REQUIRED = proxyAuthenticationRequired;
 
   /// {@template http_status_code_408_requestTimeout}
   /// **requestTimeout = 408**.
@@ -683,14 +429,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int requestTimeout = HttpStatus.requestTimeout;
 
-  /// {@macro http_status_code_408_requestTimeout}
-  @Deprecated("Use [requestTimeout] instead.")
-  static const int Request_Timeout = requestTimeout;
-
-  /// {@macro http_status_code_408_requestTimeout}
-  @Deprecated("Use [requestTimeout] instead.")
-  static const int REQUEST_TIMEOUT = requestTimeout;
-
   /// {@template http_status_code_409_conflict}
   /// **conflict = 409**.
   ///
@@ -701,14 +439,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int conflict = HttpStatus.conflict;
-
-  /// {@macro http_status_code_409_conflict}
-  @Deprecated("Use [conflict] instead.")
-  static const int Conflict = conflict;
-
-  /// {@macro http_status_code_409_conflict}
-  @Deprecated("Use [conflict] instead.")
-  static const int CONFLICT = conflict;
 
   /// {@template http_status_code_410_gone}
   /// **gone = 410**.
@@ -729,14 +459,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int gone = HttpStatus.gone;
 
-  /// {@macro http_status_code_410_gone}
-  @Deprecated("Use [gone] instead.")
-  static const int Gone = gone;
-
-  /// {@macro http_status_code_410_gone}
-  @Deprecated("Use [gone] instead.")
-  static const int GONE = gone;
-
   /// {@template http_status_code_411_lengthRequired}
   /// **lengthRequired = 411**.
   ///
@@ -747,14 +469,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int lengthRequired = HttpStatus.lengthRequired;
-
-  /// {@macro http_status_code_411_lengthRequired}
-  @Deprecated("Use [lengthRequired] instead.")
-  static const int Length_Required = lengthRequired;
-
-  /// {@macro http_status_code_411_lengthRequired}
-  @Deprecated("Use [lengthRequired] instead.")
-  static const int LENGTH_REQUIRED = lengthRequired;
 
   /// {@template http_status_code_412_preconditionFailed}
   /// **preconditionFailed = 412**.
@@ -767,14 +481,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int preconditionFailed = HttpStatus.preconditionFailed;
 
-  /// {@macro http_status_code_412_preconditionFailed}
-  @Deprecated("Use [preconditionFailed] instead.")
-  static const int Precondition_Failed = preconditionFailed;
-
-  /// {@macro http_status_code_412_preconditionFailed}
-  @Deprecated("Use [preconditionFailed] instead.")
-  static const int PRECONDITION_FAILED = preconditionFailed;
-
   /// {@template http_status_code_413_requestEntityTooLarge}
   /// **requestEntityTooLarge = 413**.
   ///
@@ -785,22 +491,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int requestEntityTooLarge = HttpStatus.requestEntityTooLarge;
-
-  /// {@macro http_status_code_413_requestEntityTooLarge}
-  @Deprecated("Use [requestEntityTooLarge] instead.")
-  static const int Payload_Too_Large = requestEntityTooLarge;
-
-  /// {@macro http_status_code_413_requestEntityTooLarge}
-  @Deprecated("Use [requestEntityTooLarge] instead.")
-  static const int PAYLOAD_TOO_LARGE = requestEntityTooLarge;
-
-  /// {@macro http_status_code_413_requestEntityTooLarge}
-  @Deprecated("Use [requestEntityTooLarge] instead.")
-  static const int Request_Entity_Too_Large = requestEntityTooLarge;
-
-  /// {@macro http_status_code_413_requestEntityTooLarge}
-  @Deprecated("Use [requestEntityTooLarge] instead.")
-  static const int REQUEST_ENTITY_TOO_LARGE = requestEntityTooLarge;
 
   /// {@template http_status_code_414_requestUriTooLong}
   /// **requestUriTooLong = 414**.
@@ -813,22 +503,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int requestUriTooLong = HttpStatus.requestUriTooLong;
 
-  /// {@macro http_status_code_414_requestUriTooLong}
-  @Deprecated("Use [requestUriTooLong] instead.")
-  static const int RequestURI_Too_Long = requestUriTooLong;
-
-  /// {@macro http_status_code_414_requestUriTooLong}
-  @Deprecated("Use [requestUriTooLong] instead.")
-  static const int REQUESTURI_TOO_LONG = requestUriTooLong;
-
-  /// {@macro http_status_code_414_requestUriTooLong}
-  @Deprecated("Use [requestUriTooLong] instead.")
-  static const int Request_Uri_Too_Long = requestUriTooLong;
-
-  /// {@macro http_status_code_414_requestUriTooLong}
-  @Deprecated("Use [requestUriTooLong] instead.")
-  static const int REQUEST_URI_TOO_LONG = requestUriTooLong;
-
   /// {@template http_status_code_415_unsupportedMediaType}
   /// **unsupportedMediaType = 415**.
   ///
@@ -839,14 +513,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int unsupportedMediaType = HttpStatus.unsupportedMediaType;
-
-  /// {@macro http_status_code_415_unsupportedMediaType}
-  @Deprecated("Use [unsupportedMediaType] instead.")
-  static const int Unsupported_Media_Type = unsupportedMediaType;
-
-  /// {@macro http_status_code_415_unsupportedMediaType}
-  @Deprecated("Use [unsupportedMediaType] instead.")
-  static const int UNSUPPORTED_MEDIA_TYPE = unsupportedMediaType;
 
   /// {@template http_status_code_416_requestedRangeNotSatisfiable}
   /// **requestedRangeNotSatisfiable = 416**.
@@ -861,16 +527,6 @@ abstract class HttpStatusCode {
   static const int requestedRangeNotSatisfiable =
       HttpStatus.requestedRangeNotSatisfiable;
 
-  /// {@macro http_status_code_416_requestedRangeNotSatisfiable}
-  @Deprecated("Use [requestedRangeNotSatisfiable] instead.")
-  static const int Requested_Range_Not_Satisfiable =
-      requestedRangeNotSatisfiable;
-
-  /// {@macro http_status_code_416_requestedRangeNotSatisfiable}
-  @Deprecated("Use [requestedRangeNotSatisfiable] instead.")
-  static const int REQUESTED_RANGE_NOT_SATISFIABLE =
-      requestedRangeNotSatisfiable;
-
   /// {@template http_status_code_417_expectationFailed}
   /// **expectationFailed = 417**.
   ///
@@ -881,14 +537,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int expectationFailed = HttpStatus.expectationFailed;
-
-  /// {@macro http_status_code_417_expectationFailed}
-  @Deprecated("Use [expectationFailed] instead.")
-  static const int Expectation_Failed = expectationFailed;
-
-  /// {@macro http_status_code_417_expectationFailed}
-  @Deprecated("Use [expectationFailed] instead.")
-  static const int EXPECTATION_FAILED = expectationFailed;
 
   /// {@template http_status_code_418_imATeapot}
   /// **imATeapot = 418**.
@@ -946,14 +594,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int misdirectedRequest = HttpStatus.misdirectedRequest;
 
-  /// {@macro http_status_code_421_misdirectedRequest}
-  @Deprecated("Use [misdirectedRequest] instead.")
-  static const int Misdirected_Request = misdirectedRequest;
-
-  /// {@macro http_status_code_421_misdirectedRequest}
-  @Deprecated("Use [misdirectedRequest] instead.")
-  static const int MISDIRECTED_REQUEST = misdirectedRequest;
-
   /// {@template http_status_code_422_unprocessableEntity}
   /// **unprocessableEntity = 422**.
   ///
@@ -965,14 +605,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int unprocessableEntity = HttpStatus.unprocessableEntity;
 
-  /// {@macro http_status_code_422_unprocessableEntity}
-  @Deprecated("Use [unprocessableEntity] instead.")
-  static const int Unprocessable_Entity = unprocessableEntity;
-
-  /// {@macro http_status_code_422_unprocessableEntity}
-  @Deprecated("Use [unprocessableEntity] instead.")
-  static const int UNPROCESSABLE_ENTITY = unprocessableEntity;
-
   /// {@template http_status_code_423_locked}
   /// **locked = 423**.
   ///
@@ -983,14 +615,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int locked = HttpStatus.locked;
 
-  /// {@macro http_status_code_423_locked}
-  @Deprecated("Use [locked] instead.")
-  static const int Locked = locked;
-
-  /// {@macro http_status_code_423_locked}
-  @Deprecated("Use [locked] instead.")
-  static const int LOCKED = locked;
-
   /// {@template http_status_code_424_failedDependency}
   /// **failedDependency = 424**.
   ///
@@ -1000,14 +624,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int failedDependency = HttpStatus.failedDependency;
-
-  /// {@macro http_status_code_424_failedDependency}
-  @Deprecated("Use [failedDependency] instead.")
-  static const int Failed_Dependency = failedDependency;
-
-  /// {@macro http_status_code_424_failedDependency}
-  @Deprecated("Use [failedDependency] instead.")
-  static const int FAILED_DEPENDENCY = failedDependency;
 
   /// {@template http_status_code_426_upgradeRequired}
   /// **upgradeRequired = 426**.
@@ -1021,14 +637,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int upgradeRequired = HttpStatus.upgradeRequired;
-
-  /// {@macro http_status_code_426_upgradeRequired}
-  @Deprecated("Use [upgradeRequired] instead.")
-  static const int Upgrade_Required = upgradeRequired;
-
-  /// {@macro http_status_code_426_upgradeRequired}
-  @Deprecated("Use [upgradeRequired] instead.")
-  static const int UPGRADE_REQUIRED = upgradeRequired;
 
   /// {@template http_status_code_428_preconditionRequired}
   /// **preconditionRequired = 428**.
@@ -1045,14 +653,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int preconditionRequired = HttpStatus.preconditionRequired;
 
-  /// {@macro http_status_code_428_preconditionRequired}
-  @Deprecated("Use [preconditionRequired] instead.")
-  static const int Precondition_Required = preconditionRequired;
-
-  /// {@macro http_status_code_428_preconditionRequired}
-  @Deprecated("Use [preconditionRequired] instead.")
-  static const int PRECONDITION_REQUIRED = preconditionRequired;
-
   /// {@template http_status_code_429_tooManyRequests}
   /// **tooManyRequests = 429**.
   ///
@@ -1063,14 +663,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int tooManyRequests = HttpStatus.tooManyRequests;
-
-  /// {@macro http_status_code_429_tooManyRequests}
-  @Deprecated("Use [tooManyRequests] instead.")
-  static const int Too_Many_Requests = tooManyRequests;
-
-  /// {@macro http_status_code_429_tooManyRequests}
-  @Deprecated("Use [tooManyRequests] instead.")
-  static const int TOO_MANY_REQUESTS = tooManyRequests;
 
   /// {@template http_status_code_431_requestHeaderFieldsTooLarge}
   /// **requestHeaderFieldsTooLarge = 431**.
@@ -1085,16 +677,6 @@ abstract class HttpStatusCode {
   static const int requestHeaderFieldsTooLarge =
       HttpStatus.requestHeaderFieldsTooLarge;
 
-  /// {@macro http_status_code_431_requestHeaderFieldsTooLarge}
-  @Deprecated("Use [requestHeaderFieldsTooLarge] instead.")
-  static const int Request_Header_Fields_Too_Large =
-      requestHeaderFieldsTooLarge;
-
-  /// {@macro http_status_code_431_requestHeaderFieldsTooLarge}
-  @Deprecated("Use [requestHeaderFieldsTooLarge] instead.")
-  static const int REQUEST_HEADER_FIELDS_TOO_LARGE =
-      requestHeaderFieldsTooLarge;
-
   /// {@template http_status_code_444_connectionClosedWithoutResponse}
   /// **connectionClosedWithoutResponse = 444**.
   ///
@@ -1108,16 +690,6 @@ abstract class HttpStatusCode {
   static const int connectionClosedWithoutResponse =
       HttpStatus.connectionClosedWithoutResponse;
 
-  /// {@macro http_status_code_444_connectionClosedWithoutResponse}
-  @Deprecated("Use [connectionClosedWithoutResponse] instead.")
-  static const int Connection_Closed_Without_Response =
-      connectionClosedWithoutResponse;
-
-  /// {@macro http_status_code_444_connectionClosedWithoutResponse}
-  @Deprecated("Use [connectionClosedWithoutResponse] instead.")
-  static const int CONNECTION_CLOSED_WITHOUT_RESPONSE =
-      connectionClosedWithoutResponse;
-
   /// {@template http_status_code_451_unavailableForLegalReasons}
   /// **unavailableForLegalReasons = 451**.
   ///
@@ -1128,14 +700,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int unavailableForLegalReasons = 451;
-
-  /// {@macro http_status_code_451_unavailableForLegalReasons}
-  @Deprecated("Use [unavailableForLegalReasons] instead.")
-  static const int Unavailable_For_Legal_Reasons = unavailableForLegalReasons;
-
-  /// {@macro http_status_code_451_unavailableForLegalReasons}
-  @Deprecated("Use [unavailableForLegalReasons] instead.")
-  static const int UNAVAILABLE_FOR_LEGAL_REASONS = unavailableForLegalReasons;
 
   /// {@template http_status_code_499_clientClosedRequest}
   /// **clientClosedRequest = 499**.
@@ -1149,14 +713,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int clientClosedRequest = HttpStatus.clientClosedRequest;
 
-  /// {@macro http_status_code_499_clientClosedRequest}
-  @Deprecated("Use [clientClosedRequest] instead.")
-  static const int Client_Closed_Request = clientClosedRequest;
-
-  /// {@macro http_status_code_499_clientClosedRequest}
-  @Deprecated("Use [clientClosedRequest] instead.")
-  static const int CLIENT_CLOSED_REQUEST = clientClosedRequest;
-
   /// {@template http_status_code_500_internalServerError}
   /// **internalServerError = 500**.
   ///
@@ -1167,14 +723,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int internalServerError = HttpStatus.internalServerError;
-
-  /// {@macro http_status_code_500_internalServerError}
-  @Deprecated("Use [internalServerError] instead.")
-  static const int Internal_Server_Error = internalServerError;
-
-  /// {@macro http_status_code_500_internalServerError}
-  @Deprecated("Use [internalServerError] instead.")
-  static const int INTERNAL_SERVER_ERROR = internalServerError;
 
   /// {@template http_status_code_501_notImplemented}
   /// **notImplemented = 501**.
@@ -1189,14 +737,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int notImplemented = HttpStatus.notImplemented;
 
-  /// {@macro http_status_code_501_notImplemented}
-  @Deprecated("Use [notImplemented] instead.")
-  static const int Not_Implemented = notImplemented;
-
-  /// {@macro http_status_code_501_notImplemented}
-  @Deprecated("Use [notImplemented] instead.")
-  static const int NOT_IMPLEMENTED = notImplemented;
-
   /// {@template http_status_code_502_badGateway}
   /// **badGateway = 502**.
   ///
@@ -1207,14 +747,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int badGateway = HttpStatus.badGateway;
-
-  /// {@macro http_status_code_502_badGateway}
-  @Deprecated("Use [badGateway] instead.")
-  static const int Bad_Gateway = badGateway;
-
-  /// {@macro http_status_code_502_badGateway}
-  @Deprecated("Use [badGateway] instead.")
-  static const int BAD_GATEWAY = badGateway;
 
   /// {@template http_status_code_503_serviceUnavailable}
   /// **serviceUnavailable = 503**.
@@ -1238,14 +770,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int serviceUnavailable = HttpStatus.serviceUnavailable;
 
-  /// {@macro http_status_code_503_serviceUnavailable}
-  @Deprecated("Use [serviceUnavailable] instead.")
-  static const int Service_Unavailable = serviceUnavailable;
-
-  /// {@macro http_status_code_503_serviceUnavailable}
-  @Deprecated("Use [serviceUnavailable] instead.")
-  static const int SERVICE_UNAVAILABLE = serviceUnavailable;
-
   /// {@template http_status_code_504_gatewayTimeout}
   /// **gatewayTimeout = 504**.
   ///
@@ -1257,14 +781,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int gatewayTimeout = HttpStatus.gatewayTimeout;
 
-  /// {@macro http_status_code_504_gatewayTimeout}
-  @Deprecated("Use [gatewayTimeout] instead.")
-  static const int Gateway_Timeout = gatewayTimeout;
-
-  /// {@macro http_status_code_504_gatewayTimeout}
-  @Deprecated("Use [gatewayTimeout] instead.")
-  static const int GATEWAY_TIMEOUT = gatewayTimeout;
-
   /// {@template http_status_code_505_httpVersionNotSupported}
   /// **httpVersionNotSupported = 505**.
   ///
@@ -1274,14 +790,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int httpVersionNotSupported = HttpStatus.httpVersionNotSupported;
-
-  /// {@macro http_status_code_505_httpVersionNotSupported}
-  @Deprecated("Use [httpVersionNotSupported] instead.")
-  static const int HTTP_Version_Not_Supported = httpVersionNotSupported;
-
-  /// {@macro http_status_code_505_httpVersionNotSupported}
-  @Deprecated("Use [httpVersionNotSupported] instead.")
-  static const int HTTP_VERSION_NOT_SUPPORTED = httpVersionNotSupported;
 
   /// {@template http_status_code_506_variantAlsoNegotiates}
   /// **variantAlsoNegotiates = 506**.
@@ -1296,14 +804,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int variantAlsoNegotiates = HttpStatus.variantAlsoNegotiates;
 
-  /// {@macro http_status_code_506_variantAlsoNegotiates}
-  @Deprecated("Use [variantAlsoNegotiates] instead.")
-  static const int Variant_Also_Negotiates = variantAlsoNegotiates;
-
-  /// {@macro http_status_code_506_variantAlsoNegotiates}
-  @Deprecated("Use [variantAlsoNegotiates] instead.")
-  static const int VARIANT_ALSO_NEGOTIATES = variantAlsoNegotiates;
-
   /// {@template http_status_code_507_insufficientStorage}
   /// **insufficientStorage = 507**.
   ///
@@ -1317,14 +817,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int insufficientStorage = HttpStatus.insufficientStorage;
 
-  /// {@macro http_status_code_507_insufficientStorage}
-  @Deprecated("Use [insufficientStorage] instead.")
-  static const int Insufficient_Storage = insufficientStorage;
-
-  /// {@macro http_status_code_507_insufficientStorage}
-  @Deprecated("Use [insufficientStorage] instead.")
-  static const int INSUFFICIENT_STORAGE = insufficientStorage;
-
   /// {@template http_status_code_508_loopDetected}
   /// **loopDetected = 508**.
   ///
@@ -1335,14 +827,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int loopDetected = HttpStatus.loopDetected;
-
-  /// {@macro http_status_code_508_loopDetected}
-  @Deprecated("Use [loopDetected] instead.")
-  static const int Loop_Detected = loopDetected;
-
-  /// {@macro http_status_code_508_loopDetected}
-  @Deprecated("Use [loopDetected] instead.")
-  static const int LOOP_DETECTED = loopDetected;
 
   /// {@template http_status_code_510_notExtended}
   /// **notExtended = 510**.
@@ -1355,14 +839,6 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int notExtended = HttpStatus.notExtended;
 
-  /// {@macro http_status_code_510_notExtended}
-  @Deprecated("Use [notExtended] instead.")
-  static const int Not_Extended = notExtended;
-
-  /// {@macro http_status_code_510_notExtended}
-  @Deprecated("Use [notExtended] instead.")
-  static const int NOT_EXTENDED = notExtended;
-
   /// {@template http_status_code_511_networkAuthenticationRequired}
   /// **networkAuthenticationRequired = 511**.
   ///
@@ -1373,16 +849,6 @@ abstract class HttpStatusCode {
   ///
   /// {@endtemplate}
   static const int networkAuthenticationRequired = 511;
-
-  /// {@macro http_status_code_511_networkAuthenticationRequired}
-  @Deprecated("Use [networkAuthenticationRequired] instead.")
-  static const int Network_Authentication_Required =
-      networkAuthenticationRequired;
-
-  /// {@macro http_status_code_511_networkAuthenticationRequired}
-  @Deprecated("Use [networkAuthenticationRequired] instead.")
-  static const int NETWORK_AUTHENTICATION_REQUIRED =
-      networkAuthenticationRequired;
 
   /// {@template http_status_code_599_networkConnectTimeoutError}
   /// **networkConnectTimeoutError = 599**.
@@ -1395,12 +861,4 @@ abstract class HttpStatusCode {
   /// {@endtemplate}
   static const int networkConnectTimeoutError =
       HttpStatus.networkConnectTimeoutError;
-
-  /// {@macro http_status_code_599_networkConnectTimeoutError}
-  @Deprecated("Use [networkConnectTimeoutError] instead.")
-  static const int Network_Connect_Timeout_Error = networkConnectTimeoutError;
-
-  /// {@macro http_status_code_599_networkConnectTimeoutError}
-  @Deprecated("Use [networkConnectTimeoutError] instead.")
-  static const int NETWORK_CONNECT_TIMEOUT_ERROR = networkConnectTimeoutError;
 }

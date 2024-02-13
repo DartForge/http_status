@@ -3,10 +3,6 @@
 // All rights reserved. Use of this source code
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
-// ignore_for_file: deprecated_member_use_from_same_package
-// TODO: Remove this line `deprecated_member_use_from_same_package` in the next version (v3.0.0)
-// Reason: Deprecated member use from same package violates the lint rule. Refactor it to comply with the Dart style guide
-
 import 'package:http_status/http_status.dart';
 import 'package:test/test.dart';
 
@@ -22,7 +18,6 @@ void main() {
             equals('Client should continue with request.'),
           );
           expect(HttpStatus.code100Continue, HttpStatus.continue_);
-          expect(HttpStatus.Continue, HttpStatus.continue_);
         });
         test('101 Switching Protocol', () {
           expect(
@@ -41,7 +36,6 @@ void main() {
             HttpStatus.code101SwitchingProtocols,
             HttpStatus.switchingProtocols,
           );
-          expect(HttpStatus.Switching_Protocols, HttpStatus.switchingProtocols);
         });
         test('102 Processing', () {
           expect(
@@ -54,7 +48,6 @@ void main() {
             equals('Server has received and is processing the request.'),
           );
           expect(HttpStatus.code102Processing, HttpStatus.processing);
-          expect(HttpStatus.Processing, HttpStatus.processing);
         });
         test('103 Early Hints', () {
           expect(
@@ -81,7 +74,6 @@ void main() {
             equals('The request was fulfilled.'),
           );
           expect(HttpStatus.code200Ok, HttpStatus.ok);
-          expect(HttpStatus.OK, HttpStatus.ok);
         });
         test('201 Created', () {
           expect(HttpStatus.created.code, equals(HttpStatusCode.created));
@@ -94,7 +86,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code201Created, HttpStatus.created);
-          expect(HttpStatus.Created, HttpStatus.created);
         });
         test('202 Accepted', () {
           expect(HttpStatus.accepted.code, equals(HttpStatusCode.accepted));
@@ -109,7 +100,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code202Accepted, HttpStatus.accepted);
-          expect(HttpStatus.Accepted, HttpStatus.accepted);
         });
         test('203 Non-authoritative Information', () {
           expect(
@@ -132,10 +122,6 @@ void main() {
             HttpStatus.code203NonAuthoritativeInformation,
             HttpStatus.nonAuthoritativeInformation,
           );
-          expect(
-            HttpStatus.NonAuthoritative_Information,
-            HttpStatus.nonAuthoritativeInformation,
-          );
         });
         test('204 No Content', () {
           expect(HttpStatus.noContent.code, equals(HttpStatusCode.noContent));
@@ -149,7 +135,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code204NoContent, HttpStatus.noContent);
-          expect(HttpStatus.No_Content, HttpStatus.noContent);
         });
         test('205 Reset Content', () {
           expect(
@@ -167,7 +152,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code205ResetContent, HttpStatus.resetContent);
-          expect(HttpStatus.Reset_Content, HttpStatus.resetContent);
         });
         test('206 Partial Content', () {
           expect(
@@ -186,7 +170,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code206PartialContent, HttpStatus.partialContent);
-          expect(HttpStatus.Partial_Content, HttpStatus.partialContent);
         });
         test('207 Multi-Status', () {
           expect(
@@ -203,7 +186,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code207MultiStatus, HttpStatus.multiStatus);
-          expect(HttpStatus.MultiStatus, HttpStatus.multiStatus);
         });
         test('208 Already Reported', () {
           expect(
@@ -223,7 +205,6 @@ void main() {
             HttpStatus.code208AlreadyReported,
             HttpStatus.alreadyReported,
           );
-          expect(HttpStatus.Already_Reported, HttpStatus.alreadyReported);
         });
         test('226 IM Used', () {
           expect(HttpStatus.imUsed.code, equals(HttpStatusCode.imUsed));
@@ -238,7 +219,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code226ImUsed, HttpStatus.imUsed);
-          expect(HttpStatus.IM_Used, HttpStatus.imUsed);
         });
       });
       group('3xx Redirection-', () {
@@ -263,7 +243,6 @@ void main() {
             HttpStatus.code300MultipleChoices,
             HttpStatus.multipleChoices,
           );
-          expect(HttpStatus.Multiple_Choices, HttpStatus.multipleChoices);
         });
         test('301 Moved Permanently', () {
           expect(
@@ -286,7 +265,6 @@ void main() {
             HttpStatus.code301MovedPermanently,
             HttpStatus.movedPermanently,
           );
-          expect(HttpStatus.Moved_Permanently, HttpStatus.movedPermanently);
         });
         test('302 Found', () {
           expect(HttpStatus.found.code, equals(HttpStatusCode.found));
@@ -302,7 +280,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code302Found, HttpStatus.found);
-          expect(HttpStatus.Found, HttpStatus.found);
         });
         test('302 Moved Temporarily', () {
           expect(
@@ -327,7 +304,6 @@ void main() {
             HttpStatus.code302MovedTemporarily,
             HttpStatus.movedTemporarily,
           );
-          expect(HttpStatus.MovedTemporarily, HttpStatus.movedTemporarily);
         });
         test('303 See Other', () {
           expect(HttpStatus.seeOther.code, equals(HttpStatusCode.seeOther));
@@ -342,7 +318,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code303SeeOther, HttpStatus.seeOther);
-          expect(HttpStatus.See_Other, HttpStatus.seeOther);
         });
         test('305 Not Modified', () {
           expect(
@@ -359,7 +334,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code305NotModified, HttpStatus.notModified);
-          expect(HttpStatus.Not_Modified, HttpStatus.notModified);
         });
         test('305 Use Proxy', () {
           expect(HttpStatus.useProxy.code, equals(HttpStatusCode.useProxy));
@@ -373,7 +347,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code305UseProxy, HttpStatus.useProxy);
-          expect(HttpStatus.Use_Proxy, HttpStatus.useProxy);
         });
         test('307 Temporary Redirect', () {
           expect(
@@ -396,7 +369,6 @@ void main() {
             HttpStatus.code307TemporaryRedirect,
             HttpStatus.temporaryRedirect,
           );
-          expect(HttpStatus.Temporary_Redirect, HttpStatus.temporaryRedirect);
         });
         test('308 Permanent Redirect', () {
           expect(
@@ -419,7 +391,6 @@ void main() {
             HttpStatus.code308PermanentRedirect,
             HttpStatus.permanentRedirect,
           );
-          expect(HttpStatus.Permanent_Redirect, HttpStatus.permanentRedirect);
         });
       });
       group('4xx Client Error-', () {
@@ -439,7 +410,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code400BadRequest, HttpStatus.badRequest);
-          expect(HttpStatus.Bad_Request, HttpStatus.badRequest);
         });
         test('401 Unauthorized', () {
           expect(
@@ -455,7 +425,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code401Unauthorized, HttpStatus.unauthorized);
-          expect(HttpStatus.Unauthorized, HttpStatus.unauthorized);
         });
         test('402 Payment Required', () {
           expect(
@@ -471,7 +440,6 @@ void main() {
             HttpStatus.code402PaymentRequired,
             HttpStatus.paymentRequired,
           );
-          expect(HttpStatus.Payment_Required, HttpStatus.paymentRequired);
         });
         test('403 Forbidden', () {
           expect(HttpStatus.forbidden.code, equals(HttpStatusCode.forbidden));
@@ -484,7 +452,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code403Forbidden, HttpStatus.forbidden);
-          expect(HttpStatus.Forbidden, HttpStatus.forbidden);
         });
         test('404 Not Found', () {
           expect(HttpStatus.notFound.code, equals(HttpStatusCode.notFound));
@@ -498,7 +465,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code404NotFound, HttpStatus.notFound);
-          expect(HttpStatus.Not_Found, HttpStatus.notFound);
         });
         test('405 Method Not Allowed', () {
           expect(
@@ -520,7 +486,6 @@ void main() {
             HttpStatus.code405MethodNotAllowed,
             HttpStatus.methodNotAllowed,
           );
-          expect(HttpStatus.Method_Not_Allowed, HttpStatus.methodNotAllowed);
         });
         test('406 Not Acceptable', () {
           expect(
@@ -539,7 +504,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code406NotAcceptable, HttpStatus.notAcceptable);
-          expect(HttpStatus.Not_Acceptable, HttpStatus.notAcceptable);
         });
         test('407 Proxy Authentication Required', () {
           expect(
@@ -561,10 +525,6 @@ void main() {
             HttpStatus.code407ProxyAuthenticationRequired,
             HttpStatus.proxyAuthenticationRequired,
           );
-          expect(
-            HttpStatus.Proxy_Authentication_Required,
-            HttpStatus.proxyAuthenticationRequired,
-          );
         });
         test('408 Request Timeout', () {
           expect(
@@ -580,7 +540,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code408RequestTimeout, HttpStatus.requestTimeout);
-          expect(HttpStatus.Request_Timeout, HttpStatus.requestTimeout);
         });
         test('409 Conflict', () {
           expect(HttpStatus.conflict.code, equals(HttpStatusCode.conflict));
@@ -595,7 +554,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code409Conflict, HttpStatus.conflict);
-          expect(HttpStatus.Conflict, HttpStatus.conflict);
         });
         test('410 Gone', () {
           expect(HttpStatus.gone.code, equals(HttpStatusCode.gone));
@@ -608,7 +566,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code410Gone, HttpStatus.gone);
-          expect(HttpStatus.Gone, HttpStatus.gone);
         });
         test('411 Length Required', () {
           expect(
@@ -624,7 +581,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code411LengthRequired, HttpStatus.lengthRequired);
-          expect(HttpStatus.Length_Required, HttpStatus.lengthRequired);
         });
         test('412 Precondition Failed', () {
           expect(
@@ -646,7 +602,6 @@ void main() {
             HttpStatus.code412PreconditionFailed,
             HttpStatus.preconditionFailed,
           );
-          expect(HttpStatus.Precondition_Failed, HttpStatus.preconditionFailed);
         });
         test('413 Payload Too Large', () {
           expect(
@@ -667,10 +622,6 @@ void main() {
           );
           expect(
             HttpStatus.code413RequestEntityTooLarge,
-            HttpStatus.requestEntityTooLarge,
-          );
-          expect(
-            HttpStatus.Payload_Too_Large,
             HttpStatus.requestEntityTooLarge,
           );
         });
@@ -695,7 +646,6 @@ void main() {
             HttpStatus.code414RequestUriTooLong,
             HttpStatus.requestUriTooLong,
           );
-          expect(HttpStatus.RequestURI_Too_Long, HttpStatus.requestUriTooLong);
         });
         test('415 Unsupported Media Type', () {
           expect(
@@ -716,10 +666,6 @@ void main() {
           );
           expect(
             HttpStatus.code415UnsupportedMediaType,
-            HttpStatus.unsupportedMediaType,
-          );
-          expect(
-            HttpStatus.Unsupported_Media_Type,
             HttpStatus.unsupportedMediaType,
           );
         });
@@ -745,10 +691,6 @@ void main() {
             HttpStatus.code416RequestedRangeNotSatisfiable,
             HttpStatus.requestedRangeNotSatisfiable,
           );
-          expect(
-            HttpStatus.Requested_Range_Not_Satisfiable,
-            HttpStatus.requestedRangeNotSatisfiable,
-          );
         });
         test('417 Expectation Failed', () {
           expect(
@@ -770,7 +712,6 @@ void main() {
             HttpStatus.code417ExpectationFailed,
             HttpStatus.expectationFailed,
           );
-          expect(HttpStatus.Expectation_Failed, HttpStatus.expectationFailed);
         });
         test('418 I\'m A Teapot', () {
           expect(HttpStatus.imATeapot.code, equals(HttpStatusCode.imATeapot));
@@ -787,7 +728,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code418ImATeapot, HttpStatus.imATeapot);
-          expect(HttpStatus.ImATeapot, HttpStatus.imATeapot);
         });
         test('419 Insufficient Space On Resource', () {
           expect(
@@ -813,10 +753,6 @@ void main() {
             HttpStatus.code419InsufficientSpaceOnResource,
             HttpStatus.insufficientSpaceOnResource,
           );
-          expect(
-            HttpStatus.InsufficientSpaceOnResource,
-            HttpStatus.insufficientSpaceOnResource,
-          );
         });
         test('420 Method Failure', () {
           expect(
@@ -836,7 +772,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code420MethodFailure, HttpStatus.methodFailure);
-          expect(HttpStatus.MethodFailure, HttpStatus.methodFailure);
         });
         test('421 Misdirected Request', () {
           expect(
@@ -860,7 +795,6 @@ void main() {
             HttpStatus.code421MisdirectedRequest,
             HttpStatus.misdirectedRequest,
           );
-          expect(HttpStatus.Misdirected_Request, HttpStatus.misdirectedRequest);
         });
         test('422 Unprocessable Entity', () {
           expect(
@@ -886,10 +820,6 @@ void main() {
             HttpStatus.code422UnprocessableEntity,
             HttpStatus.unprocessableEntity,
           );
-          expect(
-            HttpStatus.Unprocessable_Entity,
-            HttpStatus.unprocessableEntity,
-          );
         });
         test('423 Locked', () {
           expect(HttpStatus.locked.code, equals(HttpStatusCode.locked));
@@ -901,7 +831,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code423Locked, HttpStatus.locked);
-          expect(HttpStatus.Locked, HttpStatus.locked);
         });
         test('424 Failed Dependency', () {
           expect(
@@ -921,7 +850,6 @@ void main() {
             HttpStatus.code424FailedDependency,
             HttpStatus.failedDependency,
           );
-          expect(HttpStatus.Failed_Dependency, HttpStatus.failedDependency);
         });
         test('426 Upgrade Required', () {
           expect(
@@ -938,7 +866,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code426UpgradeRequired, HttpStatus.upgradeRequired);
-          expect(HttpStatus.Upgrade_Required, HttpStatus.upgradeRequired);
         });
         test('428 Precondition Required', () {
           expect(
@@ -957,10 +884,6 @@ void main() {
             HttpStatus.code428PreconditionRequired,
             HttpStatus.preconditionRequired,
           );
-          expect(
-            HttpStatus.Precondition_Required,
-            HttpStatus.preconditionRequired,
-          );
         });
         test('429 Too Many Requests', () {
           expect(
@@ -976,7 +899,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code429TooManyRequests, HttpStatus.tooManyRequests);
-          expect(HttpStatus.Too_Many_Requests, HttpStatus.tooManyRequests);
         });
         test('431 Request Header Fields Too Large', () {
           expect(
@@ -998,10 +920,6 @@ void main() {
           );
           expect(
             HttpStatus.code431RequestHeaderFieldsTooLarge,
-            HttpStatus.requestHeaderFieldsTooLarge,
-          );
-          expect(
-            HttpStatus.Request_Header_Fields_Too_Large,
             HttpStatus.requestHeaderFieldsTooLarge,
           );
         });
@@ -1026,10 +944,6 @@ void main() {
             HttpStatus.code444ConnectionClosedWithoutResponse,
             HttpStatus.connectionClosedWithoutResponse,
           );
-          expect(
-            HttpStatus.Connection_Closed_Without_Response,
-            HttpStatus.connectionClosedWithoutResponse,
-          );
         });
         test('451 Unavailable For Legal Reasons', () {
           expect(
@@ -1049,10 +963,6 @@ void main() {
           );
           expect(
             HttpStatus.code451UnavailableForLegalReasons,
-            HttpStatus.unavailableForLegalReasons,
-          );
-          expect(
-            HttpStatus.Unavailable_For_Legal_Reasons,
             HttpStatus.unavailableForLegalReasons,
           );
         });
@@ -1075,10 +985,6 @@ void main() {
           );
           expect(
             HttpStatus.code499ClientClosedRequest,
-            HttpStatus.clientClosedRequest,
-          );
-          expect(
-            HttpStatus.Client_Closed_Request,
             HttpStatus.clientClosedRequest,
           );
         });
@@ -1104,10 +1010,6 @@ void main() {
             HttpStatus.code500InternalServerError,
             HttpStatus.internalServerError,
           );
-          expect(
-            HttpStatus.Internal_Server_Error,
-            HttpStatus.internalServerError,
-          );
         });
         test('501 Not Implemented', () {
           expect(
@@ -1123,7 +1025,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code501NotImplemented, HttpStatus.notImplemented);
-          expect(HttpStatus.Not_Implemented, HttpStatus.notImplemented);
         });
         test('502 Bad Gateway', () {
           expect(HttpStatus.badGateway.code, equals(HttpStatusCode.badGateway));
@@ -1137,7 +1038,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code502BadGateway, HttpStatus.badGateway);
-          expect(HttpStatus.Bad_Gateway, HttpStatus.badGateway);
         });
         test('503 Service Unavailable', () {
           expect(
@@ -1160,7 +1060,6 @@ void main() {
             HttpStatus.code503ServiceUnavailable,
             HttpStatus.serviceUnavailable,
           );
-          expect(HttpStatus.Service_Unavailable, HttpStatus.serviceUnavailable);
         });
         test('504 Gateway Timeout', () {
           expect(
@@ -1177,7 +1076,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code504GatewayTimeout, HttpStatus.gatewayTimeout);
-          expect(HttpStatus.Gateway_Timeout, HttpStatus.gatewayTimeout);
         });
         test('505 HTTP Version Not Supported', () {
           expect(
@@ -1197,10 +1095,6 @@ void main() {
           );
           expect(
             HttpStatus.code505HttpVersionNotSupported,
-            HttpStatus.httpVersionNotSupported,
-          );
-          expect(
-            HttpStatus.HTTP_Version_Not_Supported,
             HttpStatus.httpVersionNotSupported,
           );
         });
@@ -1226,10 +1120,6 @@ void main() {
             HttpStatus.code506VariantAlsoNegotiates,
             HttpStatus.variantAlsoNegotiates,
           );
-          expect(
-            HttpStatus.Variant_Also_Negotiates,
-            HttpStatus.variantAlsoNegotiates,
-          );
         });
         test('507 Insufficient Storage', () {
           expect(
@@ -1252,10 +1142,6 @@ void main() {
             HttpStatus.code507InsufficientStorage,
             HttpStatus.insufficientStorage,
           );
-          expect(
-            HttpStatus.Insufficient_Storage,
-            HttpStatus.insufficientStorage,
-          );
         });
         test('508 Loop Detected', () {
           expect(
@@ -1273,7 +1159,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code508LoopDetected, HttpStatus.loopDetected);
-          expect(HttpStatus.Loop_Detected, HttpStatus.loopDetected);
         });
         test('510 Not Extended', () {
           expect(
@@ -1290,7 +1175,6 @@ void main() {
             ),
           );
           expect(HttpStatus.code510NotExtended, HttpStatus.notExtended);
-          expect(HttpStatus.Not_Extended, HttpStatus.notExtended);
         });
         test('511 Network Authentication Required', () {
           expect(
@@ -1307,10 +1191,6 @@ void main() {
           );
           expect(
             HttpStatus.code511NetworkAuthenticationRequired,
-            HttpStatus.networkAuthenticationRequired,
-          );
-          expect(
-            HttpStatus.Network_Authentication_Required,
             HttpStatus.networkAuthenticationRequired,
           );
         });
@@ -1333,10 +1213,6 @@ void main() {
           );
           expect(
             HttpStatus.code599NetworkConnectTimeoutError,
-            HttpStatus.networkConnectTimeoutError,
-          );
-          expect(
-            HttpStatus.Network_Connect_Timeout_Error,
             HttpStatus.networkConnectTimeoutError,
           );
         });
