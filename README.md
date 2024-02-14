@@ -14,7 +14,7 @@ Constants enumerating the HTTP status codes in Dart. All status codes defined in
 
 ## Codes
 
-| Code | Http Status Name                   | Http Status (v1.x - v2.x Removed)                                                               | Http Status (v2.x - v3.x)       |
+| Code | Http Status Name                   | Http Status (v1.x - v2.x Deprecated)                                                            | Http Status (v2.x - v3.x)       |
 | ---- | ---------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------- |
 | 100  | Continue                           | Continue                                  / CONTINUE                                            | continue_                       |
 | 101  | Switching Protocols                | Switching_Protocols                       / SWITCHING_PROTOCOLS                                 | switchingProtocols              |
