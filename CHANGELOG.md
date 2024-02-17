@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.2.0] - 2024-02-17
+
+### Fixed - 3.2.0
+
+- Replace HttpStatus constants with direct values for support web
+
 ## [3.1.0] - 2024-02-17
 
 ### Added - 3.1.0

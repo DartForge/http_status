@@ -3,8 +3,6 @@
 // All rights reserved. Use of this source code
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
-import 'dart:io';
-
 /// HTTP Status Codes.
 abstract class HttpStatusCode {
   /// {@template http_status_code_100_continue_}
@@ -17,7 +15,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.2.1
   ///
   /// {@endtemplate}
-  static const int continue_ = HttpStatus.continue_;
+  static const int continue_ = 100;
 
   /// {@template http_status_code_101_switchingProtocols}
   /// **switchingProtocols = 101**.
@@ -28,7 +26,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.2.2
   ///
   /// {@endtemplate}
-  static const int switchingProtocols = HttpStatus.switchingProtocols;
+  static const int switchingProtocols = 101;
 
   /// {@template http_status_code_102_processing}
   /// **processing = 102**.
@@ -39,7 +37,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc2518#section-10.1
   ///
   /// {@endtemplate}
-  static const int processing = HttpStatus.processing;
+  static const int processing = 102;
 
   /// {@template http_status_code_103_earlyHints}
   /// **earlyHints = 103**.
@@ -73,7 +71,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.3.1
   ///
   /// {@endtemplate}
-  static const int ok = HttpStatus.ok;
+  static const int ok = 200;
 
   /// {@template http_status_code_201_created}
   /// **created = 201**.
@@ -85,7 +83,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.3.2
   ///
   /// {@endtemplate}
-  static const int created = HttpStatus.created;
+  static const int created = 201;
 
   /// {@template http_status_code_202_accepted}
   /// **accepted = 202**.
@@ -99,7 +97,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.3.3
   ///
   /// {@endtemplate}
-  static const int accepted = HttpStatus.accepted;
+  static const int accepted = 202;
 
   /// {@template http_status_code_203_nonAuthoritativeInformation}
   /// **nonAuthoritativeInformation = 203**.
@@ -114,8 +112,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.3.4
   ///
   /// {@endtemplate}
-  static const int nonAuthoritativeInformation =
-      HttpStatus.nonAuthoritativeInformation;
+  static const int nonAuthoritativeInformation = 203;
 
   /// {@template http_status_code_204_noContent}
   /// **noContent = 204**.
@@ -127,7 +124,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.3.5
   ///
   /// {@endtemplate}
-  static const int noContent = HttpStatus.noContent;
+  static const int noContent = 204;
 
   /// {@template http_status_code_205_resetContent}
   /// **resetContent = 205**.
@@ -138,7 +135,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.3.6
   ///
   /// {@endtemplate}
-  static const int resetContent = HttpStatus.resetContent;
+  static const int resetContent = 205;
 
   /// {@template http_status_code_206_partialContent}
   /// **partialContent = 206**.
@@ -149,7 +146,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7233#section-4.1
   ///
   /// {@endtemplate}
-  static const int partialContent = HttpStatus.partialContent;
+  static const int partialContent = 206;
 
   /// {@template http_status_code_207_multiStatus}
   /// **multiStatus = 207**.
@@ -160,7 +157,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc2518#section-10.2
   ///
   /// {@endtemplate}
-  static const int multiStatus = HttpStatus.multiStatus;
+  static const int multiStatus = 207;
 
   /// {@template http_status_code_208_alreadyReported}
   /// **alreadyReported = 208**.
@@ -172,7 +169,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc5842#section-7.1
   ///
   /// {@endtemplate}
-  static const int alreadyReported = HttpStatus.alreadyReported;
+  static const int alreadyReported = 208;
 
   /// {@template http_status_code_226_imUsed}
   /// **imUsed = 226**.
@@ -184,7 +181,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc3229#section-10.4.1
   ///
   /// {@endtemplate}
-  static const int imUsed = HttpStatus.imUsed;
+  static const int imUsed = 226;
 
   /// {@template http_status_code_300_multipleChoices}
   /// **multipleChoices = 300**.
@@ -197,7 +194,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.4.1
   ///
   /// {@endtemplate}
-  static const int multipleChoices = HttpStatus.multipleChoices;
+  static const int multipleChoices = 300;
 
   /// {@template http_status_code_301_movedPermanently}
   /// **movedPermanently = 301**.
@@ -208,7 +205,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.4.2
   ///
   /// {@endtemplate}
-  static const int movedPermanently = HttpStatus.movedPermanently;
+  static const int movedPermanently = 301;
 
   /// {@template http_status_code_302_found}
   /// **found = 302**.
@@ -220,7 +217,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.4.3
   ///
   /// {@endtemplate}
-  static const int found = HttpStatus.found;
+  static const int found = 302;
 
   /// {@template http_status_code_302_movedTemporarily}
   /// **movedTemporarily = 302**.
@@ -232,7 +229,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.4.3
   ///
   /// {@endtemplate}
-  static const int movedTemporarily = HttpStatus.movedTemporarily;
+  static const int movedTemporarily = 302;
 
   /// {@template http_status_code_303_seeOther}
   /// **seeOther = 303**.
@@ -243,7 +240,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.4.4
   ///
   /// {@endtemplate}
-  static const int seeOther = HttpStatus.seeOther;
+  static const int seeOther = 303;
 
   /// {@template http_status_code_304_notModified}
   /// **notModified = 304**.
@@ -255,7 +252,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7232#section-4.1
   ///
   /// {@endtemplate}
-  static const int notModified = HttpStatus.notModified;
+  static const int notModified = 304;
 
   /// {@template http_status_code_305_useProxy}
   /// **useProxy = 305**.
@@ -270,7 +267,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.4.6
   ///
   /// {@endtemplate}
-  static const int useProxy = HttpStatus.useProxy;
+  static const int useProxy = 305;
 
   /// {@template http_status_code_307_temporaryRedirect}
   /// **temporaryRedirect = 307**.
@@ -288,7 +285,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.4.7
   ///
   /// {@endtemplate}
-  static const int temporaryRedirect = HttpStatus.temporaryRedirect;
+  static const int temporaryRedirect = 307;
 
   /// {@template http_status_code_308_permanentRedirect}
   /// **permanentRedirect = 308**.
@@ -304,7 +301,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7538#section-3
   ///
   /// {@endtemplate}
-  static const int permanentRedirect = HttpStatus.permanentRedirect;
+  static const int permanentRedirect = 308;
 
   /// {@template http_status_code_400_badRequest}
   /// **badRequest = 400**.
@@ -315,7 +312,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.5.1
   ///
   /// {@endtemplate}
-  static const int badRequest = HttpStatus.badRequest;
+  static const int badRequest = 400;
 
   /// {@template http_status_code_401_unauthorized}
   /// **unauthorized = 401**.
@@ -327,7 +324,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7235#section-3.1
   ///
   /// {@endtemplate}
-  static const int unauthorized = HttpStatus.unauthorized;
+  static const int unauthorized = 401;
 
   /// {@template http_status_code_402_paymentRequired}
   /// **paymentRequired = 402**.
@@ -339,7 +336,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.5.2
   ///
   /// {@endtemplate}
-  static const int paymentRequired = HttpStatus.paymentRequired;
+  static const int paymentRequired = 402;
 
   /// {@template http_status_code_403_forbidden}
   /// **forbidden = 403**.
@@ -351,7 +348,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.5.3
   ///
   /// {@endtemplate}
-  static const int forbidden = HttpStatus.forbidden;
+  static const int forbidden = 403;
 
   /// {@template http_status_code_404_notFound}
   /// **notFound = 404**.
@@ -371,7 +368,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.5.4
   ///
   /// {@endtemplate}
-  static const int notFound = HttpStatus.notFound;
+  static const int notFound = 404;
 
   /// {@template http_status_code_405_methodNotAllowed}
   /// **methodNotAllowed = 405**.
@@ -384,7 +381,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.5.5
   ///
   /// {@endtemplate}
-  static const int methodNotAllowed = HttpStatus.methodNotAllowed;
+  static const int methodNotAllowed = 405;
 
   /// {@template http_status_code_406_notAcceptable}
   /// **notAcceptable = 406**.
@@ -396,7 +393,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.5.6
   ///
   /// {@endtemplate}
-  static const int notAcceptable = HttpStatus.notAcceptable;
+  static const int notAcceptable = 406;
 
   /// {@template http_status_code_407_proxyAuthenticationRequired}
   /// **proxyAuthenticationRequired = 407**.
@@ -406,8 +403,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7235#section-3.2
   ///
   /// {@endtemplate}
-  static const int proxyAuthenticationRequired =
-      HttpStatus.proxyAuthenticationRequired;
+  static const int proxyAuthenticationRequired = 407;
 
   /// {@template http_status_code_408_requestTimeout}
   /// **requestTimeout = 408**.
@@ -427,7 +423,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.5.7
   ///
   /// {@endtemplate}
-  static const int requestTimeout = HttpStatus.requestTimeout;
+  static const int requestTimeout = 408;
 
   /// {@template http_status_code_409_conflict}
   /// **conflict = 409**.
@@ -438,7 +434,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.5.8
   ///
   /// {@endtemplate}
-  static const int conflict = HttpStatus.conflict;
+  static const int conflict = 409;
 
   /// {@template http_status_code_410_gone}
   /// **gone = 410**.
@@ -457,7 +453,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.5.9
   ///
   /// {@endtemplate}
-  static const int gone = HttpStatus.gone;
+  static const int gone = 410;
 
   /// {@template http_status_code_411_lengthRequired}
   /// **lengthRequired = 411**.
@@ -468,7 +464,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.5.10
   ///
   /// {@endtemplate}
-  static const int lengthRequired = HttpStatus.lengthRequired;
+  static const int lengthRequired = 411;
 
   /// {@template http_status_code_412_preconditionFailed}
   /// **preconditionFailed = 412**.
@@ -479,7 +475,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7232#section-4.2
   ///
   /// {@endtemplate}
-  static const int preconditionFailed = HttpStatus.preconditionFailed;
+  static const int preconditionFailed = 412;
 
   /// {@template http_status_code_413_requestEntityTooLarge}
   /// **requestEntityTooLarge = 413**.
@@ -490,7 +486,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.5.11
   ///
   /// {@endtemplate}
-  static const int requestEntityTooLarge = HttpStatus.requestEntityTooLarge;
+  static const int requestEntityTooLarge = 413;
 
   /// {@template http_status_code_414_requestUriTooLong}
   /// **requestUriTooLong = 414**.
@@ -501,7 +497,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.5.12
   ///
   /// {@endtemplate}
-  static const int requestUriTooLong = HttpStatus.requestUriTooLong;
+  static const int requestUriTooLong = 414;
 
   /// {@template http_status_code_415_unsupportedMediaType}
   /// **unsupportedMediaType = 415**.
@@ -512,7 +508,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.5.13
   ///
   /// {@endtemplate}
-  static const int unsupportedMediaType = HttpStatus.unsupportedMediaType;
+  static const int unsupportedMediaType = 415;
 
   /// {@template http_status_code_416_requestedRangeNotSatisfiable}
   /// **requestedRangeNotSatisfiable = 416**.
@@ -524,8 +520,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7233#section-4.4
   ///
   /// {@endtemplate}
-  static const int requestedRangeNotSatisfiable =
-      HttpStatus.requestedRangeNotSatisfiable;
+  static const int requestedRangeNotSatisfiable = 416;
 
   /// {@template http_status_code_417_expectationFailed}
   /// **expectationFailed = 417**.
@@ -536,7 +531,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.5.14
   ///
   /// {@endtemplate}
-  static const int expectationFailed = HttpStatus.expectationFailed;
+  static const int expectationFailed = 417;
 
   /// {@template http_status_code_418_imATeapot}
   /// **imATeapot = 418**.
@@ -592,7 +587,7 @@ abstract class HttpStatusCode {
   /// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/421
   ///
   /// {@endtemplate}
-  static const int misdirectedRequest = HttpStatus.misdirectedRequest;
+  static const int misdirectedRequest = 421;
 
   /// {@template http_status_code_422_unprocessableEntity}
   /// **unprocessableEntity = 422**.
@@ -603,7 +598,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc2518#section-10.3
   ///
   /// {@endtemplate}
-  static const int unprocessableEntity = HttpStatus.unprocessableEntity;
+  static const int unprocessableEntity = 422;
 
   /// {@template http_status_code_423_locked}
   /// **locked = 423**.
@@ -613,7 +608,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc2518#section-10.4
   ///
   /// {@endtemplate}
-  static const int locked = HttpStatus.locked;
+  static const int locked = 423;
 
   /// {@template http_status_code_424_failedDependency}
   /// **failedDependency = 424**.
@@ -623,7 +618,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc2518#section-10.5
   ///
   /// {@endtemplate}
-  static const int failedDependency = HttpStatus.failedDependency;
+  static const int failedDependency = 424;
 
   /// {@template http_status_code_426_upgradeRequired}
   /// **upgradeRequired = 426**.
@@ -636,7 +631,7 @@ abstract class HttpStatusCode {
   /// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/426
   ///
   /// {@endtemplate}
-  static const int upgradeRequired = HttpStatus.upgradeRequired;
+  static const int upgradeRequired = 426;
 
   /// {@template http_status_code_428_preconditionRequired}
   /// **preconditionRequired = 428**.
@@ -651,7 +646,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc6585#section-3
   ///
   /// {@endtemplate}
-  static const int preconditionRequired = HttpStatus.preconditionRequired;
+  static const int preconditionRequired = 428;
 
   /// {@template http_status_code_429_tooManyRequests}
   /// **tooManyRequests = 429**.
@@ -662,7 +657,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc6585#section-4
   ///
   /// {@endtemplate}
-  static const int tooManyRequests = HttpStatus.tooManyRequests;
+  static const int tooManyRequests = 429;
 
   /// {@template http_status_code_431_requestHeaderFieldsTooLarge}
   /// **requestHeaderFieldsTooLarge = 431**.
@@ -674,8 +669,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc6585#section-5
   ///
   /// {@endtemplate}
-  static const int requestHeaderFieldsTooLarge =
-      HttpStatus.requestHeaderFieldsTooLarge;
+  static const int requestHeaderFieldsTooLarge = 431;
 
   /// {@template http_status_code_444_connectionClosedWithoutResponse}
   /// **connectionClosedWithoutResponse = 444**.
@@ -687,8 +681,7 @@ abstract class HttpStatusCode {
   /// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/444
   ///
   /// {@endtemplate}
-  static const int connectionClosedWithoutResponse =
-      HttpStatus.connectionClosedWithoutResponse;
+  static const int connectionClosedWithoutResponse = 444;
 
   /// {@template http_status_code_451_unavailableForLegalReasons}
   /// **unavailableForLegalReasons = 451**.
@@ -711,7 +704,7 @@ abstract class HttpStatusCode {
   /// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/499
   ///
   /// {@endtemplate}
-  static const int clientClosedRequest = HttpStatus.clientClosedRequest;
+  static const int clientClosedRequest = 499;
 
   /// {@template http_status_code_500_internalServerError}
   /// **internalServerError = 500**.
@@ -722,7 +715,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.6.1
   ///
   /// {@endtemplate}
-  static const int internalServerError = HttpStatus.internalServerError;
+  static const int internalServerError = 500;
 
   /// {@template http_status_code_501_notImplemented}
   /// **notImplemented = 501**.
@@ -735,7 +728,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.6.2
   ///
   /// {@endtemplate}
-  static const int notImplemented = HttpStatus.notImplemented;
+  static const int notImplemented = 501;
 
   /// {@template http_status_code_502_badGateway}
   /// **badGateway = 502**.
@@ -746,7 +739,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.6.3
   ///
   /// {@endtemplate}
-  static const int badGateway = HttpStatus.badGateway;
+  static const int badGateway = 502;
 
   /// {@template http_status_code_503_serviceUnavailable}
   /// **serviceUnavailable = 503**.
@@ -768,7 +761,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.6.4
   ///
   /// {@endtemplate}
-  static const int serviceUnavailable = HttpStatus.serviceUnavailable;
+  static const int serviceUnavailable = 503;
 
   /// {@template http_status_code_504_gatewayTimeout}
   /// **gatewayTimeout = 504**.
@@ -779,7 +772,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.6.5
   ///
   /// {@endtemplate}
-  static const int gatewayTimeout = HttpStatus.gatewayTimeout;
+  static const int gatewayTimeout = 504;
 
   /// {@template http_status_code_505_httpVersionNotSupported}
   /// **httpVersionNotSupported = 505**.
@@ -789,7 +782,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc7231#section-6.6.6
   ///
   /// {@endtemplate}
-  static const int httpVersionNotSupported = HttpStatus.httpVersionNotSupported;
+  static const int httpVersionNotSupported = 505;
 
   /// {@template http_status_code_506_variantAlsoNegotiates}
   /// **variantAlsoNegotiates = 506**.
@@ -802,7 +795,7 @@ abstract class HttpStatusCode {
   /// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/506
   ///
   /// {@endtemplate}
-  static const int variantAlsoNegotiates = HttpStatus.variantAlsoNegotiates;
+  static const int variantAlsoNegotiates = 506;
 
   /// {@template http_status_code_507_insufficientStorage}
   /// **insufficientStorage = 507**.
@@ -815,7 +808,7 @@ abstract class HttpStatusCode {
   /// https://tools.ietf.org/html/rfc2518#section-10.6
   ///
   /// {@endtemplate}
-  static const int insufficientStorage = HttpStatus.insufficientStorage;
+  static const int insufficientStorage = 507;
 
   /// {@template http_status_code_508_loopDetected}
   /// **loopDetected = 508**.
@@ -826,7 +819,7 @@ abstract class HttpStatusCode {
   /// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/508
   ///
   /// {@endtemplate}
-  static const int loopDetected = HttpStatus.loopDetected;
+  static const int loopDetected = 508;
 
   /// {@template http_status_code_510_notExtended}
   /// **notExtended = 510**.
@@ -837,7 +830,7 @@ abstract class HttpStatusCode {
   /// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/510
   ///
   /// {@endtemplate}
-  static const int notExtended = HttpStatus.notExtended;
+  static const int notExtended = 510;
 
   /// {@template http_status_code_511_networkAuthenticationRequired}
   /// **networkAuthenticationRequired = 511**.
@@ -859,6 +852,5 @@ abstract class HttpStatusCode {
   /// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/599
   ///
   /// {@endtemplate}
-  static const int networkConnectTimeoutError =
-      HttpStatus.networkConnectTimeoutError;
+  static const int networkConnectTimeoutError = 599;
 }
