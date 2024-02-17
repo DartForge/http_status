@@ -121,11 +121,7 @@ main() {
   // )
 
   print('${HttpStatusCode.noContent}');
-  // HttpStatus(
-  //   code: 204,
-  //   name: 'No Content',
-  //   description: 'The server has successfully fulfilled the request and that there is no additional content to send in the response payload body.'
-  // )
+  // 204
 
   print('${HttpStatus.fromCode(404)}');
   // HttpStatus(
@@ -134,62 +130,110 @@ main() {
   //   description: 'The origin server did not find a current representation for the target resource or is not willing to disclose that one exists.'
   // )
 
-
-  // isInformation (Http Status Code 100 - 199)
+  // isInformation (Http Status Code 200 - 299)
   print(HttpStatusCode.processing.isInformationHttpStatusCode); // true
   print(HttpStatusCode.notFound.isInformationHttpStatusCode); // false
+  print(HttpStatus.fromCode(103).isInformationHttpStatusCode); // true
+  print(HttpStatus.fromCode(404).isInformationHttpStatusCode); // false
+  print(103.isInformationHttpStatusCode); // true
+  print(400.isInformationHttpStatusCode); // false
 
   // isSuccessful (Http Status Code 200 - 299)
   print(HttpStatusCode.accepted.isSuccessfulHttpStatusCode); // true
   print(HttpStatusCode.notFound.isSuccessfulHttpStatusCode); // false
+  print(HttpStatus.fromCode(200).isSuccessfulHttpStatusCode); // true
+  print(HttpStatus.fromCode(404).isSuccessfulHttpStatusCode); // false
+  print(200.isSuccessfulHttpStatusCode); // true
+  print(400.isSuccessfulHttpStatusCode); // false
 
   // isRedirect (Http Status Code 300 - 399)
   print(HttpStatusCode.permanentRedirect.isRedirectHttpStatusCode); // true
   print(HttpStatusCode.notFound.isRedirectHttpStatusCode); // false
+  print(HttpStatus.fromCode(303).isRedirectHttpStatusCode); // true
+  print(HttpStatus.fromCode(404).isRedirectHttpStatusCode); // false
+  print(303.isRedirectHttpStatusCode); // true
+  print(400.isRedirectHttpStatusCode); // false
 
   // isClientError (Http Status Code 400 - 499)
   print(HttpStatusCode.notFound.isClientErrorHttpStatusCode); // true
   print(HttpStatusCode.processing.isClientErrorHttpStatusCode); // false
+  print(HttpStatus.fromCode(404).isClientErrorHttpStatusCode); // true
+  print(HttpStatus.fromCode(500).isClientErrorHttpStatusCode); // false
+  print(404.isClientErrorHttpStatusCode); // true
+  print(200.isClientErrorHttpStatusCode); // false
 
   // isServerError (Http Status Code 500 - 599)
-  print(HttpStatusCode.internalServerError.isServerError); // true
-  print(HttpStatusCode.notFound.isServerError); // false
+  print(HttpStatusCode.internalServerError.isServerErrorHttpStatusCode); // true
+  print(HttpStatusCode.notFound.isServerErrorHttpStatusCode); // false;
+  print(HttpStatus.fromCode(502).isServerErrorHttpStatusCode); // true
+  print(HttpStatus.fromCode(200).isServerErrorHttpStatusCode); // false
+  print(503.isServerErrorHttpStatusCode); // true
+  print(200.isServerErrorHttpStatusCode); // false
 }
 ```
 
-```dart
-import 'package:http/http.dart' as http;
-import 'package:http_status/http_status.dart';
+1. Classic method
 
-final res = await http.get(Uri.parse(url));
+   ```dart
+   import 'package:http/http.dart' as http;
+   import 'package:http_status/http_status.dart';
 
-if (res.statusCode == HttpStatusCode.ok) {
-  final httpStatus = HttpStatus.fromCode(res.statusCode);
+   final res = await http.get(Uri.parse(url));
 
-  return {
-    'statusCode': res.statusCode,
-    'httpStatus': httpStatus,
-    'data': res.body
-  };
-}
-```
+   if (res.statusCode == HttpStatusCode.ok) { // res.statusCode == 200
+     final httpStatus = HttpStatus.fromCode(res.statusCode);
 
-```dart
-import 'package:http/http.dart' as http;
-import 'package:http_status/http_status.dart';
+     return {
+       'statusCode': res.statusCode,
+       'httpStatus': httpStatus,
+       'data': res.body
+     };
+   }
+   ```
 
-final res = await http.get(Uri.parse(url));
+2. Alternative method (Same as #1 method, but with more direct validation using `.isSuccessfulHttpStatusCode`)
 
-if (res.statusCode.isSuccessfulHttpStatusCode) {
-  final httpStatus = HttpStatus.fromCode(res.statusCode);
+   ```dart
+   import 'package:http/http.dart' as http;
+   import 'package:http_status/http_status.dart';
 
-  return {
-    'statusCode': res.statusCode,
-    'httpStatus': httpStatus,
-    'data': res.body
-  };
-}
-```
+   final res = await http.get(Uri.parse(url));
+
+   if (res.statusCode.isSuccessfulHttpStatusCode) {
+     final httpStatus = HttpStatus.fromCode(res.statusCode);
+
+     return {
+       'statusCode': res.statusCode,
+       'httpStatus': httpStatus,
+       'data': res.body
+     };
+   }
+   ```
+
+3. Alternative method (Same as #1 method, if you need the HttpStatus object from the dynamically generated status code of the response)
+
+   ```dart
+   import 'package:http/http.dart' as http;
+   import 'package:http_status/http_status.dart';
+
+   final res = await http.get(Uri.parse(url));
+
+   final httpStatusResponse = HttpStatus.fromCode(res.statusCode);
+
+   if (httpStatusResponse.isSuccessfulHttpStatusCode) {
+     return {
+       'statusCode': res.statusCode,
+       'httpStatus': httpStatusResponse,
+       'data': res.body
+     };
+   } else if (httpStatusResponse.isClientErrorHttpStatusCode) {
+      // Handle client error
+      // ...
+   } else {
+      // Handle other code error
+      // ...
+   }
+   ```
 
 ## Thanking all Awesome Contributors :heart:
 
