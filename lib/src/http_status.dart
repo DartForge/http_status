@@ -4,6 +4,7 @@
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
 import 'http_status_code.dart';
+import 'utils/int_http_status_code_extension.dart';
 
 /// Each [HttpStatusCode] is described below, including a description of which
 /// method(s) it can follow and any metainformation required in the response.
@@ -2792,6 +2793,21 @@ class HttpStatus {
     HttpStatusCode.networkConnectTimeoutError:
         HttpStatus.code599NetworkConnectTimeoutError,
   };
+
+  /// Returns true if this ranges between 100 and 199
+  bool get isInformationHttpStatusCode => code.isInformationHttpStatusCode;
+
+  /// Returns true if code ranges between 200 and 299
+  bool get isSuccessfulHttpStatusCode => code.isSuccessfulHttpStatusCode;
+
+  /// Returns true if this ranges between 300 and 399
+  bool get isRedirectHttpStatusCode => code.isRedirectHttpStatusCode;
+
+  /// Returns true if this ranges between 400 and 499
+  bool get isClientErrorHttpStatusCode => code.isClientErrorHttpStatusCode;
+
+  /// Returns true if code ranges between 500 and 599
+  bool get isServerErrorHttpStatusCode => code.isServerErrorHttpStatusCode;
 
   @override
   int get hashCode => _equality().hashCode;
