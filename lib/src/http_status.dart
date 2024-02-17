@@ -2714,6 +2714,7 @@ class HttpStatus {
     HttpStatusCode.continue_: HttpStatus.code100Continue,
     HttpStatusCode.switchingProtocols: HttpStatus.code101SwitchingProtocols,
     HttpStatusCode.processing: HttpStatus.code102Processing,
+    HttpStatusCode.earlyHints: HttpStatus.code103EarlyHints,
     // 2xx Success.
     HttpStatusCode.ok: HttpStatus.code200Ok,
     HttpStatusCode.created: HttpStatus.code201Created,
