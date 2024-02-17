@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: dart-lang/setup-dart@v1.6.1
+      - uses: dart-lang/setup-dart@v1.6.2
         with:
           sdk: ${{ matrix.channel }}
 

@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.1.0] - 2024-02-17
+
+### Added - 3.1.0
+
+- Added new methods to the `HttpStatus` class for checking HTTP status code ranges. Includes `isInformationHttpStatusCode`, `isSuccessfulHttpStatusCode`, `isRedirectHttpStatusCode`, `isClientErrorHttpStatusCode`, and `isServerErrorHttpStatusCode`. These methods facilitate categorizing HTTP status codes without manual comparisons.
+
+### Fixed - 3.1.0
+
+- Added earlyHints 103 in HttpStatus.fromCode for this missing element.
+
+### Changed - 3.1.0
+
+- Documentation Enhanced: Improved documentation for `readme.md`, offering clearer guidelines and usage examples.
+
 ## [3.0.0] - 2024-02-12
 
 ### Removed - 3.0.0
@@ -87,7 +101,6 @@
 ## [2.1.0] - 2024-02-10
 
 - Expanded the Dart SDK compatibility range to '<4.0.0'.
--
 
 ## [2.0.1] - 2024-02-10
 
