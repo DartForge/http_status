@@ -2221,6 +2221,11 @@ void main() {
         equals(HttpStatus.processing),
       );
 
+      expect(
+        HttpStatus.fromCode(HttpStatusCode.earlyHints),
+        equals(HttpStatus.earlyHints),
+      );
+
       expect(HttpStatus.fromCode(HttpStatusCode.ok), equals(HttpStatus.ok));
 
       expect(
