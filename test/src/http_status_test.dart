@@ -3,10 +3,6 @@
 // All rights reserved. Use of this source code
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
-// ignore_for_file: deprecated_member_use_from_same_package
-// TODO: Remove this line `deprecated_member_use_from_same_package` in the next version (v3.0.0)
-// Reason: Deprecated member use from same package violates the lint rule. Refactor it to comply with the Dart style guide
-
 import 'package:http_status/http_status.dart';
 import 'package:test/test.dart';
 
@@ -22,7 +18,11 @@ void main() {
             equals('Client should continue with request.'),
           );
           expect(HttpStatus.code100Continue, HttpStatus.continue_);
-          expect(HttpStatus.Continue, HttpStatus.continue_);
+          expect(HttpStatus.continue_.isInformationHttpStatusCode, isTrue);
+          expect(HttpStatus.continue_.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.continue_.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.continue_.isClientErrorHttpStatusCode, isFalse);
+          expect(HttpStatus.continue_.isServerErrorHttpStatusCode, isFalse);
         });
         test('101 Switching Protocol', () {
           expect(
@@ -41,7 +41,26 @@ void main() {
             HttpStatus.code101SwitchingProtocols,
             HttpStatus.switchingProtocols,
           );
-          expect(HttpStatus.Switching_Protocols, HttpStatus.switchingProtocols);
+          expect(
+            HttpStatus.switchingProtocols.isInformationHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.switchingProtocols.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.switchingProtocols.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.switchingProtocols.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.switchingProtocols.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('102 Processing', () {
           expect(
@@ -54,7 +73,11 @@ void main() {
             equals('Server has received and is processing the request.'),
           );
           expect(HttpStatus.code102Processing, HttpStatus.processing);
-          expect(HttpStatus.Processing, HttpStatus.processing);
+          expect(HttpStatus.processing.isInformationHttpStatusCode, isTrue);
+          expect(HttpStatus.processing.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.processing.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.processing.isClientErrorHttpStatusCode, isFalse);
+          expect(HttpStatus.processing.isServerErrorHttpStatusCode, isFalse);
         });
         test('103 Early Hints', () {
           expect(
@@ -70,6 +93,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code103EarlyHints, HttpStatus.earlyHints);
+          expect(HttpStatus.earlyHints.isInformationHttpStatusCode, isTrue);
+          expect(HttpStatus.earlyHints.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.earlyHints.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.earlyHints.isClientErrorHttpStatusCode, isFalse);
+          expect(HttpStatus.earlyHints.isServerErrorHttpStatusCode, isFalse);
         });
       });
       group('2xx Success -', () {
@@ -81,7 +109,11 @@ void main() {
             equals('The request was fulfilled.'),
           );
           expect(HttpStatus.code200Ok, HttpStatus.ok);
-          expect(HttpStatus.OK, HttpStatus.ok);
+          expect(HttpStatus.ok.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.ok.isSuccessfulHttpStatusCode, isTrue);
+          expect(HttpStatus.ok.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.ok.isClientErrorHttpStatusCode, isFalse);
+          expect(HttpStatus.ok.isServerErrorHttpStatusCode, isFalse);
         });
         test('201 Created', () {
           expect(HttpStatus.created.code, equals(HttpStatusCode.created));
@@ -94,7 +126,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code201Created, HttpStatus.created);
-          expect(HttpStatus.Created, HttpStatus.created);
+          expect(HttpStatus.created.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.created.isSuccessfulHttpStatusCode, isTrue);
+          expect(HttpStatus.created.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.created.isClientErrorHttpStatusCode, isFalse);
+          expect(HttpStatus.created.isServerErrorHttpStatusCode, isFalse);
         });
         test('202 Accepted', () {
           expect(HttpStatus.accepted.code, equals(HttpStatusCode.accepted));
@@ -109,7 +145,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code202Accepted, HttpStatus.accepted);
-          expect(HttpStatus.Accepted, HttpStatus.accepted);
+          expect(HttpStatus.accepted.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.accepted.isSuccessfulHttpStatusCode, isTrue);
+          expect(HttpStatus.accepted.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.accepted.isClientErrorHttpStatusCode, isFalse);
+          expect(HttpStatus.accepted.isServerErrorHttpStatusCode, isFalse);
         });
         test('203 Non-authoritative Information', () {
           expect(
@@ -133,8 +173,24 @@ void main() {
             HttpStatus.nonAuthoritativeInformation,
           );
           expect(
-            HttpStatus.NonAuthoritative_Information,
-            HttpStatus.nonAuthoritativeInformation,
+            HttpStatus.nonAuthoritativeInformation.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.nonAuthoritativeInformation.isSuccessfulHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.nonAuthoritativeInformation.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.nonAuthoritativeInformation.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.nonAuthoritativeInformation.isServerErrorHttpStatusCode,
+            isFalse,
           );
         });
         test('204 No Content', () {
@@ -149,7 +205,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code204NoContent, HttpStatus.noContent);
-          expect(HttpStatus.No_Content, HttpStatus.noContent);
+          expect(HttpStatus.noContent.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.noContent.isSuccessfulHttpStatusCode, isTrue);
+          expect(HttpStatus.noContent.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.noContent.isClientErrorHttpStatusCode, isFalse);
+          expect(HttpStatus.noContent.isServerErrorHttpStatusCode, isFalse);
         });
         test('205 Reset Content', () {
           expect(
@@ -167,7 +227,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code205ResetContent, HttpStatus.resetContent);
-          expect(HttpStatus.Reset_Content, HttpStatus.resetContent);
+          expect(HttpStatus.resetContent.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.resetContent.isSuccessfulHttpStatusCode, isTrue);
+          expect(HttpStatus.resetContent.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.resetContent.isClientErrorHttpStatusCode, isFalse);
+          expect(HttpStatus.resetContent.isServerErrorHttpStatusCode, isFalse);
         });
         test('206 Partial Content', () {
           expect(
@@ -186,7 +250,20 @@ void main() {
             ),
           );
           expect(HttpStatus.code206PartialContent, HttpStatus.partialContent);
-          expect(HttpStatus.Partial_Content, HttpStatus.partialContent);
+          expect(
+            HttpStatus.partialContent.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.partialContent.isSuccessfulHttpStatusCode, isTrue);
+          expect(HttpStatus.partialContent.isRedirectHttpStatusCode, isFalse);
+          expect(
+            HttpStatus.partialContent.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.partialContent.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('207 Multi-Status', () {
           expect(
@@ -203,7 +280,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code207MultiStatus, HttpStatus.multiStatus);
-          expect(HttpStatus.MultiStatus, HttpStatus.multiStatus);
+          expect(HttpStatus.multiStatus.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.multiStatus.isSuccessfulHttpStatusCode, isTrue);
+          expect(HttpStatus.multiStatus.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.multiStatus.isClientErrorHttpStatusCode, isFalse);
+          expect(HttpStatus.multiStatus.isServerErrorHttpStatusCode, isFalse);
         });
         test('208 Already Reported', () {
           expect(
@@ -223,7 +304,20 @@ void main() {
             HttpStatus.code208AlreadyReported,
             HttpStatus.alreadyReported,
           );
-          expect(HttpStatus.Already_Reported, HttpStatus.alreadyReported);
+          expect(
+            HttpStatus.alreadyReported.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.alreadyReported.isSuccessfulHttpStatusCode, isTrue);
+          expect(HttpStatus.alreadyReported.isRedirectHttpStatusCode, isFalse);
+          expect(
+            HttpStatus.alreadyReported.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.alreadyReported.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('226 IM Used', () {
           expect(HttpStatus.imUsed.code, equals(HttpStatusCode.imUsed));
@@ -238,10 +332,14 @@ void main() {
             ),
           );
           expect(HttpStatus.code226ImUsed, HttpStatus.imUsed);
-          expect(HttpStatus.IM_Used, HttpStatus.imUsed);
+          expect(HttpStatus.imUsed.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.imUsed.isSuccessfulHttpStatusCode, isTrue);
+          expect(HttpStatus.imUsed.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.imUsed.isClientErrorHttpStatusCode, isFalse);
+          expect(HttpStatus.imUsed.isServerErrorHttpStatusCode, isFalse);
         });
       });
-      group('3xx Redirection-', () {
+      group('3xx Redirection -', () {
         test('300 Multiple Choices', () {
           expect(
             HttpStatus.multipleChoices.code,
@@ -263,7 +361,23 @@ void main() {
             HttpStatus.code300MultipleChoices,
             HttpStatus.multipleChoices,
           );
-          expect(HttpStatus.Multiple_Choices, HttpStatus.multipleChoices);
+          expect(
+            HttpStatus.multipleChoices.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.multipleChoices.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.multipleChoices.isRedirectHttpStatusCode, isTrue);
+          expect(
+            HttpStatus.multipleChoices.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.multipleChoices.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('301 Moved Permanently', () {
           expect(
@@ -286,7 +400,23 @@ void main() {
             HttpStatus.code301MovedPermanently,
             HttpStatus.movedPermanently,
           );
-          expect(HttpStatus.Moved_Permanently, HttpStatus.movedPermanently);
+          expect(
+            HttpStatus.movedPermanently.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.movedPermanently.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.movedPermanently.isRedirectHttpStatusCode, isTrue);
+          expect(
+            HttpStatus.movedPermanently.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.movedPermanently.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('302 Found', () {
           expect(HttpStatus.found.code, equals(HttpStatusCode.found));
@@ -302,7 +432,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code302Found, HttpStatus.found);
-          expect(HttpStatus.Found, HttpStatus.found);
+          expect(HttpStatus.found.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.found.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.found.isRedirectHttpStatusCode, isTrue);
+          expect(HttpStatus.found.isClientErrorHttpStatusCode, isFalse);
+          expect(HttpStatus.found.isServerErrorHttpStatusCode, isFalse);
         });
         test('302 Moved Temporarily', () {
           expect(
@@ -327,7 +461,23 @@ void main() {
             HttpStatus.code302MovedTemporarily,
             HttpStatus.movedTemporarily,
           );
-          expect(HttpStatus.MovedTemporarily, HttpStatus.movedTemporarily);
+          expect(
+            HttpStatus.movedTemporarily.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.movedTemporarily.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.movedTemporarily.isRedirectHttpStatusCode, isTrue);
+          expect(
+            HttpStatus.movedTemporarily.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.movedTemporarily.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('303 See Other', () {
           expect(HttpStatus.seeOther.code, equals(HttpStatusCode.seeOther));
@@ -342,7 +492,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code303SeeOther, HttpStatus.seeOther);
-          expect(HttpStatus.See_Other, HttpStatus.seeOther);
+          expect(HttpStatus.seeOther.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.seeOther.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.seeOther.isRedirectHttpStatusCode, isTrue);
+          expect(HttpStatus.seeOther.isClientErrorHttpStatusCode, isFalse);
+          expect(HttpStatus.seeOther.isServerErrorHttpStatusCode, isFalse);
         });
         test('305 Not Modified', () {
           expect(
@@ -359,7 +513,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code305NotModified, HttpStatus.notModified);
-          expect(HttpStatus.Not_Modified, HttpStatus.notModified);
+          expect(HttpStatus.notModified.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.notModified.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.notModified.isRedirectHttpStatusCode, isTrue);
+          expect(HttpStatus.notModified.isClientErrorHttpStatusCode, isFalse);
+          expect(HttpStatus.notModified.isServerErrorHttpStatusCode, isFalse);
         });
         test('305 Use Proxy', () {
           expect(HttpStatus.useProxy.code, equals(HttpStatusCode.useProxy));
@@ -373,7 +531,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code305UseProxy, HttpStatus.useProxy);
-          expect(HttpStatus.Use_Proxy, HttpStatus.useProxy);
+          expect(HttpStatus.useProxy.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.useProxy.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.useProxy.isRedirectHttpStatusCode, isTrue);
+          expect(HttpStatus.useProxy.isClientErrorHttpStatusCode, isFalse);
+          expect(HttpStatus.useProxy.isServerErrorHttpStatusCode, isFalse);
         });
         test('307 Temporary Redirect', () {
           expect(
@@ -396,7 +558,23 @@ void main() {
             HttpStatus.code307TemporaryRedirect,
             HttpStatus.temporaryRedirect,
           );
-          expect(HttpStatus.Temporary_Redirect, HttpStatus.temporaryRedirect);
+          expect(
+            HttpStatus.temporaryRedirect.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.temporaryRedirect.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.temporaryRedirect.isRedirectHttpStatusCode, isTrue);
+          expect(
+            HttpStatus.temporaryRedirect.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.temporaryRedirect.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('308 Permanent Redirect', () {
           expect(
@@ -419,10 +597,26 @@ void main() {
             HttpStatus.code308PermanentRedirect,
             HttpStatus.permanentRedirect,
           );
-          expect(HttpStatus.Permanent_Redirect, HttpStatus.permanentRedirect);
+          expect(
+            HttpStatus.permanentRedirect.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.permanentRedirect.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.permanentRedirect.isRedirectHttpStatusCode, isTrue);
+          expect(
+            HttpStatus.permanentRedirect.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.permanentRedirect.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
       });
-      group('4xx Client Error-', () {
+      group('4xx Client Error -', () {
         test('400 Bad Request', () {
           expect(
             HttpStatus.badRequest.code,
@@ -439,7 +633,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code400BadRequest, HttpStatus.badRequest);
-          expect(HttpStatus.Bad_Request, HttpStatus.badRequest);
+          expect(HttpStatus.badRequest.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.badRequest.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.badRequest.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.badRequest.isClientErrorHttpStatusCode, isTrue);
+          expect(HttpStatus.badRequest.isServerErrorHttpStatusCode, isFalse);
         });
         test('401 Unauthorized', () {
           expect(
@@ -455,7 +653,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code401Unauthorized, HttpStatus.unauthorized);
-          expect(HttpStatus.Unauthorized, HttpStatus.unauthorized);
+          expect(HttpStatus.unauthorized.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.unauthorized.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.unauthorized.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.unauthorized.isClientErrorHttpStatusCode, isTrue);
+          expect(HttpStatus.unauthorized.isServerErrorHttpStatusCode, isFalse);
         });
         test('402 Payment Required', () {
           expect(
@@ -471,7 +673,23 @@ void main() {
             HttpStatus.code402PaymentRequired,
             HttpStatus.paymentRequired,
           );
-          expect(HttpStatus.Payment_Required, HttpStatus.paymentRequired);
+          expect(
+            HttpStatus.paymentRequired.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.paymentRequired.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.paymentRequired.isRedirectHttpStatusCode, isFalse);
+          expect(
+            HttpStatus.paymentRequired.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.paymentRequired.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('403 Forbidden', () {
           expect(HttpStatus.forbidden.code, equals(HttpStatusCode.forbidden));
@@ -484,7 +702,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code403Forbidden, HttpStatus.forbidden);
-          expect(HttpStatus.Forbidden, HttpStatus.forbidden);
+          expect(HttpStatus.forbidden.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.forbidden.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.forbidden.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.forbidden.isClientErrorHttpStatusCode, isTrue);
+          expect(HttpStatus.forbidden.isServerErrorHttpStatusCode, isFalse);
         });
         test('404 Not Found', () {
           expect(HttpStatus.notFound.code, equals(HttpStatusCode.notFound));
@@ -498,7 +720,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code404NotFound, HttpStatus.notFound);
-          expect(HttpStatus.Not_Found, HttpStatus.notFound);
+          expect(HttpStatus.notFound.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.notFound.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.notFound.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.notFound.isClientErrorHttpStatusCode, isTrue);
+          expect(HttpStatus.notFound.isServerErrorHttpStatusCode, isFalse);
         });
         test('405 Method Not Allowed', () {
           expect(
@@ -520,7 +746,23 @@ void main() {
             HttpStatus.code405MethodNotAllowed,
             HttpStatus.methodNotAllowed,
           );
-          expect(HttpStatus.Method_Not_Allowed, HttpStatus.methodNotAllowed);
+          expect(
+            HttpStatus.methodNotAllowed.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.methodNotAllowed.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.methodNotAllowed.isRedirectHttpStatusCode, isFalse);
+          expect(
+            HttpStatus.methodNotAllowed.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.methodNotAllowed.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('406 Not Acceptable', () {
           expect(
@@ -539,7 +781,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code406NotAcceptable, HttpStatus.notAcceptable);
-          expect(HttpStatus.Not_Acceptable, HttpStatus.notAcceptable);
+          expect(HttpStatus.notAcceptable.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.notAcceptable.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.notAcceptable.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.notAcceptable.isClientErrorHttpStatusCode, isTrue);
+          expect(HttpStatus.notAcceptable.isServerErrorHttpStatusCode, isFalse);
         });
         test('407 Proxy Authentication Required', () {
           expect(
@@ -562,8 +808,24 @@ void main() {
             HttpStatus.proxyAuthenticationRequired,
           );
           expect(
-            HttpStatus.Proxy_Authentication_Required,
-            HttpStatus.proxyAuthenticationRequired,
+            HttpStatus.proxyAuthenticationRequired.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.proxyAuthenticationRequired.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.proxyAuthenticationRequired.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.proxyAuthenticationRequired.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.proxyAuthenticationRequired.isServerErrorHttpStatusCode,
+            isFalse,
           );
         });
         test('408 Request Timeout', () {
@@ -580,7 +842,17 @@ void main() {
             ),
           );
           expect(HttpStatus.code408RequestTimeout, HttpStatus.requestTimeout);
-          expect(HttpStatus.Request_Timeout, HttpStatus.requestTimeout);
+          expect(
+            HttpStatus.requestTimeout.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.requestTimeout.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.requestTimeout.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.requestTimeout.isClientErrorHttpStatusCode, isTrue);
+          expect(
+            HttpStatus.requestTimeout.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('409 Conflict', () {
           expect(HttpStatus.conflict.code, equals(HttpStatusCode.conflict));
@@ -595,7 +867,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code409Conflict, HttpStatus.conflict);
-          expect(HttpStatus.Conflict, HttpStatus.conflict);
+          expect(HttpStatus.conflict.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.conflict.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.conflict.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.conflict.isClientErrorHttpStatusCode, isTrue);
+          expect(HttpStatus.conflict.isServerErrorHttpStatusCode, isFalse);
         });
         test('410 Gone', () {
           expect(HttpStatus.gone.code, equals(HttpStatusCode.gone));
@@ -608,7 +884,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code410Gone, HttpStatus.gone);
-          expect(HttpStatus.Gone, HttpStatus.gone);
+          expect(HttpStatus.gone.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.gone.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.gone.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.gone.isClientErrorHttpStatusCode, isTrue);
+          expect(HttpStatus.gone.isServerErrorHttpStatusCode, isFalse);
         });
         test('411 Length Required', () {
           expect(
@@ -624,7 +904,17 @@ void main() {
             ),
           );
           expect(HttpStatus.code411LengthRequired, HttpStatus.lengthRequired);
-          expect(HttpStatus.Length_Required, HttpStatus.lengthRequired);
+          expect(
+            HttpStatus.lengthRequired.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.lengthRequired.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.lengthRequired.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.lengthRequired.isClientErrorHttpStatusCode, isTrue);
+          expect(
+            HttpStatus.lengthRequired.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('412 Precondition Failed', () {
           expect(
@@ -646,7 +936,26 @@ void main() {
             HttpStatus.code412PreconditionFailed,
             HttpStatus.preconditionFailed,
           );
-          expect(HttpStatus.Precondition_Failed, HttpStatus.preconditionFailed);
+          expect(
+            HttpStatus.preconditionFailed.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.preconditionFailed.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.preconditionFailed.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.preconditionFailed.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.preconditionFailed.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('413 Payload Too Large', () {
           expect(
@@ -670,8 +979,24 @@ void main() {
             HttpStatus.requestEntityTooLarge,
           );
           expect(
-            HttpStatus.Payload_Too_Large,
-            HttpStatus.requestEntityTooLarge,
+            HttpStatus.requestEntityTooLarge.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.requestEntityTooLarge.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.requestEntityTooLarge.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.requestEntityTooLarge.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.requestEntityTooLarge.isServerErrorHttpStatusCode,
+            isFalse,
           );
         });
         test('414 Request-URI Too Long', () {
@@ -695,7 +1020,26 @@ void main() {
             HttpStatus.code414RequestUriTooLong,
             HttpStatus.requestUriTooLong,
           );
-          expect(HttpStatus.RequestURI_Too_Long, HttpStatus.requestUriTooLong);
+          expect(
+            HttpStatus.requestUriTooLong.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.requestUriTooLong.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.requestUriTooLong.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.requestUriTooLong.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.requestUriTooLong.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('415 Unsupported Media Type', () {
           expect(
@@ -719,8 +1063,24 @@ void main() {
             HttpStatus.unsupportedMediaType,
           );
           expect(
-            HttpStatus.Unsupported_Media_Type,
-            HttpStatus.unsupportedMediaType,
+            HttpStatus.unsupportedMediaType.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.unsupportedMediaType.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.unsupportedMediaType.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.unsupportedMediaType.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.unsupportedMediaType.isServerErrorHttpStatusCode,
+            isFalse,
           );
         });
         test('416 Requested Range Not Satisfiable', () {
@@ -746,8 +1106,24 @@ void main() {
             HttpStatus.requestedRangeNotSatisfiable,
           );
           expect(
-            HttpStatus.Requested_Range_Not_Satisfiable,
-            HttpStatus.requestedRangeNotSatisfiable,
+            HttpStatus.requestedRangeNotSatisfiable.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.requestedRangeNotSatisfiable.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.requestedRangeNotSatisfiable.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.requestedRangeNotSatisfiable.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.requestedRangeNotSatisfiable.isServerErrorHttpStatusCode,
+            isFalse,
           );
         });
         test('417 Expectation Failed', () {
@@ -770,7 +1146,26 @@ void main() {
             HttpStatus.code417ExpectationFailed,
             HttpStatus.expectationFailed,
           );
-          expect(HttpStatus.Expectation_Failed, HttpStatus.expectationFailed);
+          expect(
+            HttpStatus.expectationFailed.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.expectationFailed.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.expectationFailed.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.expectationFailed.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.expectationFailed.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('418 I\'m A Teapot', () {
           expect(HttpStatus.imATeapot.code, equals(HttpStatusCode.imATeapot));
@@ -787,7 +1182,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code418ImATeapot, HttpStatus.imATeapot);
-          expect(HttpStatus.ImATeapot, HttpStatus.imATeapot);
+          expect(HttpStatus.imATeapot.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.imATeapot.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.imATeapot.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.imATeapot.isClientErrorHttpStatusCode, isTrue);
+          expect(HttpStatus.imATeapot.isServerErrorHttpStatusCode, isFalse);
         });
         test('419 Insufficient Space On Resource', () {
           expect(
@@ -814,8 +1213,24 @@ void main() {
             HttpStatus.insufficientSpaceOnResource,
           );
           expect(
-            HttpStatus.InsufficientSpaceOnResource,
-            HttpStatus.insufficientSpaceOnResource,
+            HttpStatus.insufficientSpaceOnResource.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.insufficientSpaceOnResource.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.insufficientSpaceOnResource.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.insufficientSpaceOnResource.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.insufficientSpaceOnResource.isServerErrorHttpStatusCode,
+            isFalse,
           );
         });
         test('420 Method Failure', () {
@@ -836,7 +1251,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code420MethodFailure, HttpStatus.methodFailure);
-          expect(HttpStatus.MethodFailure, HttpStatus.methodFailure);
+          expect(HttpStatus.methodFailure.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.methodFailure.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.methodFailure.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.methodFailure.isClientErrorHttpStatusCode, isTrue);
+          expect(HttpStatus.methodFailure.isServerErrorHttpStatusCode, isFalse);
         });
         test('421 Misdirected Request', () {
           expect(
@@ -860,7 +1279,26 @@ void main() {
             HttpStatus.code421MisdirectedRequest,
             HttpStatus.misdirectedRequest,
           );
-          expect(HttpStatus.Misdirected_Request, HttpStatus.misdirectedRequest);
+          expect(
+            HttpStatus.misdirectedRequest.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.misdirectedRequest.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.misdirectedRequest.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.misdirectedRequest.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.misdirectedRequest.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('422 Unprocessable Entity', () {
           expect(
@@ -887,8 +1325,24 @@ void main() {
             HttpStatus.unprocessableEntity,
           );
           expect(
-            HttpStatus.Unprocessable_Entity,
-            HttpStatus.unprocessableEntity,
+            HttpStatus.unprocessableEntity.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.unprocessableEntity.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.unprocessableEntity.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.unprocessableEntity.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.unprocessableEntity.isServerErrorHttpStatusCode,
+            isFalse,
           );
         });
         test('423 Locked', () {
@@ -901,7 +1355,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code423Locked, HttpStatus.locked);
-          expect(HttpStatus.Locked, HttpStatus.locked);
+          expect(HttpStatus.locked.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.locked.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.locked.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.locked.isClientErrorHttpStatusCode, isTrue);
+          expect(HttpStatus.locked.isServerErrorHttpStatusCode, isFalse);
         });
         test('424 Failed Dependency', () {
           expect(
@@ -921,7 +1379,23 @@ void main() {
             HttpStatus.code424FailedDependency,
             HttpStatus.failedDependency,
           );
-          expect(HttpStatus.Failed_Dependency, HttpStatus.failedDependency);
+          expect(
+            HttpStatus.failedDependency.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.failedDependency.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.failedDependency.isRedirectHttpStatusCode, isFalse);
+          expect(
+            HttpStatus.failedDependency.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.failedDependency.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('426 Upgrade Required', () {
           expect(
@@ -938,7 +1412,23 @@ void main() {
             ),
           );
           expect(HttpStatus.code426UpgradeRequired, HttpStatus.upgradeRequired);
-          expect(HttpStatus.Upgrade_Required, HttpStatus.upgradeRequired);
+          expect(
+            HttpStatus.upgradeRequired.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.upgradeRequired.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.upgradeRequired.isRedirectHttpStatusCode, isFalse);
+          expect(
+            HttpStatus.upgradeRequired.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.upgradeRequired.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('428 Precondition Required', () {
           expect(
@@ -958,8 +1448,24 @@ void main() {
             HttpStatus.preconditionRequired,
           );
           expect(
-            HttpStatus.Precondition_Required,
-            HttpStatus.preconditionRequired,
+            HttpStatus.preconditionRequired.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.preconditionRequired.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.preconditionRequired.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.preconditionRequired.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.preconditionRequired.isServerErrorHttpStatusCode,
+            isFalse,
           );
         });
         test('429 Too Many Requests', () {
@@ -976,7 +1482,23 @@ void main() {
             ),
           );
           expect(HttpStatus.code429TooManyRequests, HttpStatus.tooManyRequests);
-          expect(HttpStatus.Too_Many_Requests, HttpStatus.tooManyRequests);
+          expect(
+            HttpStatus.tooManyRequests.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.tooManyRequests.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.tooManyRequests.isRedirectHttpStatusCode, isFalse);
+          expect(
+            HttpStatus.tooManyRequests.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.tooManyRequests.isServerErrorHttpStatusCode,
+            isFalse,
+          );
         });
         test('431 Request Header Fields Too Large', () {
           expect(
@@ -1001,8 +1523,24 @@ void main() {
             HttpStatus.requestHeaderFieldsTooLarge,
           );
           expect(
-            HttpStatus.Request_Header_Fields_Too_Large,
-            HttpStatus.requestHeaderFieldsTooLarge,
+            HttpStatus.requestHeaderFieldsTooLarge.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.requestHeaderFieldsTooLarge.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.requestHeaderFieldsTooLarge.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.requestHeaderFieldsTooLarge.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.requestHeaderFieldsTooLarge.isServerErrorHttpStatusCode,
+            isFalse,
           );
         });
         test('444 Connection Closed Without Response', () {
@@ -1027,8 +1565,28 @@ void main() {
             HttpStatus.connectionClosedWithoutResponse,
           );
           expect(
-            HttpStatus.Connection_Closed_Without_Response,
-            HttpStatus.connectionClosedWithoutResponse,
+            HttpStatus
+                .connectionClosedWithoutResponse.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus
+                .connectionClosedWithoutResponse.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.connectionClosedWithoutResponse.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus
+                .connectionClosedWithoutResponse.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus
+                .connectionClosedWithoutResponse.isServerErrorHttpStatusCode,
+            isFalse,
           );
         });
         test('451 Unavailable For Legal Reasons', () {
@@ -1052,11 +1610,27 @@ void main() {
             HttpStatus.unavailableForLegalReasons,
           );
           expect(
-            HttpStatus.Unavailable_For_Legal_Reasons,
-            HttpStatus.unavailableForLegalReasons,
+            HttpStatus.unavailableForLegalReasons.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.unavailableForLegalReasons.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.unavailableForLegalReasons.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.unavailableForLegalReasons.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.unavailableForLegalReasons.isServerErrorHttpStatusCode,
+            isFalse,
           );
         });
-        test('499 ', () {
+        test('499 Client Closed Request', () {
           expect(
             HttpStatus.clientClosedRequest.code,
             equals(HttpStatusCode.clientClosedRequest),
@@ -1078,12 +1652,28 @@ void main() {
             HttpStatus.clientClosedRequest,
           );
           expect(
-            HttpStatus.Client_Closed_Request,
-            HttpStatus.clientClosedRequest,
+            HttpStatus.clientClosedRequest.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.clientClosedRequest.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.clientClosedRequest.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.clientClosedRequest.isClientErrorHttpStatusCode,
+            isTrue,
+          );
+          expect(
+            HttpStatus.clientClosedRequest.isServerErrorHttpStatusCode,
+            isFalse,
           );
         });
       });
-      group('5xx Server Error', () {
+      group('5xx Server Error -', () {
         test('500 Internal Server Error', () {
           expect(
             HttpStatus.internalServerError.code,
@@ -1105,8 +1695,24 @@ void main() {
             HttpStatus.internalServerError,
           );
           expect(
-            HttpStatus.Internal_Server_Error,
-            HttpStatus.internalServerError,
+            HttpStatus.internalServerError.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.internalServerError.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.internalServerError.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.internalServerError.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.internalServerError.isServerErrorHttpStatusCode,
+            isTrue,
           );
         });
         test('501 Not Implemented', () {
@@ -1123,7 +1729,17 @@ void main() {
             ),
           );
           expect(HttpStatus.code501NotImplemented, HttpStatus.notImplemented);
-          expect(HttpStatus.Not_Implemented, HttpStatus.notImplemented);
+          expect(
+            HttpStatus.notImplemented.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.notImplemented.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.notImplemented.isRedirectHttpStatusCode, isFalse);
+          expect(
+            HttpStatus.notImplemented.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.notImplemented.isServerErrorHttpStatusCode, isTrue);
         });
         test('502 Bad Gateway', () {
           expect(HttpStatus.badGateway.code, equals(HttpStatusCode.badGateway));
@@ -1137,7 +1753,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code502BadGateway, HttpStatus.badGateway);
-          expect(HttpStatus.Bad_Gateway, HttpStatus.badGateway);
+          expect(HttpStatus.badGateway.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.badGateway.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.badGateway.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.badGateway.isClientErrorHttpStatusCode, isFalse);
+          expect(HttpStatus.badGateway.isServerErrorHttpStatusCode, isTrue);
         });
         test('503 Service Unavailable', () {
           expect(
@@ -1160,7 +1780,26 @@ void main() {
             HttpStatus.code503ServiceUnavailable,
             HttpStatus.serviceUnavailable,
           );
-          expect(HttpStatus.Service_Unavailable, HttpStatus.serviceUnavailable);
+          expect(
+            HttpStatus.serviceUnavailable.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.serviceUnavailable.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.serviceUnavailable.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.serviceUnavailable.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.serviceUnavailable.isServerErrorHttpStatusCode,
+            isTrue,
+          );
         });
         test('504 Gateway Timeout', () {
           expect(
@@ -1177,7 +1816,17 @@ void main() {
             ),
           );
           expect(HttpStatus.code504GatewayTimeout, HttpStatus.gatewayTimeout);
-          expect(HttpStatus.Gateway_Timeout, HttpStatus.gatewayTimeout);
+          expect(
+            HttpStatus.gatewayTimeout.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.gatewayTimeout.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.gatewayTimeout.isRedirectHttpStatusCode, isFalse);
+          expect(
+            HttpStatus.gatewayTimeout.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(HttpStatus.gatewayTimeout.isServerErrorHttpStatusCode, isTrue);
         });
         test('505 HTTP Version Not Supported', () {
           expect(
@@ -1200,8 +1849,24 @@ void main() {
             HttpStatus.httpVersionNotSupported,
           );
           expect(
-            HttpStatus.HTTP_Version_Not_Supported,
-            HttpStatus.httpVersionNotSupported,
+            HttpStatus.httpVersionNotSupported.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.httpVersionNotSupported.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.httpVersionNotSupported.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.httpVersionNotSupported.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.httpVersionNotSupported.isServerErrorHttpStatusCode,
+            isTrue,
           );
         });
         test('506 Variant Also Negotiates', () {
@@ -1227,8 +1892,24 @@ void main() {
             HttpStatus.variantAlsoNegotiates,
           );
           expect(
-            HttpStatus.Variant_Also_Negotiates,
-            HttpStatus.variantAlsoNegotiates,
+            HttpStatus.variantAlsoNegotiates.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.variantAlsoNegotiates.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.variantAlsoNegotiates.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.variantAlsoNegotiates.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.variantAlsoNegotiates.isServerErrorHttpStatusCode,
+            isTrue,
           );
         });
         test('507 Insufficient Storage', () {
@@ -1253,8 +1934,24 @@ void main() {
             HttpStatus.insufficientStorage,
           );
           expect(
-            HttpStatus.Insufficient_Storage,
-            HttpStatus.insufficientStorage,
+            HttpStatus.insufficientStorage.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.insufficientStorage.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.insufficientStorage.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.insufficientStorage.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.insufficientStorage.isServerErrorHttpStatusCode,
+            isTrue,
           );
         });
         test('508 Loop Detected', () {
@@ -1273,7 +1970,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code508LoopDetected, HttpStatus.loopDetected);
-          expect(HttpStatus.Loop_Detected, HttpStatus.loopDetected);
+          expect(HttpStatus.loopDetected.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.loopDetected.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.loopDetected.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.loopDetected.isClientErrorHttpStatusCode, isFalse);
+          expect(HttpStatus.loopDetected.isServerErrorHttpStatusCode, isTrue);
         });
         test('510 Not Extended', () {
           expect(
@@ -1290,7 +1991,11 @@ void main() {
             ),
           );
           expect(HttpStatus.code510NotExtended, HttpStatus.notExtended);
-          expect(HttpStatus.Not_Extended, HttpStatus.notExtended);
+          expect(HttpStatus.notExtended.isInformationHttpStatusCode, isFalse);
+          expect(HttpStatus.notExtended.isSuccessfulHttpStatusCode, isFalse);
+          expect(HttpStatus.notExtended.isRedirectHttpStatusCode, isFalse);
+          expect(HttpStatus.notExtended.isClientErrorHttpStatusCode, isFalse);
+          expect(HttpStatus.notExtended.isServerErrorHttpStatusCode, isTrue);
         });
         test('511 Network Authentication Required', () {
           expect(
@@ -1310,8 +2015,27 @@ void main() {
             HttpStatus.networkAuthenticationRequired,
           );
           expect(
-            HttpStatus.Network_Authentication_Required,
-            HttpStatus.networkAuthenticationRequired,
+            HttpStatus
+                .networkAuthenticationRequired.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.networkAuthenticationRequired.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.networkAuthenticationRequired.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus
+                .networkAuthenticationRequired.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus
+                .networkAuthenticationRequired.isServerErrorHttpStatusCode,
+            isTrue,
           );
         });
         test('599 Network Connect Timeout Error', () {
@@ -1336,8 +2060,24 @@ void main() {
             HttpStatus.networkConnectTimeoutError,
           );
           expect(
-            HttpStatus.Network_Connect_Timeout_Error,
-            HttpStatus.networkConnectTimeoutError,
+            HttpStatus.networkConnectTimeoutError.isInformationHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.networkConnectTimeoutError.isSuccessfulHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.networkConnectTimeoutError.isRedirectHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.networkConnectTimeoutError.isClientErrorHttpStatusCode,
+            isFalse,
+          );
+          expect(
+            HttpStatus.networkConnectTimeoutError.isServerErrorHttpStatusCode,
+            isTrue,
           );
         });
       });
@@ -1479,6 +2219,11 @@ void main() {
       expect(
         HttpStatus.fromCode(HttpStatusCode.processing),
         equals(HttpStatus.processing),
+      );
+
+      expect(
+        HttpStatus.fromCode(HttpStatusCode.earlyHints),
+        equals(HttpStatus.earlyHints),
       );
 
       expect(HttpStatus.fromCode(HttpStatusCode.ok), equals(HttpStatus.ok));
@@ -1792,6 +2537,15 @@ void main() {
         HttpStatus.fromCode(HttpStatusCode.networkConnectTimeoutError),
         equals(HttpStatus.networkConnectTimeoutError),
       );
+    });
+    test('fromCode constructor returns correct check methods', () {
+      final HttpStatus httpStatus = HttpStatus.fromCode(599);
+      expect(httpStatus, equals(HttpStatus.networkConnectTimeoutError));
+      expect(httpStatus.isInformationHttpStatusCode, isFalse);
+      expect(httpStatus.isSuccessfulHttpStatusCode, isFalse);
+      expect(httpStatus.isRedirectHttpStatusCode, isFalse);
+      expect(httpStatus.isClientErrorHttpStatusCode, isFalse);
+      expect(httpStatus.isServerErrorHttpStatusCode, isTrue);
     });
   });
 }

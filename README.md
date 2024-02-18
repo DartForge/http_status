@@ -1,18 +1,20 @@
 # http_status
 
-Constants enumerating the HTTP status codes in Dart. All status codes defined in RFC1945 (HTTP/1.0, RFC2616 (HTTP/1.1), and RFC2518 (WebDAV) are supported.
+<p align="center">
 
-[![Star this Repo](https://img.shields.io/github/stars/DartForge/http_status.svg?style=flat)](https://github.com/DartForge/http_status)
-<!-- [![Pub Package](https://img.shields.io/pub/v/http_status.svg?style=flat)](https://pub.dartlang.org/packages/http_status) -->
+[![Pub Package](https://img.shields.io/pub/v/http_status.svg?style=flat)](https://pub.dartlang.org/packages/http_status)
 [![build status](https://github.com/DartForge/http_status/actions/workflows/build.yml/badge.svg)](https://github.com/DartForge/http_status/actions/workflows/build.yml)
-
 [![Coverage Status](https://coveralls.io/repos/github/DartForge/http_status/badge.svg?branch=main)](https://coveralls.io/github/DartForge/http_status?branch=main)
+[![Star this Repo](https://img.shields.io/github/stars/DartForge/http_status.svg?style=flat)](https://github.com/DartForge/http_status)
+[![License: BSD](https://img.shields.io/badge/license-BSD-purple.svg)](https://opensource.org/license/bsd-3-clause/)
 
-[![wakatime](https://wakatime.com/badge/user/7267c60f-69d6-47f2-941f-06869f08edc8/project/018d207e-c2bf-4b0f-96f5-77f9647157f8.svg)](https://wakatime.com/badge/user/7267c60f-69d6-47f2-941f-06869f08edc8/project/018d207e-c2bf-4b0f-96f5-77f9647157f8)
+</p>
+
+Constants enumerating the HTTP status codes in Dart. All status codes defined in RFC1945 (HTTP/1.0, RFC2616 (HTTP/1.1), and RFC2518 (WebDAV) are supported.
 
 ## Codes
 
-| Code | Http Status Name                   | Http Status (V1.x.x - Deprecated)                                                               | Http Status (V2.x.x)            |
+| Code | Http Status Name                   | Http Status (v1.x - v2.x Deprecated)                                                            | Http Status (v2.x - v3.x)       |
 | ---- | ---------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------- |
 | 100  | Continue                           | Continue                                  / CONTINUE                                            | continue_                       |
 | 101  | Switching Protocols                | Switching_Protocols                       / SWITCHING_PROTOCOLS                                 | switchingProtocols              |
@@ -109,100 +111,129 @@ import 'package:http_status/http_status.dart';
 
 main() {
   print('${HttpStatusCode.ok}');
-// 200
-
-  print('${HttpStatus.Ok}'); // Note: 'Ok' is deprecated and shouldn't be used. Use [ok] instead.
-// HttpStatus(
-//   code: 200,
-//   name: 'OK',
-//   description: 'The request was fulfilled.'
-// )
+  // 200
 
   print('${HttpStatus.ok}');
-// HttpStatus(
-//   code: 200,
-//   name: 'OK',
-//   description: 'The request was fulfilled.'
-// )
-
-
-  print('${HttpStatus.NoContent}'); // Note: 'NoContent' is deprecated and shouldn't be used. Use [noContent] instead.
-// HttpStatus(
-//   code: 204,
-//   name: 'No Content',
-//   description: 'The server has successfully fulfilled the request and that there is no additional content to send in the response payload body.'
-// )
+  // HttpStatus(
+  //   code: 200,
+  //   name: 'OK',
+  //   description: 'The request was fulfilled.'
+  // )
 
   print('${HttpStatusCode.noContent}');
-// HttpStatus(
-//   code: 204,
-//   name: 'No Content',
-//   description: 'The server has successfully fulfilled the request and that there is no additional content to send in the response payload body.'
-// )
+  // 204
 
   print('${HttpStatus.fromCode(404)}');
-// HttpStatus(
-//   code: 404,
-//   name: 'Not Found',
-//   description: 'The origin server did not find a current representation for the target resource or is not willing to disclose that one exists.'
-// )
+  // HttpStatus(
+  //   code: 404,
+  //   name: 'Not Found',
+  //   description: 'The origin server did not find a current representation for the target resource or is not willing to disclose that one exists.'
+  // )
 
-
-  // isInformation
+  // isInformation (Http Status Code 200 - 299)
   print(HttpStatusCode.processing.isInformationHttpStatusCode); // true
   print(HttpStatusCode.notFound.isInformationHttpStatusCode); // false
+  print(HttpStatus.fromCode(103).isInformationHttpStatusCode); // true
+  print(HttpStatus.fromCode(404).isInformationHttpStatusCode); // false
+  print(103.isInformationHttpStatusCode); // true
+  print(400.isInformationHttpStatusCode); // false
 
-  // isSuccessful
+  // isSuccessful (Http Status Code 200 - 299)
   print(HttpStatusCode.accepted.isSuccessfulHttpStatusCode); // true
   print(HttpStatusCode.notFound.isSuccessfulHttpStatusCode); // false
+  print(HttpStatus.fromCode(200).isSuccessfulHttpStatusCode); // true
+  print(HttpStatus.fromCode(404).isSuccessfulHttpStatusCode); // false
+  print(200.isSuccessfulHttpStatusCode); // true
+  print(400.isSuccessfulHttpStatusCode); // false
 
-  // isRedirect
+  // isRedirect (Http Status Code 300 - 399)
   print(HttpStatusCode.permanentRedirect.isRedirectHttpStatusCode); // true
   print(HttpStatusCode.notFound.isRedirectHttpStatusCode); // false
+  print(HttpStatus.fromCode(303).isRedirectHttpStatusCode); // true
+  print(HttpStatus.fromCode(404).isRedirectHttpStatusCode); // false
+  print(303.isRedirectHttpStatusCode); // true
+  print(400.isRedirectHttpStatusCode); // false
 
-  // isClientError
+  // isClientError (Http Status Code 400 - 499)
   print(HttpStatusCode.notFound.isClientErrorHttpStatusCode); // true
   print(HttpStatusCode.processing.isClientErrorHttpStatusCode); // false
+  print(HttpStatus.fromCode(404).isClientErrorHttpStatusCode); // true
+  print(HttpStatus.fromCode(500).isClientErrorHttpStatusCode); // false
+  print(404.isClientErrorHttpStatusCode); // true
+  print(200.isClientErrorHttpStatusCode); // false
 
-  // isServerError
-  print(HttpStatusCode.internalServerError.isServerError); // true
-  print(HttpStatusCode.notFound.isServerError); // false
+  // isServerError (Http Status Code 500 - 599)
+  print(HttpStatusCode.internalServerError.isServerErrorHttpStatusCode); // true
+  print(HttpStatusCode.notFound.isServerErrorHttpStatusCode); // false;
+  print(HttpStatus.fromCode(502).isServerErrorHttpStatusCode); // true
+  print(HttpStatus.fromCode(200).isServerErrorHttpStatusCode); // false
+  print(503.isServerErrorHttpStatusCode); // true
+  print(200.isServerErrorHttpStatusCode); // false
 }
 ```
 
-```dart
-import 'package:http/http.dart' as http;
-import 'package:http_status/http_status.dart';
+1. Classic method
 
-final res = await http.get(Uri.parse(url));
+   ```dart
+   import 'package:http/http.dart' as http;
+   import 'package:http_status/http_status.dart';
 
-if (res.statusCode == HttpStatusCode.ok) {
-  final httpStatus = HttpStatus.fromCode(res.statusCode);
+   final res = await http.get(Uri.parse(url));
 
-  return {
-    'statusCode': res.statusCode,
-    'httpStatus': httpStatus,
-    'data': res.body
-  };
-}
-```
+   if (res.statusCode == HttpStatusCode.ok) { // res.statusCode == 200
+     final httpStatus = HttpStatus.fromCode(res.statusCode);
 
-```dart
-import 'package:http/http.dart' as http;
-import 'package:http_status/http_status.dart';
+     return {
+       'statusCode': res.statusCode,
+       'httpStatus': httpStatus,
+       'data': res.body
+     };
+   }
+   ```
 
-final res = await http.get(Uri.parse(url));
+2. Alternative method (Same as #1 method, but with more direct validation using `.isSuccessfulHttpStatusCode`)
 
-if (res.statusCode.isSuccessfulHttpStatusCode) {
-  final httpStatus = HttpStatus.fromCode(res.statusCode);
+   ```dart
+   import 'package:http/http.dart' as http;
+   import 'package:http_status/http_status.dart';
 
-  return {
-    'statusCode': res.statusCode,
-    'httpStatus': httpStatus,
-    'data': res.body
-  };
-}
-```
+   final res = await http.get(Uri.parse(url));
+
+   if (res.statusCode.isSuccessfulHttpStatusCode) {
+     final httpStatus = HttpStatus.fromCode(res.statusCode);
+
+     return {
+       'statusCode': res.statusCode,
+       'httpStatus': httpStatus,
+       'data': res.body
+     };
+   }
+   ```
+
+3. Alternative method (Same as #1 method, if you need the HttpStatus object from the dynamically generated status code of the response)
+
+   ```dart
+   import 'package:http/http.dart' as http;
+   import 'package:http_status/http_status.dart';
+
+   final res = await http.get(Uri.parse(url));
+
+   final httpStatusResponse = HttpStatus.fromCode(res.statusCode);
+
+   if (httpStatusResponse.isSuccessfulHttpStatusCode) {
+     return {
+       'statusCode': res.statusCode,
+       'httpStatus': httpStatusResponse,
+       'data': res.body
+     };
+   } else if (httpStatusResponse.isClientErrorHttpStatusCode) {
+      // Handle client error
+      // ...
+   } else {
+      // Handle other code error
+      // ...
+   }
+   ```
 
 ## Thanking all Awesome Contributors :heart:
 

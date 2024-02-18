@@ -11,7 +11,7 @@ analyzer:
 # Lint rules and documentation, see http://dart-lang.github.io/linter/lints
 linter:
   rules:
-    # - collection_methods_unrelated_type
+    - collection_methods_unrelated_type
     - require_trailing_commas
 
 dart_code_linter:
@@ -21,7 +21,7 @@ dart_code_linter:
 
   rules:
   - prefer-correct-identifier-length:
-      exceptions: [ 'ok', 'Ok', 'OK' ]
+      exceptions: [ 'ok' ]
       exclude:
         - test/**
   - format-comment: false
