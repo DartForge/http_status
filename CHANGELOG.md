@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.3.1] - 2024-02-26
+
+### Fixed - 3.3.1
+
+- Enhanced linting rules and improved type specification in `http_status_test.dart` for better code quality control and updated documentation.
+
 ## [3.3.0] - 2024-02-24
 
 ### Added - 3.3.0
