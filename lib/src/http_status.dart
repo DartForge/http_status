@@ -3,6 +3,8 @@
 // All rights reserved. Use of this source code
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
+import 'package:meta/meta.dart';
+
 import 'http_status_code.dart';
 import 'utils/int_http_status_code_extension.dart';
 
@@ -74,6 +76,7 @@ import 'utils/int_http_status_code_extension.dart';
 ///   User agents __SHOULD__ display any included entity to the user.
 ///   These response codes are applicable to any request method.
 ///
+@immutable
 class HttpStatus {
   HttpStatus({
     required this.code,
@@ -97,7 +100,11 @@ class HttpStatus {
 
   factory HttpStatus.fromCode(int code) {
     if (!_httpStatusCodes.containsKey(code)) {
-      throw ArgumentError.value(code, 'code', 'Unknown status code');
+      throw ArgumentError.value(
+        code,
+        'code',
+        'Unrecognized status code. Use the HttpStatus constructor for custom codes',
+      );
     }
 
     return _httpStatusCodes[code]!;
