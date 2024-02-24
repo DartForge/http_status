@@ -12,7 +12,8 @@
 
 Constants enumerating the HTTP status codes in Dart. All status codes defined in RFC1945 (HTTP/1.0, RFC2616 (HTTP/1.1), and RFC2518 (WebDAV) are supported.
 
-## Codes
+<details>
+  <summary><h2>Codes of Http Status </h2></summary>
 
 | Code | Http Status Name                   | Http Status (v1.x - v2.x Deprecated)                                                            | Http Status (v2.x - v3.x)       |
 | ---- | ---------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------- |
@@ -86,6 +87,8 @@ Constants enumerating the HTTP status codes in Dart. All status codes defined in
 A library for debugging and displaying http status codes.
 Includes 63 status codes, messages and desciptions sourced from
 the official spec <https://tools.ietf.org/html/rfc723> and <https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/>
+
+</details>
 
 ## Installation
 

@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.3.0] - 2024-02-24
+
+### Added - 3.3.0
+
+- Added @immutable annotation to HttpStatus class for enhanced immutability.
+
+### Fixed - 3.3.0
+
+- Improved error messaging for unrecognized fromCode() of HTTP status codes and added verification test case.
+
 ## [3.2.0] - 2024-02-17
 
 ### Fixed - 3.2.0
