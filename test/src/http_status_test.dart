@@ -2204,6 +2204,28 @@ void main() {
       expect(() => HttpStatus.fromCode(998), throwsArgumentError);
       expect(() => HttpStatus.fromCode(1), throwsArgumentError);
     });
+    test('Throws ArgumentError on unrecognized status code', () {
+      expect(
+        () => HttpStatus.fromCode(600),
+        throwsA(
+          isA<ArgumentError>().having(
+            (e) => e.message,
+            'message',
+            contains(
+              'Unrecognized status code. Use the HttpStatus constructor for custom codes',
+            ),
+          ),
+        ),
+      );
+      final HttpStatus httpStatus600 = HttpStatus(
+        code: 600,
+        name: 'name custom 600',
+        description: 'description custom 600',
+      );
+      expect(httpStatus600.code, 600);
+      expect(httpStatus600.name, 'name custom 600');
+      expect(httpStatus600.description, 'description custom 600');
+    });
 
     test('fromCode constructor returns correct status', () {
       expect(

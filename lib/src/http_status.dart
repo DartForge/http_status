@@ -100,7 +100,11 @@ class HttpStatus {
 
   factory HttpStatus.fromCode(int code) {
     if (!_httpStatusCodes.containsKey(code)) {
-      throw ArgumentError.value(code, 'code', 'Unknown status code');
+      throw ArgumentError.value(
+        code,
+        'code',
+        'Unrecognized status code. Use the HttpStatus constructor for custom codes',
+      );
     }
 
     return _httpStatusCodes[code]!;
