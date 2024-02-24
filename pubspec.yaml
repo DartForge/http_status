@@ -13,6 +13,9 @@ topics: [http-status]
 environment:
   sdk: '>=3.0.0 <4.0.0'
 
+dependencies:
+  meta: ^1.11.0
+
 dev_dependencies:
   coverage: ^1.7.2
   dart_code_linter: ^1.1.2

@@ -3,6 +3,8 @@
 // All rights reserved. Use of this source code
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
+import 'package:meta/meta.dart';
+
 import 'http_status_code.dart';
 import 'utils/int_http_status_code_extension.dart';
 
@@ -74,6 +76,7 @@ import 'utils/int_http_status_code_extension.dart';
 ///   User agents __SHOULD__ display any included entity to the user.
 ///   These response codes are applicable to any request method.
 ///
+@immutable
 class HttpStatus {
   HttpStatus({
     required this.code,
