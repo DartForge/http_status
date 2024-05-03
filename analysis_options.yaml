@@ -53,7 +53,7 @@ linter:
     - join_return_with_assignment
     - library_prefixes
     # - lines_longer_than_80_chars
-    # - omit_local_variable_types # confilict always_specify_types
+    # - omit_local_variable_types # conflict always_specify_types
     - one_member_abstracts
     - only_throw_errors
     - package_api_docs

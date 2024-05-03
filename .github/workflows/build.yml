@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: dart-lang/setup-dart@v1.6.2
+      - uses: dart-lang/setup-dart@v1.6.4
         with:
           sdk: ${{ matrix.channel }}
 
@@ -36,7 +36,7 @@ jobs:
         # --set-exit-if-changed stops execution if the any code is not well formatted
         # --output=none prints files which needs to be formatted
 
-        # Checks for Symantic errors. Can be configured using analysis_options.yaml
+        # Checks for Semantic errors. Can be configured using analysis_options.yaml
       - name: Analyze project source
         run: dart analyze --fatal-infos
         # optionally use --fatal-warnings to stop execution if any warnings are found
@@ -47,7 +47,7 @@ jobs:
           dart pub global run coverage:test_with_coverage
 
       - name: Check Code Coverage
-        uses: VeryGoodOpenSource/very_good_coverage@v2
+        uses: VeryGoodOpenSource/very_good_coverage@v3
         with:
           path: "./coverage/lcov.info"
           min_coverage: 100
