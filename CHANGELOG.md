@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.3.3] - 2024-05-03
+
+### Fixed - 3.3.3
+
+- Updated CODEOWNERS file to reflect changes in GitHub usernames for code owners.
+
 ## [3.3.2] - 2024-05-03
 
 ### Fixed - 3.3.2
