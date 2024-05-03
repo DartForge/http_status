@@ -78,6 +78,17 @@ import 'utils/int_http_status_code_extension.dart';
 ///
 @immutable
 class HttpStatus {
+  /// Creates a new instance of [HttpStatus] with the provided
+  /// [code], [name], and [description].
+  /// The constructor validates the status code to ensure it is within
+  /// the acceptable range of 0 to 999, inclusive.
+  /// If the given code falls outside this range, it throws an `ArgumentError`.
+  ///
+  /// ```dart
+  ///
+  /// final HttpStatus successStatus =
+  ///   HttpStatus(code: 200, name: 'OK', description: 'Request succeeded.');
+  /// ```
   HttpStatus({
     required this.code,
     required this.name,
@@ -92,12 +103,30 @@ class HttpStatus {
     }
   }
 
+  /// A private named constructor used internally to instantiate
+  /// `HttpStatus` without validation.
+  /// This can be useful for defining constants or internal uses where
+  /// validation is managed externally.
   const HttpStatus._({
     required this.code,
     required this.name,
     required this.description,
   });
 
+  /// Constructs an instance of `HttpStatus` based on a predefined list of
+  /// status codes.
+  ///
+  /// If the given code is not found within the predefined list,
+  /// it throws an `ArgumentError`, suggesting the use of
+  /// the main constructor to define custom codes.
+  ///
+  /// ```dart
+  /// try {
+  ///   var myStatus = HttpStatus.fromCode(450);
+  /// } catch (e) {
+  ///   print(e);  // Unrecognized status code. Use the HttpStatus constructor for custom codes
+  /// }
+  /// ```
   factory HttpStatus.fromCode(int code) {
     if (!_httpStatusCodes.containsKey(code)) {
       throw ArgumentError.value(
@@ -110,8 +139,13 @@ class HttpStatus {
     return _httpStatusCodes[code]!;
   }
 
+  /// The numeric HTTP status code (e.g., 200, 404).
   final int code;
+
+  /// A more detailed description of what the status code means.
   final String description;
+
+  /// A string name for quick identification of the status (e.g., "OK", "Not Found").
   final String name;
 
   /// {@template http_status_100_continue_}

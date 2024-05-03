@@ -2084,22 +2084,22 @@ void main() {
     });
 
     test('== and hashCode', () {
-      final a = HttpStatus(
+      final HttpStatus a = HttpStatus(
         code: 999,
         name: 'Status Code',
         description: '',
       );
-      final b = HttpStatus(
+      final HttpStatus b = HttpStatus(
         code: 999,
         name: 'Status Code',
         description: '',
       );
-      final c = HttpStatus(
+      final HttpStatus c = HttpStatus(
         code: 999,
         name: 'Status Code',
         description: '',
       );
-      final d = HttpStatus(
+      final HttpStatus d = HttpStatus(
         code: 998,
         name: 'Status',
         description: '',
@@ -2209,7 +2209,7 @@ void main() {
         () => HttpStatus.fromCode(600),
         throwsA(
           isA<ArgumentError>().having(
-            (e) => e.message,
+            (ArgumentError e) => e.message,
             'message',
             contains(
               'Unrecognized status code. Use the HttpStatus constructor for custom codes',

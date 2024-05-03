@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.3.2] - 2024-05-03
+
+### Fixed - 3.3.2
+
+- Updated the Dart setup version in workflow to v1.6.4 and dev dependencies versions for dart_code_linter to v1.1.3 and test to v1.25.4, also fixed a typo.
+
+## [3.3.1] - 2024-02-26
+
+### Fixed - 3.3.1
+
+- Enhanced linting rules and improved type specification in `http_status_test.dart` for better code quality control and updated documentation.
+
 ## [3.3.0] - 2024-02-24
 
 ### Added - 3.3.0
